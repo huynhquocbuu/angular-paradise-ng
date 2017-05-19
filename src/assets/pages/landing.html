@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <script>document.write('<base href="' + document.location + '" />');</script>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <title>PrimeNG - Morpheus - Landing Page</title>
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+      <link rel="stylesheet" type="text/css" href="../theme/theme-green.css">
+      <link rel="stylesheet" type="text/css" href="../layout/css/layout-green.css">
+      <link rel="stylesheet" type="text/css" href="primeng.min.css">
+
+      <script src="jquery.js"></script>
+      <script type="text/javascript">
+      $(function() {
+          $('#menu-button').on('click', function(e) {
+              $('#header').toggleClass('menu-active');
+              e.preventDefault();
+          });
+      });
+      </script>
+  </head>
+
+  <body class="landing-body">
+        <div class="landing-wrapper">
+            <div id="header">
+                <div class="header-top">
+                    <div style="margin-top:20px;display: inline-block;">
+                        <a class="morpheus-logo-link" href="dashboard.html">
+                            <img src="../layout/images/morpheus-logo-green.svg" class="morpheus-logo" />
+                            <span class="morpheus-logo-text">
+                                morpheus
+                            </span>
+                        </a>
+                    </div>
+                    
+                    <a id="menu-button" href="#">
+                       <span class="fa fa-bars"></span>
+                    </a>
+                    
+                    <ul class="animated menu-active fadeInDown">
+                        <li>
+                            <a href="#home">HOME</a>
+                        </li>
+                        <li>
+                            <a href="#features">FEATURES</a>
+                        </li>
+                        <li>
+                            <a href="#pricing">PRICING</a>
+                        </li>
+                        <li>
+                            <a href="#video">VIDEO</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="header-content">
+                    <h1>PrimeNG Presents Morpheus</h1>
+                    <h2>Minimal layout inspired by a beautiful city</h2>
+                    <div>
+                        <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all secondary">
+                            <span class="ui-button-text ui-c">Pricing</span>
+                        </button>
+                        <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all secondary">
+                            <span class="ui-button-text ui-c">See how it works</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="information">
+                <div class="landing-container promotion-container">
+                    <div class="ui-g-6 ui-sm-12 CenterMobile">
+                        <h2 class="information-header">It takes time to grow something on Mars surface, so let’s do it together.</h2>
+                        <p class="information-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eligendi ea fuga 
+                            necessitatibus ullam recusandae, libero sunt, animi nihil eum provident saepe 
+                            Exercitationem architecto sequi. <br/><br/>
+                            Quo modi, tempora porro aliquam animi quibusdam
+                            necessitatibus, expedita pariatur placeat veniam perspiciatis repellat autem suscipit 
+                            aspernatur! Odit repellat fuga tenetur eveniet, fugiat quisquam sunt.
+                        </p>
+                    </div>
+                </div>
+                <img src="../layout/images/martian-green.png" id="screen"/>
+            </div>
+                        
+            <div id="features">
+                <div>
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-4">
+                            <img src="../layout/images/landing/small-fertilizer2x.png"/>
+                            <h3>RESPONSIVE LAYOUT</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eligendi ea
+                               fuga necessitatibus ullam recusandae, libero sunt, animi nihil eum provident saepe 
+                            </p>
+                        </div>
+                        <div class="ui-g-12 ui-md-4">
+                            <img src="../layout/images/landing/small-plant-wait2x.png"/>
+                            <h3>MODERN DESIGN</h3>
+                            <p>
+                               Exercitationem architecto sequi. Quo modi, tempora porro aliquam animi quibusdam necessitatibus,
+                               expedita pariatur placeat veniam perspiciatis repellat autem
+                            </p>
+                        </div>
+                        <div class="ui-g-12 ui-md-4">
+                            <img src="../layout/images/landing/small-easy-to-collect2x.png"/>
+                            <h3>CLEAN CODE</h3>
+                            <p>Quo modi, tempora porro aliquam animi quibusdam necessitatibus, expedita pariatur placeat veniam perspiciatis repellat autem</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="pricing">
+                <div>
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <h1 style="border-bottom:none;">Choose your best solution package!</h1>
+                        </div>
+                        <div class="ui-g-12 ui-md-4">
+                            <div class="price-type">
+                                <h3>Basic</h3>
+                                <span class="price">79</span>
+                                <span class="currency">$</span>
+                                <span class="term">monthly (martian month)</span>
+                                <ul>
+                                    <li>2 Users</li>
+                                    <li>Martian dust available</li>
+                                    <li>Free water</li>
+                                    <li>One martian vehicle</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ui-g-12 ui-md-4">
+                            <div class="price-type">
+                                <h3>Standard</h3>
+                                <span class="price" style="color:#ef8316;">150</span>
+                                <span class="currency" style="color:#ef8316;">$</span>
+                                <span class="term">monthly (martian month)</span>
+                                <ul>
+                                    <li>up to 6 users</li>
+                                    <li>Martian dust available</li>
+                                    <li>Free water</li>
+                                    <li>Two martian vehicle</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ui-g-12 ui-md-4">
+                            <div class="price-type">
+                                <h3>Star Package</h3>
+                                <span class="price" style="color:#4d4d4d;">299</span>
+                                <span class="currency" style="color:#4d4d4d;">$</span>
+                                <span class="term">monthly (martian month)</span>
+                                <ul>
+                                    <li>up to 20 users</li>
+                                    <li>Martian dust available</li>
+                                    <li>Free water</li>
+                                    <li>Six martian vehicle</li>
+                                    <li>Alien spacehip</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="video">
+               <div>
+                   <div class="video-container">
+                       <iframe width="560" height="315" src="https://www.youtube.com/embed/gDadfh0ZdBM" frameborder="0" allowfullscreen="true"></iframe>
+                   </div>
+               </div>
+           </div>
+            
+           <div id="footer">
+               <div>
+                   <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <h3>ADDRESS</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet,<br/>
+                                Consectetur adipisicing elit. <br/>
+                                344 CA, San Francisco USA
+                            </p>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <h3>PHONE</h3>
+                            <p>
+                               +108278 92 728 <br/>
+                               +108278 92 729
+                            </p>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <h3>SOCIAL MEDIA ACCOUNTS</h3>
+                            <ul style="list-style-type: none;padding: 0;line-height: 1.5;">
+                                <li><i class="fa fa-caret-right" aria-hidden="true" style="margin-right:10px;"></i>twitter</li>
+                                <li><i class="fa fa-caret-right" aria-hidden="true" style="margin-right:10px;"></i>facebook</li>
+                                <li><i class="fa fa-caret-right" aria-hidden="true" style="margin-right:10px;"></i>linkedin</li>
+                            </ul>
+                        </div>
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <h3>E-MAIL</h3>
+                            <p>martianfarming@space.com</p>
+                        </div>
+                        <div class="ui-g-12">
+                            <p>
+                                Copyright Morpheus, 2017
+                            </p>
+                            <a href="#">Terms</a><span class="link-divider">|</span>
+                            <a href="#">About</a><span class="link-divider">|</span>
+                            <a href="#">Privacy</a><span class="link-divider">|</span>
+                            <a href="#">Contact</a><span class="link-divider">|</span>
+                            <a href="#">Map</a>
+                        </div>
+                    </div>
+               </div>
+           </div>
+        </div>
+    </body>
+</html>

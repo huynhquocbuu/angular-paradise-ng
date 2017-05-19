@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>PrimeNG - Morpheus - Login</title>
+
+    <!-- Layout CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../theme/theme-green.css">
+    <link rel="stylesheet" type="text/css" href="../layout/css/layout-green.css">
+    <link rel="stylesheet" type="text/css" href="primeng.min.css">
+    
+    <!-- Ripple -->
+    <script src="jquery.js"></script>
+  </head>
+ 
+  <!-- 3. Display the application -->
+  <body class="login-body">
+        <div class="login-panel ui-fluid">
+            <div class="ui-g login-container" style="padding-bottom: 20px;">
+                <div class="ui-g-12 logo-container">
+                    <a class="morpheus-logo-link" href="dashboard.html">
+                        <img src="../layout/images/morpheus-logo-green.svg" class="morpheus-logo" />
+                        <span class="morpheus-logo-text">
+                            morpheus
+                        </span>
+                    </a>
+                </div>
+                <div class="ui-g-12">
+                    <input type="text" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget" placeholder="Username">
+                </div>
+                <div class="ui-g-12">
+                    <input type="password" autocomplete="off" class="ui-inputtext ui-corner-all ui-state-default ui-widget" placeholder="Password">
+                </div>
+                 <div class="ui-g-12 chkbox-container">
+                    <input type="checkbox" id="remember-me" />
+                    <label for="remember-me">Remember Me</label>
+                </div>
+                <div class="ui-g-12 button-container">
+                    <button type="button" class="ui-button green-btn raised-btn ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                        <span class="ui-button-icon-left ui-c fa fa-fw fa-user"></span>
+                        <span class="ui-button-text ui-c">Sign In</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="stripe"></div>
+            <p style="margin-left: -17px;">Don't you have an account? <a href="#"> Register here </a></p>
+            <div class="stripe"></div>
+
+            <div class="ui-g login-container" style="padding-top: 10px;">
+                <div class="ui-g-12">
+                    <h2>Social Login</h2>
+                </div>
+                <div class="ui-g-12 button-container">
+                    <button type="button" class="ui-button facebook-btn raised-btn  ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                        <span class="ui-button-icon-left ui-c fa fa-fw fa-facebook"></span>
+                        <span class="ui-button-text ui-c">Facebook</span>
+                    </button>
+                </div>
+                <div class="ui-g-12 button-container">
+                     <button type="button" class="ui-button twitter-btn raised-btn  ui-widget ui-state-default ui-corner-all ui-button-text-icon-left">
+                        <span class="ui-button-icon-left ui-c fa fa-fw fa-twitter"></span>
+                        <span class="ui-button-text ui-c">Twitter</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

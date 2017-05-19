@@ -1,0 +1,429 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <div class="card docs"> 
+            
+            <h1>Getting Started</h1>
+            <p>Morpheus is a true native application template for Angular and is distributed as a CLI project. If you don't have CLI installed already run the following commands to set it up. In case
+            you have an application that do not use CLI, skip the <a href="#noncli">Integration with an Existing Non CLI Application</a> part.</p>
+<pre>
+npm install -g @angular-cli
+</pre>
+
+            <p>Once CLI is ready in your system, extract the contents of the morpheus zip file distribution, cd to the directory, 
+            install the libraries from npm and then execute "ng serve" to run the application in your local environment at http://localhost:4200/.</p>
+<pre>
+cd morpheus
+npm install
+ng serve
+</pre>
+
+            <p>That's it, you may now start with the development of your application.</p>
+
+            <h1>Important CLI Commands</h1>
+            <p>Following commands are derived from CLI.</p>
+<pre>
+Run 'ng serve' for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+Run 'ng generate component component-name' to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+
+Run 'ng build' to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+Run 'ng test' to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+Run 'ng e2e' to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+Run 'ng help' for more options.
+</pre>            
+                                    
+            <h1>Structure</h1>
+            <p>Morpheus consists of 3 main parts; the application layout, layout resources and theme resources for PrimeNG components. <i>app.component.html</i> inside app folder is the html template for the base layout, 
+                required resources for the layout are placed inside the <i>src/assets/layout</i> folder and similarly theme resources are inside <i>src/assets/theme</i> folder. 
+            </p>
+
+            <h1>Template</h1>
+            <p>Main layout is the html view of the app.component.ts, it is divided into a couple of sections such as topbar, sidebar and footer. Here is the code for
+                the main template. The component class app.component.ts implements the logic such as opening menus and layout modes.
+            </p>
+<pre>
+&lt;div class="layout-wrapper" [ngClass]="&#123;'layout-wrapper-menu-active':sidebarActive,
+                                        'layout-overlay-menu':overlay&#125;"&gt;
+
+    &lt;app-topbar&gt;&lt;/app-topbar&gt;
+    
+    &lt;app-sidebar&gt;&lt;/app-sidebar&gt;
+    
+    &lt;div class="layout-content"&gt;
+        &lt;router-outlet&gt;&lt;/router-outlet&gt;
+        
+        &lt;app-footer&gt;&lt;/app-footer&gt;
+    &lt;/div>
+
+&lt;/div>
+</pre>
+
+            <h1>Menu</h1>
+            <p>Menu is a separate component defined in app.menu.component.ts file based on PrimeNG MenuModel API. In order to define the menuitems, 
+            navigate to app.menu.component.ts and define your own model. Here is the menu component from the sample application. The helper
+            app-submenu component is also available in the same file.</p>
+<pre>
+import &#123;Component,Input,OnInit,EventEmitter,ViewChild,trigger,state,transition,style,animate,Inject,forwardRef&#125; from '@angular/core';
+import &#123;Location&#125; from '@angular/common';
+import &#123;Router&#125; from '@angular/router';
+import &#123;MenuItem&#125; from 'primeng/primeng';
+import &#123;AppComponent&#125; from './app.component';
+
+@Component(&#123;
+    selector: 'app-menu',
+    template: `
+        &lt;ul app-submenu [item]="model" root="true" class="layout-menu clearfix" [reset]="reset" visible="true"&gt;&lt;/ul&gt;
+    `
+&#125;)
+export class AppMenuComponent implements OnInit &#123;
+
+    @Input() reset: boolean;
+
+    model: MenuItem[];
+
+    constructor(@Inject(forwardRef(() => AppComponent)) public app:AppComponent) &#123;&#125;
+    
+    ngOnInit() &#123;
+        this.model = [
+            &#123;label: 'Dashboard', icon: 'fa fa-fw fa-home', routerLink: ['/']&#125;,
+            &#123;
+                label: 'Themes', icon: 'fa fa-fw fa-paint-brush',
+                items: [
+                    &#123;label: 'Turquoise', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('turquoise')&#125;&#125;,
+                    &#123;label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('blue')&#125;&#125;,
+                    &#123;label: 'Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('purple')&#125;&#125;,
+                    &#123;label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('orange')&#125;&#125;,
+                    &#123;label: 'Pink', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('pink')&#125;&#125;,
+                    &#123;label: 'Light Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('light-blue')&#125;&#125;,
+                    &#123;label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('green')&#125;&#125;,
+                    &#123;label: 'Deep Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('deep-purple')&#125;&#125;
+                ]
+            &#125;,
+            &#123;
+                label: 'Customization', icon: 'fa fa-fw fa-bars',
+                items: [
+                    &#123;label: 'Static Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToStaticMenu()&#125;,
+                    &#123;label: 'Overlay Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToOverlayMenu()&#125;,
+                    &#123;label: 'Horizontal Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToHorizontalMenu()&#125;
+                ]
+            &#125;,
+            &#123;
+                label: 'Components', icon: 'fa fa-fw fa-sitemap',
+                items: [
+                    &#123;label: 'Sample Page', icon: 'fa fa-fw fa-columns', routerLink: ['/sample']&#125;,
+                    &#123;label: 'Forms', icon: 'fa fa-fw fa-code', routerLink: ['/forms']&#125;,
+                    &#123;label: 'Data', icon: 'fa fa-fw fa-table', routerLink: ['/data']&#125;,
+                    &#123;label: 'Panels', icon: 'fa fa-fw fa-list-alt', routerLink: ['/panels']&#125;,
+                    &#123;label: 'Overlays', icon: 'fa fa-fw fa-square', routerLink: ['/overlays']&#125;,
+                    &#123;label: 'Menus', icon: 'fa fa-fw fa-minus-square-o', routerLink: ['/menus']&#125;,
+                    &#123;label: 'Messages', icon: 'fa fa-fw fa-circle-o-notch', routerLink: ['/messages']&#125;,
+                    &#123;label: 'Charts', icon: 'fa fa-fw fa-area-chart', routerLink: ['/charts']&#125;,
+                    &#123;label: 'File', icon: 'fa fa-fw fa-arrow-circle-o-up', routerLink: ['/file']&#125;,
+                    &#123;label: 'Misc', icon: 'fa fa-fw fa-user-secret', routerLink: ['/misc']&#125;
+                ]
+            &#125;,
+            &#123;
+                label: 'Template Pages', icon: 'fa fa-fw fa-life-saver',
+                items: [
+                    &#123;label: 'Empty Page', icon: 'fa fa-fw fa-square-o', routerLink: ['/empty']&#125;,
+                    &#123;label: 'Landing Page', icon: 'fa fa-fw fa-certificate', url: 'landing.html'&#125;,
+                    &#123;label: 'Login Page', icon: 'fa fa-fw fa-sign-in', url: 'login.html'&#125;,
+                    &#123;label: 'Error Page', icon: 'fa fa-fw fa-exclamation-circle', url: 'error.html'&#125;,
+                    &#123;label: '404 Page', icon: 'fa fa-fw fa-times', url: '404.html'&#125;,
+                    &#123;label: 'Access Denied Page', icon: 'fa fa-fw fa-exclamation-triangle', url: 'access.html'&#125;
+                ]
+            &#125;,
+            &#123;
+                label: 'Menu Hierarchy', icon: 'fa fa-fw fa-gg',
+                items: [
+                    &#123;
+                        label: 'Submenu 1', icon: 'fa fa-fw fa-sign-in',
+                        items: [
+                            &#123;
+                                label: 'Submenu 1.1', icon: 'fa fa-fw fa-sign-in',
+                                items: [
+                                    &#123;label: 'Submenu 1.1.1', icon: 'fa fa-fw fa-sign-in'&#125;,
+                                    &#123;label: 'Submenu 1.1.2', icon: 'fa fa-fw fa-sign-in'&#125;,
+                                    &#123;label: 'Submenu 1.1.3', icon: 'fa fa-fw fa-sign-in'&#125;,
+                                ]
+                            &#125;,
+                            &#123;
+                                label: 'Submenu 1.2', icon: 'fa fa-fw fa-sign-in',
+                                items: [
+                                    &#123;label: 'Submenu 1.2.1', icon: 'fa fa-fw fa-sign-in'&#125;,
+                                    &#123;label: 'Submenu 1.2.2', icon: 'fa fa-fw fa-sign-in'&#125;
+                                ]
+                            &#125;,
+                        ]
+                    &#125;,
+                    &#123;
+                        label: 'Submenu 2', icon: 'fa fa-fw fa-sign-in',
+                        items: [
+                            &#123;
+                                label: 'Submenu 2.1', icon: 'fa fa-fw fa-sign-in',
+                                items: [
+                                    &#123;label: 'Submenu 2.1.1', icon: 'fa fa-fw fa-sign-in'&#125;,
+                                    &#123;label: 'Submenu 2.1.2', icon: 'fa fa-fw fa-sign-in'&#125;,
+                                    &#123;label: 'Submenu 2.1.3', icon: 'fa fa-fw fa-sign-in'&#125;,
+                                ]
+                            &#125;,
+                            &#123;
+                                label: 'Submenu 2.2', icon: 'fa fa-fw fa-sign-in',
+                                items: [
+                                    &#123;label: 'Submenu 2.2.1', icon: 'fa fa-fw fa-sign-in'&#125;,
+                                    &#123;label: 'Submenu 2.2.2', icon: 'fa fa-fw fa-sign-in'&#125;
+                                ]
+                            &#125;,
+                        ]
+                    &#125;
+                ]
+            &#125;,
+            &#123;label: 'Documentation', icon: 'fa fa-fw fa-book', routerLink: ['/documentation']&#125;
+        ];
+    &#125;
+&#125;
+</pre>
+            
+            <h1>Integration with an Existing CLI Project</h1>
+            <p>To setup Morpheus in an existing project, copy the <i>src/assets</i> folder to your projects folder with the same name 
+                and replace the contents of app.component.ts, app.component.html with their counterparts in Morpheus under <i>src/app</i> folder.</p>
+            
+            <p>Dependencies of Morpheus are listed below and needs to be added to package.json</p>
+<pre>
+"primeng": "4.0.0",              //required: PrimeNG components
+"jquery": "^3.1.1",              //optional: schedule and nanoscroller
+"chart.js": "^2.4.0",            //optional: chart 
+"fullcalendar": "^3.1.0",        //optional: schedule
+"moment": "^2.17.1",             //optional: chart and schedule
+"quill": "^1.1.8",               //optional: editor
+</pre>
+                        
+            <p>Add PrimeNG CSS at styles section in angular-cli.json</p>
+
+<pre>
+"styles": [
+    "../node_modules/font-awesome/css/font-awesome.min.css",    //required: Icons
+    "../node_modules/primeng/resources/primeng.min.css",        //required: PrimeNG components
+    "../node_modules/fullcalendar/dist/fullcalendar.min.css",   //optional: schedule
+    "../node_modules/quill/dist/quill.snow.css",                //optional: editor
+    "../node_modules/nanoscroller/bin/css/nanoscroller.css",    //optional: nanoscroller
+    "styles.scss"                                               //your styles and overrides
+],
+</pre>
+
+            <p>Add the following scripts to your angular-cli.json</p>
+<pre>
+"scripts": [
+    "../node_modules/jquery/dist/jquery.js",                                //optional: schedule and nanoscroller
+    "../node_modules/nanoscroller/bin/javascripts/jquery.nanoscroller.js",  //optional: nanoscroller
+    "../node_modules/moment/moment.js",                                     //optional: schedule and charts
+    "../node_modules/chart.js/dist/Chart.js",                               //optional: charts
+    "../node_modules/fullcalendar/dist/fullcalendar.js",                    //optional: schedule
+    "../node_modules/quill/dist/quill.js"                                   //optional: editor
+],
+</pre>
+
+            <p>Last part is adding theme and layout css files, in the CLI app they are defined using link tags in index.html so the demo can switch them on
+            the fly by changing the path however if this is not a requirement, you may also add them to the styles configuration so they go inside the bundle.</p>
+
+            <h1 id="noncli">Integration with an Existing Non-CLI Project</h1>
+            <p>For an existing project that do not use CLI, setup steps are more or less similar. Start with installing the dependencies listed above in package.json</p>
+            <p>Copy the <i>src/assets</i> folder to your application and include the resources listed above with a module bundler like webpack or using link-script tags.</p>
+            <p>Finally copy the contents of app.component.html to your application's main component template such as <i>app/application.html</i> along
+            with the sub components which are app.menu.component.ts, app.topbar.component.ts and app.footer.component.ts.</p>
+                                    
+            <h1>Theme</h1>    
+            <p>Morpheus provides 3 PrimeNG themes out of the box, setup of a theme simple including the css of theme to your page that are located inside resources/theme folder.</p>
+            
+            <ul>
+                <li>theme-blue</li>
+                <li>theme-green</li>
+                <li>theme-orange</li>
+            </ul>
+            
+            <p>A custom theme can be developed by the following steps.</p>
+            <ul>
+                <li>Choose a custom theme name such as theme-myown.</li>
+                <li>Create a file named theme-myown.scss under <i>assets/theme folder</i>.</li>
+                <li>Define the variables listed below and import the <i>/sass/theme/_theme.scss</i> file.</li>
+                <li>Build the scss to generate css</li>
+                <li>Include the generated theme.css to your page.</li>
+            </ul>
+            
+            <p>Here are the variables required to create a theme, you may need to change the last line according to the 
+                relative path of the sass folder in your application.</p>
+                
+<pre>
+$primaryColor:#3192e1;
+$highlightTextColor:#ffffff;
+$buttonTextColor:#ffffff;
+
+@import '../sass/theme/_theme';
+</pre> 
+                
+            <p> An example sass command to compile the css would be;</p>
+                
+<pre>
+sass src/assets/theme-myown/theme.scss src/assets/theme-myown/theme.css
+</pre> 
+
+            <p>Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command
+            so that sass generates the file whenever you make a customization. This builds all css files whenever a change is made to any scss file.</p>
+<pre>
+sass -w resources/ --sourcemap=none
+</pre>
+
+            <p>Same can also be applied to layout itself;</p>
+            <ul>
+                <li>Choose a layout name such as layout-myown.</li>
+                <li>Create an empty file named layout-myown.scss inside <i>assets/layout/css</i> folder.</li>
+                <li>Define the variables listed below and import the <i>/sass/layout/_layout.scss</i> file.</li>
+                <li>Build the scss to generate css</li>
+                <li>Serve the css by importing it using a link tag or a bundler.</li>
+            </ul>
+            
+            <p>Here are the variables required to create a layout, you may need to change the last line according to the 
+                relative path of the sass folder in your application.</p>
+            
+<pre>
+$primaryColor: #6ec5ff;
+$highlightTextColor:#ffffff;
+$buttonTextColor:#ffffff;
+
+@import '/../sass/layout/_layout';
+</pre> 
+            
+            <p>For both cases, several .scss files such as _layout.scss, _theme.scss or _variables.scss has to be present relative to your scss files, these are available inside the resources/sass folder in the distribution.</p>
+            <p>In case you'd like to customize the structure not just the colors, the _variables.scss is where the structural variables (e.g. font size, paddings) for the layout are defined.</p>
+<pre>
+/* Common */
+$fontSize:13px;
+$textColor:#777777;
+$textSecondaryColor:lighten($textColor,5%);
+$borderRadius:3px;
+$dividerColor:#eaeaea;
+$iconFontSize:16px;
+$iconWidth:16px;
+$iconHeight:16px;
+$mainColor: #61d42d;
+$fontFamily: "Source Sans Pro","Helvetica Neue",sans-serif;
+
+/* Layout */
+$bodyBgColor:#f8f8f8;
+$footerBgColor:#dee0e3;
+$footerLinkHoverColor: #494949;
+$menuBgColor: #2C2C2C;
+$menuBgColorActive: #1f1f1f;
+$menuTextColor: #c4c4c4;
+
+/* Topbar */
+$topbarMenuTextColor:#ffffff;
+$topbarMenuTextHoverColor:#e3e3e3;
+$topbarSubmenuBgColor:#f7f7f7;
+$topbarSubmenuItemHoverBgColor:#e3e3e3;
+$topbarButtonHoverBgColor: #f5f5f5;
+$topbarButtonHoverColor:#494949;
+$topbarIconColor:#afafaf;
+$topbarBgColor: #ffffff;
+
+/* Tab */
+$progressBarBgColor: #eeeeee;
+$progressBarFirstColor: #92f5a1;
+$progressBarSecondColor: #c4e3c9;
+$progressBarThirdColor: #c8cfc9;
+$progressBarForthColor: #dedede;
+
+/******************************/
+/*           THEME            */
+/******************************/
+$transitionDuration:.3s;
+
+/* Headers */
+$headerPadding:.5em 1em;
+$headerBgColor:#f1f1f1;
+$headerTextColor:#858585;
+$headerHoverBgColor:#dcdcdc;
+$headerBorderColor:#eaeaea;
+$headerIconColor:#858585;
+$headerIconHoverColor:#858585;
+$headerHoverTextColor: #6c6c6c;
+
+/* Contents */
+$contentPadding:.5em 1em;
+$contentBorderColor:#eaeaea;
+$contentBgColor:#ffffff;
+
+/* Panels */
+$panelHeaderBgColor:#e2e2e2;
+$headerSecondaryBgColor: #c0c0c0;
+$headerSecondaryBgHoverColor: #999999;
+$headerSecondaryBgActiveColor: #737373;
+
+/* Forms */
+$inputBgColor:#ffffff;
+$inputPadding:.308em;
+$inputBorderColor:#cfcfcf;
+$inputHoverBorderColor:#afafaf;
+$inputInvalidBorderColor:#e96d66;
+$inputInvalidBgColor:#f0d1d0;
+$inputTextColor: #777777;
+$inputBtnBgColor:#c0c0c0;
+$inputBtnBgHoverColor:#999999;
+$inputBtnBgActiveColor:#737373;
+
+/* List Items */
+$listItemPadding:.5em 1em;
+$listItemBgColor:#f9f9f9;
+$listItemHoverBgColor:#e2e2e2;
+$listItemHoverTextColor:#777777;
+
+/* Messages */
+$infoMessageBgColor:#ddedf4;
+$infoMessageTextColor:#393b38;
+$warnMessageBgColor:#fff7e1;
+$warnMessageTextColor:#393b38;
+$errorMessageBgColor:#ffddd5;
+$errorMessageTextColor:#393b38;
+$fatalMessageBgColor:#e1e1e1;
+$fatalMessageTextColor:#393b38;
+$successMessageBgColor: #4caf50;
+$successMessageTextColor: #ffffff;
+
+/* Data */
+$paginatorBgColor:#f1f1f1;
+$paginatorHoverBgColor:#e2e2e2;
+$datatableOddRowBgColor:#ffffff;
+$datatableEvenRowBgColor:#f8f8f8;
+$datatableHoverBgColor:#e2e2e2;
+
+/* Predefined Colors */
+$yellow:#fbc948;
+$blue:#6ec5ff;
+$orange:#F1B009;
+$purple:#985edb;
+$pink:#f18983;
+$green:#59c429;
+$black:#777777;
+</pre>        
+
+                                    
+            <h1>Menu Modes</h1>
+            <p>Menu has 2 modes; static and overlay. Layout container element in application.html is used to define which mode to use by adding specific classes. List
+            below indicates the style classes for each mode.</p>
+            <ul>
+                <li>Static: "layout-wrapper"</li>
+                <li>Overlay: "layout-wrapper layout-overlay-menu"</li>
+            </ul>      
+
+            <p>It is also possible to leave the choice to the user by keeping the preference at a component and using an expression to bind it so that user can switch between modes. Sample
+            application has an example implementation of such use case. Refer to app.component.ts for an example.</p>          
+                            
+            <h1>Grid CSS</h1>
+            <p>Morpheus uses PrimeNG Grid CSS (ui-g-*) throughout the samples, we strongly suggest using Grid CSS as your layout framework as it is well tested and supported by PrimeNG. Grid CSS is
+            available inside primeng.css.</p> 
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="layout-menu-wrapper" [class.layout-menu-dark]="app.darkMenu">
+    <div class="nano">
+        <div class="nano-content sidebar-scroll-content">
+            <div class="layout-menu-container">
+                <div class="mobile-search">
+                    <i class="fa fa-fw fa-search topbar-search-icon"></i>
+                    <input type="text" class="topbar-search" placeholder="Type your search here"/>
+                </div>
+                <ul app-submenu [item]="model" root="true" class="layout-menu" visible="true"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+                    
+                
