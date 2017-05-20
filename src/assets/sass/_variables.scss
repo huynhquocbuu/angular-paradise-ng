@@ -7,6 +7,7 @@ $textColor:#757575;
 $textSecondaryColor:lighten($textColor,25%);
 $borderRadius:2px;
 $dividerColor:#dee4e9;
+$transitionDuration:.3s;
 
 /******************************/
 /*           Layout           */
@@ -19,15 +20,18 @@ $darkMenuTextColor:#ffffff;
 /* Icons */
 $iconFontSize:13px;
 $iconWidth:16px;
+$iconHeight:16px;
 
-/* Error */
-$errorColor:#e17576;
+/* Validatioj */
+$inputInvalidBorderColor:#e17576;
+$inputInvalidBgColor:#ffffff;
 
 /* Headers */
 $headerPadding:6px 12px;
 $headerBgColor:#ffffff;
 $headerTextColor:#757575;
 $headerHoverBgColor:#dee4e9;
+$headerHoverTextColor:#757575;
 $headerBorderColor:#c7cdd1;
 $headerIconColor:#757575;
 $headerIconHoverColor:$primaryColor;
@@ -42,6 +46,9 @@ $inputBgColor:#ffffff;
 $inputPadding:5px;
 $inputBorderColor:#bdc3c9;
 $inputHoverBorderColor:#979ca0;
+$inputBtnBgColor:transparent;
+$inputBtnBgHoverColor:transparent;
+$inputBtnBgActiveColor:transparent;
 
 /* Buttons */
 $buttonTextColor:#ffffff;
@@ -49,6 +56,7 @@ $toggleButtonBgColor:#c6cbcf;
 
 /* List Items */
 $listItemPadding:6px 12px;
+$listItemBgColor:transparent;
 $listItemHoverBgColor:#dee4e9;
 $listItemHoverTextColor:#757575;
 
@@ -61,14 +69,18 @@ $errorMessageBgColor:#fac7c8;
 $errorMessageTextColor:#393b3e;
 $fatalMessageBgColor:#bdc3c9;
 $fatalMessageTextColor:#393b3e;
+$successMessageBgColor:#3eb839;
+$successMessageTextColor:#ffffff;
 
 /* Data */
 $paginatorBgColor:#ffffff;
 $paginatorHoverBgColor:#dee4e9;
-$datableEvenRowBgColor:#f6f8f9;
+$datatableOddRowBgColor:#ffffff;
+$datatableEvenRowBgColor:#f6f8f9;
 $datatableHoverBgColor:#dee4e9;
 
 /* Predefined Colors */
+$black:#000000;
 $blue:#3984b8;
 $orange:#f6ac2b;
 $purple:#7e8dcd;
