@@ -17,9 +17,6 @@ body {
         
         &:enabled:focus:not(.ui-state-error) {
             border: solid 1px  $primaryColor;
-            -moz-box-shadow: 0 0 3px 0 rgba(143, 223, 50, 0.5), inset 0 0 1.5px 0 rgba(0, 0, 0, 0.07);
-            -webkit-box-shadow: 0 0 3px 0 rgba(143, 223, 50, 0.5), inset 0 0 1.5px 0 rgba(0, 0, 0, 0.07);
-            box-shadow: 0 0 3px 0 rgba(143, 223, 50, 0.5), inset 0 0 1.5px 0 rgba(0, 0, 0, 0.07);
         }
 
         &.ng-dirty {

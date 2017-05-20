@@ -1,6 +1,4 @@
-/******************************/
 /*           Common           */
-/******************************/
 $fontFamily:"Roboto","Helvetica Neue",sans-serif;
 $fontSize:13px;
 $textColor:#757575;
@@ -9,77 +7,6 @@ $borderRadius:2px;
 $dividerColor:#dee4e9;
 $transitionDuration:.3s;
 
-/******************************/
-/*           Layout           */
-/******************************/
-$darkMenuTextColor:#ffffff;
-
-/******************************/
-/*           THEME            */
-/******************************/
-/* Icons */
-$iconFontSize:13px;
-$iconWidth:16px;
-$iconHeight:16px;
-
-/* Validatioj */
-$inputInvalidBorderColor:#e17576;
-$inputInvalidBgColor:#ffffff;
-
-/* Headers */
-$headerPadding:6px 12px;
-$headerBgColor:#ffffff;
-$headerTextColor:#757575;
-$headerHoverBgColor:#dee4e9;
-$headerHoverTextColor:#757575;
-$headerBorderColor:#c7cdd1;
-$headerIconColor:#757575;
-$headerIconHoverColor:$primaryColor;
-
-/* Contents */
-$contentPadding:6px 12px;
-$contentBorderColor:#c7cdd1;
-$contentBgColor:#ffffff;
-
-/* Forms */
-$inputBgColor:#ffffff;
-$inputPadding:5px;
-$inputBorderColor:#bdc3c9;
-$inputHoverBorderColor:#979ca0;
-$inputBtnBgColor:transparent;
-$inputBtnBgHoverColor:transparent;
-$inputBtnBgActiveColor:transparent;
-
-/* Buttons */
-$buttonTextColor:#ffffff;
-$toggleButtonBgColor:#c6cbcf;
-
-/* List Items */
-$listItemPadding:6px 12px;
-$listItemBgColor:transparent;
-$listItemHoverBgColor:#dee4e9;
-$listItemHoverTextColor:#757575;
-
-/* Messages */
-$infoMessageBgColor:#a8c9e0;
-$infoMessageTextColor:#393b3e;
-$warnMessageBgColor:#f8eab9;
-$warnMessageTextColor:#393b3e;
-$errorMessageBgColor:#fac7c8;
-$errorMessageTextColor:#393b3e;
-$fatalMessageBgColor:#bdc3c9;
-$fatalMessageTextColor:#393b3e;
-$successMessageBgColor:#3eb839;
-$successMessageTextColor:#ffffff;
-
-/* Data */
-$paginatorBgColor:#ffffff;
-$paginatorHoverBgColor:#dee4e9;
-$datatableOddRowBgColor:#ffffff;
-$datatableEvenRowBgColor:#f6f8f9;
-$datatableHoverBgColor:#dee4e9;
-
-/* Predefined Colors */
 $black:#000000;
 $blue:#3984b8;
 $orange:#f6ac2b;

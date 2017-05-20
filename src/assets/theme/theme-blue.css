@@ -1,13 +1,5 @@
 @charset "UTF-8";
-/******************************/
 /*           Common           */
-/******************************/
-/******************************/
-/*           Layout           */
-/******************************/
-/******************************/
-/*           THEME            */
-/******************************/
 /* Icons */
 /* Validatioj */
 /* Headers */
@@ -17,7 +9,6 @@
 /* List Items */
 /* Messages */
 /* Data */
-/* Predefined Colors */
 body .ui-widget,
 body .ui-widget .ui-widget {
   font-family: "Roboto", "Helvetica Neue", sans-serif;
@@ -97,7 +88,7 @@ body {
   /* Validation */ }
   body .ui-inputtext {
     background: #ffffff;
-    padding: 5px;
+    padding: 0.385em;
     border: 1px solid #bdc3c9;
     -moz-transition: border-color 0.3s;
     -o-transition: border-color 0.3s;
@@ -114,10 +105,7 @@ body {
     body .ui-inputtext:enabled:hover:not(.ui-state-error) {
       border: 1px solid #979ca0; }
     body .ui-inputtext:enabled:focus:not(.ui-state-error) {
-      border: solid 1px #3192e1;
-      -moz-box-shadow: 0 0 3px 0 rgba(143, 223, 50, 0.5), inset 0 0 1.5px 0 rgba(0, 0, 0, 0.07);
-      -webkit-box-shadow: 0 0 3px 0 rgba(143, 223, 50, 0.5), inset 0 0 1.5px 0 rgba(0, 0, 0, 0.07);
-      box-shadow: 0 0 3px 0 rgba(143, 223, 50, 0.5), inset 0 0 1.5px 0 rgba(0, 0, 0, 0.07); }
+      border: solid 1px #3192e1; }
     body .ui-inputtext.ng-dirty.ng-invalid {
       background-color: #ffffff; }
       body .ui-inputtext.ng-dirty.ng-invalid:hover {
@@ -335,7 +323,7 @@ body {
     body .ui-autocomplete .ui-autocomplete-dropdown.ui-button-icon-only .ui-button-text {
       padding: 0.308em; }
   body .ui-autocomplete.ui-autocomplete-multiple .ui-autocomplete-multiple-container {
-    padding: 5px; }
+    padding: 0.385em; }
     body .ui-autocomplete.ui-autocomplete-multiple .ui-autocomplete-multiple-container:not(.ui-state-disabled):hover {
       border: 1px solid #979ca0; }
     body .ui-autocomplete.ui-autocomplete-multiple .ui-autocomplete-multiple-container:not(.ui-state-disabled).ui-state-focus {
@@ -469,7 +457,7 @@ body {
     background: #ffffff;
     border: 1px solid #bdc3c9; }
     body .ui-multiselect .ui-multiselect-label {
-      padding: 5px;
+      padding: 0.385em;
       padding-right: 2.3em; }
     body .ui-multiselect .ui-multiselect-trigger {
       width: 2em;
@@ -836,7 +824,7 @@ body {
     -webkit-border-bottom-left-radius: 0;
     border-bottom-left-radius: 0; }
   body .ui-inplace .ui-inplace-display {
-    padding: 5px;
+    padding: 0.385em;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px; }
