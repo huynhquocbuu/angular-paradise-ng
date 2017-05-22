@@ -40,7 +40,7 @@ body {
     }
     
     .ui-button {
-        color: $buttonTextColor;
+        color: $primaryTextColor;
         background-color: $primaryColor;
         border: 1px solid transparent;
         font-size: $fontSize;
@@ -229,7 +229,7 @@ body {
             &.ui-state-active {
                 border: 1px solid $primaryColor;
                 background-color: $primaryColor;
-                color: $highlightTextColor;
+                color: $primaryTextColor;
             }
             
             &.ui-state-focus {
@@ -301,7 +301,7 @@ body {
         
         .ui-inputswitch-on {
             background-color: $primaryColor;
-            color: $highlightTextColor;
+            color: $primaryTextColor;
             font-weight: normal;
         }
         
@@ -618,10 +618,6 @@ body {
                 margin-right: 8px;
                 float: none;
                 vertical-align: middle;
-
-                .ui-chkbox-box {                  
-                    color: $highlightTextColor;
-                }
             }
             
             .ui-multiselect-close {
@@ -777,17 +773,31 @@ body {
         .ui-spinner-button {
             z-index: auto;
             background-color: $inputBtnBgColor;
+            color: $textSecondaryColor;
 
             &:not(.ui-state-disabled):hover {
                 background-color: $inputBtnBgHoverColor;
+                color: $primaryColor;
             }
 
             &:not(.ui-state-disabled):focus {
                 background-color: $inputBtnBgColor;
+                color: $primaryColor;
             }
 
             &:not(.ui-state-disabled):active {
                 background-color: $inputBtnBgActiveColor;
+                color: $textColor;
+            }
+            
+            &.ui-spinner-up {
+                top: 1px;
+                right: 1px;
+            }
+            
+            &.ui-spinner-down {
+                bottom: 1px;
+                right: 1px;
             }
         }
     }
@@ -826,16 +836,14 @@ body {
     }
     
     .ui-togglebutton {
-        background-color: $dividerColor;
+        background-color: $toggleButtonBgColor;
         color: $textColor;
         
         &:not(.ui-state-disabled):not(.ui-state-active):hover {
-            background-color: #a8acb1;
-            color: #ffffff;
+            background-color: darken($toggleButtonBgColor,5%);
         }
         
         &:not(.ui-state-disabled):not(.ui-state-active).ui-state-focus {
-            background-color: $dividerColor;
             color: $textColor;
             @include border-shadow();
             border: 1px solid $primaryColor;
@@ -843,11 +851,11 @@ body {
         
         &.ui-state-active {
             background-color: $primaryColor;
-            color: #ffffff;
+            color: $primaryTextColor;
             
             &.ui-state-focus {
-                background-color: $primaryColor;
-                color: #ffffff;
+                background-color: darken($primaryColor,5%);
+                color: $primaryTextColor;
                 @include border-shadow();
             }
         }
@@ -855,18 +863,16 @@ body {
     
     .ui-selectbutton {
         .ui-button {
-            background-color: $dividerColor;
+            background-color: $toggleButtonBgColor;
             color: $textColor;
             border: 1px solid transparent;
             @include border-radius(0px);
             
             &:not(.ui-state-disabled):not(.ui-state-active):hover {
-                background-color: #a8acb1;
-                color: #ffffff;
+                background-color: darken($toggleButtonBgColor,5%);
             }
             
             &:not(.ui-state-disabled):not(.ui-state-active).ui-state-focus {
-                background-color: $dividerColor;
                 color: $textColor;
                 @include border-shadow();
                 border: 1px solid $primaryColor;
@@ -874,12 +880,12 @@ body {
             
             &.ui-state-active {
                 background-color: $primaryColor;
-                color: #ffffff;
+                color: $primaryTextColor;
                 border-right-color: $primaryColor;
                 
                 &.ui-state-focus {
-                    background-color: $primaryColor;
-                    color: #ffffff;
+                    background-color: darken($primaryColor,5%);
+                    color: $primaryTextColor;
                     @include border-shadow();
                 }
             } 
@@ -989,7 +995,7 @@ body {
                     }
                                                             
                     &.ui-state-active {
-                        color: $highlightTextColor;
+                        color: $primaryTextColor;
                         background-color: $primaryColor;
                     }
                     
@@ -1002,7 +1008,6 @@ body {
                 &.ui-datepicker-today {
                     a {
                         background-color: darken($dividerColor, 10%);
-                        color: #ffffff;
                     }
                 }
             }

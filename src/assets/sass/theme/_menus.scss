@@ -319,10 +319,10 @@ body {
                 &.ui-state-active {
                     .ui-menuitem-link {
                         background-color:$primaryColor;
-                        color:$highlightTextColor;
+                        color:$primaryTextColor;
                         
                         .ui-menuitem-icon {
-                            color:$highlightTextColor;
+                            color:$primaryTextColor;
                         }
                     }
                 }
@@ -369,11 +369,11 @@ body {
                 background-color: $primaryColor;
                 
                 a {
-                    color: $highlightTextColor;
+                    color: $primaryTextColor;
                 }
 
                 .ui-icon {
-                    color: $highlightTextColor;
+                    color: $primaryTextColor;
                 }
             }
         }

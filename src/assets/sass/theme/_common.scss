@@ -19,7 +19,7 @@ body {
 
     .ui-state-active, .ui-state-highlight {
         background-color: $primaryColor;
-        color: $highlightTextColor;
+        color: $primaryTextColor;
     }
     
     .ui-state-error, .ui-state-default.ui-state-error {
