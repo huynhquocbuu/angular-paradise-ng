@@ -12,11 +12,11 @@ body {
         color: $textColor;
         
         &:enabled:hover:not(.ui-state-error) {
-            border: 1px solid $inputHoverBorderColor;
+            border-color: $inputHoverBorderColor;
         }
         
         &:enabled:focus:not(.ui-state-error) {
-            border: solid 1px  $primaryColor;
+            border-color: $primaryColor;
         }
 
         &.ng-dirty {
@@ -28,7 +28,7 @@ body {
                 }
 
                 &:focus {
-                    border: solid 1px $inputInvalidBorderColor;
+                    border-color: $inputInvalidBorderColor;
                     box-shadow: none;
                 }
 
@@ -61,13 +61,13 @@ body {
                 
         &.ui-button-text-only {
             .ui-button-text {
-                padding: .308em .6em;
+                padding: .385em .6em;
             }
         }
         
         &.ui-button-text-icon-left {
             .ui-button-text {
-                padding: .308em .6em .308em 2em;
+                padding: .385em .6em .385em 2em;
             }
             
             .fa {
@@ -77,7 +77,7 @@ body {
         
         &.ui-button-text-icon-right {
             .ui-button-text {
-                padding: .308em 2em .308em .6em;
+                padding: .385em 2em .385em .6em;
             }
             
             .fa {
@@ -91,7 +91,7 @@ body {
             }
             
             .ui-button-text {
-                padding: .308em;
+                padding: .385em;
             }
         }
 
@@ -175,19 +175,19 @@ body {
             }
         }
 
-        &.black-btn {
-            background-color: $black;
+        &.red-btn {
+            background-color: $red;
             
-            &:hover {
-                background-color: darken($black,5%);
-            }
-                        
-            &:focus {
-                background-color: darken($black,5%);
+            &.ui-state-hover {
+                background-color: darken($red,5%);
             }
             
-            &:active {
-                background-color: darken($black,10%);
+            &.ui-state-focus {
+                background-color: darken($red,5%);
+            }
+            
+            &.ui-state-active {
+                background-color: darken($red,10%);
             }
         }
 
@@ -330,23 +330,14 @@ body {
     .ui-autocomplete {
         .ui-autocomplete-dropdown {
             width: 2em;
-            background-color: $inputBtnBgColor;
-
-            &:not(.ui-state-disabled):hover {
-                background-color: $inputBtnBgHoverColor;
-            }
-
-            &:not(.ui-state-disabled):active {
-                background-color: $inputBtnBgHoverColor;
-            }
-            
+    
             .fa {
                 @include icon_override("\f078");
             }
 
             &.ui-button-icon-only {
                 .ui-button-text {
-                    padding: 0.308em;
+                    padding: 0.385em;
                 }
             }
         }
@@ -356,12 +347,11 @@ body {
                 padding: $inputPadding;
                 
                 &:not(.ui-state-disabled):hover {
-                    border: 1px solid $inputHoverBorderColor;
+                    border-color: $inputHoverBorderColor;
                 }
                 
                 &:not(.ui-state-disabled).ui-state-focus {
-                    border: 1px solid $primaryColor;
-                    @include border-shadow();
+                    border-color: $primaryColor;
                 }
                 
                 .ui-autocomplete-input-token {
@@ -369,7 +359,7 @@ body {
                     vertical-align: top;
                     
                     input {
-                        font-size: $fontSize;
+                        font-size: $fontSize - 1;
                         padding: 0;
                         margin: 0;
                     }
@@ -379,6 +369,43 @@ body {
                     font-size: 11px;
                     vertical-align: top;
                 }
+            }
+        }
+    }
+    
+    .ui-autocomplete-panel {
+        border: $overlayBorder;
+        @include overlay-shadow();
+        
+        .ui-autocomplete-items {
+            padding: 0;
+            
+            .ui-autocomplete-list-item {
+                margin: 0;
+                padding: $listItemPadding;
+                @include border-radius(0);
+            }
+            
+            .ui-autocomplete-group {
+                padding: $listItemPadding;
+                background-color: $dividerColor;
+                color: $textColor;
+            }
+        }
+    }
+    
+    .ui-fluid {
+        .ui-autocomplete-multiple.ui-autocomplete-dd {
+            .ui-autocomplete-multiple-container {
+                border-right: 0 none;
+                width: calc(100% - 2em);
+            }
+        }
+        
+        .ui-autocomplete-dd {
+            .ui-inputtext {
+                border-right: 0 none;
+                width: calc(100% - 2em);
             }
         }
     }
@@ -419,35 +446,7 @@ body {
             }
         }
     }
-    
-    .ui-autocomplete-panel {
-        @include overlay-shadow();
         
-        .ui-autocomplete-items {
-            padding: 0;
-            
-            .ui-autocomplete-list-item {
-                margin: 0;
-                padding: $listItemPadding;
-                @include border-radius(0);
-            }
-            
-            .ui-autocomplete-group {
-                padding: $listItemPadding;
-                background-color: $dividerColor;
-                color: $textColor;
-            }
-        }
-    }
-    
-    .ui-fluid {
-        .ui-autocomplete-multiple.ui-autocomplete-dd {
-            .ui-autocomplete-multiple-container {
-                width: calc(100% - 2em);
-            }
-        }
-    }
-    
     .ui-dropdown {
         border: 1px solid $inputBorderColor;
                         
@@ -499,6 +498,7 @@ body {
         
     .ui-dropdown-panel {
         background-color: $listItemBgColor;
+        border: $overlayBorder;
         @include overlay-shadow();
         
         .ui-dropdown-filter-container {
@@ -560,6 +560,7 @@ body {
             .fa {
                 margin-top: .425em;
                 width: auto;
+                color: $textSecondaryColor;
                 @include icon_override("\f078");
             }
         }
@@ -571,12 +572,19 @@ body {
         &:not(.ui-state-disabled).ui-state-focus {
             border: 1px solid $primaryColor;
             @include border-shadow();
+            
+            .ui-multiselect-trigger {  
+                .fa {
+                    color: $primaryColor;
+                }
+            }
         }
     }
     
     .ui-multiselect-panel {
         padding: 0;
         min-width: 12em;
+        border: $overlayBorder;
         @include overlay-shadow();
         
         .ui-multiselect-header {
@@ -905,6 +913,10 @@ body {
         padding: 0;
         width: 20em;
         
+        &:not(.ui-datepicker-inline) {
+            border: $overlayBorder;
+        }
+        
         &:not(.ui-state-disabled) {
             .ui-datepicker-header {
                 .ui-datepicker-prev,
@@ -995,22 +1007,11 @@ body {
                 }
             }
         }
-
-        &#ui-datepicker-div {
-            @include overlay-shadow();
-
-            .ui-timepicker-div {
-                .ui-widget-header {
-                    padding: $headerPadding;
-                    border-top: 0;
-                    border-left: 0;
-                    border-right: 0;
-                    @include border-radius(0);
-                }
-            }
-        }
         
         .ui-timepicker {
+            border: 0 none;
+            border-top: 1px solid $headerBorderColor;
+            
             a {
                 color: $headerTextColor;
                 
@@ -1086,4 +1087,9 @@ body {
     p-togglebutton.ng-dirty.ng-invalid .ui-button {
         border-color: $inputInvalidBorderColor;
     }
+    
+    ::-webkit-input-placeholder {color:$textSecondaryColor}
+    :-moz-placeholder           {color:$textSecondaryColor}
+    ::-moz-placeholder          {color:$textSecondaryColor}
+    :-ms-input-placeholder      {color:$textSecondaryColor} 
 }

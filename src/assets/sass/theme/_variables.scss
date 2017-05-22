@@ -3,14 +3,13 @@
 /* Icons */
 $iconFontSize:13px;
 $iconWidth:16px;
-$iconHeight:16px;
 
 /* Validatioj */
 $inputInvalidBorderColor:#e17576;
 $inputInvalidBgColor:#ffffff;
 
 /* Headers */
-$headerPadding:6px 12px;
+$headerPadding:.5em 1em;
 $headerBgColor:#ffffff;
 $headerTextColor:#757575;
 $headerHoverBgColor:#dee4e9;
@@ -20,8 +19,7 @@ $headerIconColor:#757575;
 $headerIconHoverColor:$primaryColor;
 
 /* Contents */
-$contentPadding:6px 12px;
-
+$contentPadding:.5em 1em;
 $contentBorderColor:#c7cdd1;
 $contentBgColor:#ffffff;
 
@@ -30,17 +28,17 @@ $inputBgColor:#ffffff;
 $inputPadding:.385em;
 $inputBorderColor:#bdc3c9;
 $inputHoverBorderColor:#979ca0;
-$inputBtnBgColor:transparent;
-$inputBtnBgHoverColor:transparent;
-$inputBtnBgActiveColor:transparent;
+$inputBtnBgColor:#ffffff;
+$inputBtnBgHoverColor:#ffffff;
+$inputBtnBgActiveColor:#ffffff;
 
 /* Buttons */
 $buttonTextColor:#ffffff;
 $toggleButtonBgColor:#c6cbcf;
 
 /* List Items */
-$listItemPadding:6px 12px;
-$listItemBgColor:transparent;
+$listItemPadding:.5em 1em;
+$listItemBgColor:#ffffff;
 $listItemHoverBgColor:#dee4e9;
 $listItemHoverTextColor:#757575;
 
@@ -55,6 +53,9 @@ $fatalMessageBgColor:#bdc3c9;
 $fatalMessageTextColor:#393b3e;
 $successMessageBgColor:#3eb839;
 $successMessageTextColor:#ffffff;
+
+/* Overlays */
+$overlayBorder: 0 none;
 
 /* Data */
 $paginatorBgColor:#ffffff;

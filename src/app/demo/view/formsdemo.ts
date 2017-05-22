@@ -13,7 +13,7 @@ export class FormsDemo implements OnInit {
             
     filteredCountries: any[];
     
-    brands: string[] = ['Audi','BMW','Fiat','Ford','Honda','Jaguar','Mercedes','Renault','Volvo','VW'];
+    brands: string[] = ['Audi','BMW','Fiat','Ford','Honda','Jaguar','Mercedes','Renault','Volvo','Volkswagen'];
     
     filteredBrands: any[];
     
