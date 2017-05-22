@@ -1109,15 +1109,10 @@ body .ui-datatable .ui-datatable-thead > tr > th {
   border-color: #c7cdd1;
   color: #757575; }
   body .ui-datatable .ui-datatable-thead > tr > th.ui-sortable-column:not(.ui-state-active):hover {
-    background-color: #abb4ba; }
+    background-color: #dee4e9; }
   body .ui-datatable .ui-datatable-thead > tr > th.ui-state-active {
     background-color: #3984b8;
     color: #ffffff; }
-  body .ui-datatable .ui-datatable-thead > tr > th:focus {
-    outline: 0 none;
-    background-color: #f0f3f5; }
-    body .ui-datatable .ui-datatable-thead > tr > th:focus.ui-state-active {
-      background-color: #4591c5; }
   body .ui-datatable .ui-datatable-thead > tr > th .ui-column-title {
     font-weight: 700; }
 body .ui-datatable .ui-datatable-tfoot > tr > td {
@@ -1140,8 +1135,7 @@ body .ui-datatable .ui-datatable-data tr.ui-datatable-odd {
 body .ui-datatable .ui-datatable-data tr.ui-state-highlight {
   border-color: #3376a5; }
 body .ui-datatable .ui-datatable-data tr td {
-  padding: 0.5em 1em;
-  border-color: #c7cdd1; }
+  padding: 0.5em 1em; }
   body .ui-datatable .ui-datatable-data tr td.ui-editable-column.ui-cell-editing .ui-inputtext {
     border-color: #3984b8; }
   body .ui-datatable .ui-datatable-data tr td.ui-editable-column.ui-cell-editing .ui-datepicker table td a,
@@ -1192,8 +1186,7 @@ body .ui-datatable .ui-datatable-data tr.ui-widget-header {
       color: #3984b8; }
 body .ui-datatable .ui-datatable-data.ui-datatable-hoverable-rows > tr.ui-widget-content:not(.ui-state-highlight):hover {
   cursor: pointer;
-  background-color: #b9c1c6;
-  border-color: #abb4ba; }
+  background-color: #dee4e9; }
 body .ui-datatable .ui-datatable-scrollable-header,
 body .ui-datatable .ui-datatable-scrollable-footer {
   background-color: #f0f3f5; }

@@ -57,29 +57,20 @@ body {
         .ui-datatable-thead {
             > tr {
                 > th {
-                    background-color: #ffffff;
+                    background-color: $contentBgColor;
                     padding: $headerPadding;
                     border-color: $contentBorderColor;
                     color: $textColor;
                     
                     &.ui-sortable-column:not(.ui-state-active):hover {
-                        background-color: darken($contentBorderColor,10%);
+                        background-color: $datatableHoverBgColor;
                     }
                     
                     &.ui-state-active {
                         background-color: $primaryColor;
-                        color: #ffffff;
+                        color: $primaryTextColor;
                     }
-                    
-                    &:focus {
-                        outline: 0 none;
-                        background-color: #f0f3f5;
-                        
-                        &.ui-state-active {
-                            background-color: lighten($primaryColor,5%);   
-                        }
-                    }
-                    
+                                        
                     .ui-column-title {
                         font-weight: 700;
                     }
@@ -105,7 +96,7 @@ body {
                     
                     &.ui-state-highlight {
                         background-color: $primaryColor;
-                        color: #ffffff;
+                        color: $primaryTextColor;
                         border-color: darken($primaryColor,5%);
                     }
                 }
@@ -115,7 +106,7 @@ body {
 
                     &.ui-state-highlight {
                         background-color: $primaryColor;
-                        color: #ffffff;
+                        color: $primaryTextColor;
                         border-color: darken($primaryColor,5%);
                     }
                 }
@@ -126,7 +117,6 @@ body {
                                 
                 td {
                     padding: $contentPadding;
-                    border-color: $contentBorderColor;
                     
                     &.ui-editable-column {
                         &.ui-cell-editing {
@@ -177,8 +167,7 @@ body {
             &.ui-datatable-hoverable-rows {
                 > tr.ui-widget-content:not(.ui-state-highlight):hover {
                     cursor: pointer;
-                    background-color: darken($contentBorderColor,5%);
-                    border-color: darken($contentBorderColor,10%);
+                    background-color: $datatableHoverBgColor;
                 }
             }
         }
