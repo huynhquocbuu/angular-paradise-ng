@@ -110,7 +110,9 @@ body {
         padding: 0;
         
         &.ui-shadow {
+            border: 0 none;
             @include overlay-shadow();
+            overflow: hidden;
         }
         
         .ui-menu-list {

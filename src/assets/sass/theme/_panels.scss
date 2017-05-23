@@ -9,7 +9,12 @@ body {
             @include border-radius-top($borderRadius);
             @include border-radius-bottom(0px);
             
+            .ui-panel-title {
+                vertical-align: middle;
+            }
+            
             .ui-panel-titlebar-icon {
+                margin: 0;
                 position: relative;
                 color: $headerIconColor;
                 border:1px solid transparent;
@@ -19,11 +24,6 @@ body {
                     color: $headerIconHoverColor;
                 }
                 
-                &:focus {
-                    outline: 0 none;
-                    border:1px solid $primaryColor;
-                }
-
                 .fa-minus {
                     &:hover {
                         color: darken($headerIconHoverColor, 10%);
@@ -62,6 +62,7 @@ body {
         padding: 0 0 .5em 0;
                
         .ui-fieldset-legend {
+            border: 1px solid $headerBorderColor;
             color: $headerTextColor;
             background-color: $headerBgColor;
             margin-left: .75em;
@@ -78,10 +79,6 @@ body {
             
             &:hover {
                 background-color: $headerHoverBgColor;
-                
-                .ui-fieldset-toggler {
-                    color: $headerIconHoverColor;
-                }
             }
         }
         
@@ -101,33 +98,33 @@ body {
             padding: 0;
             color: $headerTextColor;
             font-size: $fontSize;
+            border: 1px solid $headerBorderColor;
             @include transition(background-color .3s);
             
             &:not(.ui-state-active):not(.ui-state-disabled):hover {
                 background-color: $headerHoverBgColor;
                 color: $headerHoverTextColor;
-
-                .fa {
-                    color: $headerIconHoverColor;
-                }
             }
             
             &:not(.ui-state-disabled).ui-state-active {
-                background-color: #ffffff;
-                color: $textColor;
-                border-bottom: 1px solid $primaryColor;
-                z-index: 1;
+                background-color: $primaryColor;
+                color: $primaryTextColor;
+                border-color: $primaryColor;
                 
                 a {
-                    color: $primaryColor;
+                    color: $primaryTextColor;
+                    
+                    &:focus {
+                        background-color: lighten($primaryColor, 5%);
+                    }  
                 }
                 
                 span {
-                    color: $primaryColor;
+                    color: $primaryTextColor;
                 }
 
                 .fa {
-                    color: $primaryColor;
+                    color: $primaryTextColor;
                 }
             }
             
@@ -142,7 +139,12 @@ body {
             > a {
                 padding: .5em 1em .5em 2em;
                 color: $headerTextColor;
-                outline: 0 none;              
+                outline: 0 none;     
+                @include transition(background-color .3s);
+                
+                &:focus {
+                    background-color: lighten($headerHoverBgColor, 5%);
+                }         
             }
             
             > span {
@@ -163,25 +165,24 @@ body {
             
             .ui-tabview-nav {
                 padding: 0;
-                border: 0 none;
-                border-bottom: 1px solid $contentBorderColor;
+                border: 1px solid $headerBorderColor;
                 background: #ffffff;
                 @include border-radius(0);
                 
                 li {
                     position: static;
-                    @include transition(background-color .3s);
                     @include border-radius(0);
                     margin: 0;
-                    box-sizing: border-box;
                     background-color: $headerBgColor;
                     
                     a {
                         padding: $headerPadding;
                         color: $headerTextColor;
+                        @include transition(background-color .3s);
                         
                         &:focus {
                             outline: 0 none;
+                            background-color: lighten($headerHoverBgColor, 5%);
                         }
                         
                         .ui-tabview-left-icon {
@@ -197,15 +198,21 @@ body {
                         margin-top: .65em;
                     }
                     
-                    &:not(.ui-state-active):not(.ui-state-disabled):hover {
-                        background-color: $headerHoverBgColor;
+                    &:not(.ui-state-active):not(.ui-state-disabled) {
+                        a:hover {
+                            background-color: $headerHoverBgColor;
+                        }
                     }
                                         
                     &.ui-state-active {
-                        background-color: $primaryColor;
-                        
                         a {
+                            background-color: $primaryColor;
                             color: #ffffff;
+                            
+                            &:focus {
+                                background-color: lighten($primaryColor, 5%);
+                                
+                            }
                         }
                         
                         .ui-icon-close {
@@ -235,7 +242,8 @@ body {
         
         .ui-tabview-panel {
             padding: $contentPadding;
-            border-bottom: 1px solid $contentBorderColor;
+            border: 1px solid $contentBorderColor;
+            border-top: 0 none;
         }
     }
     
