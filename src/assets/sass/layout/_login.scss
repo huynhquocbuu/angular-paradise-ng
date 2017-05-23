@@ -1,5 +1,5 @@
 .login-body {
-    background: url("\#{resource['paradise-layout:images/login/bg-login.png']}");
+    background: url("../images/login/bg-login.png");
     background-size: cover;
     height: auto;
     
@@ -37,25 +37,12 @@
             
             &.chkbox-container {
                 .ui-g-12 {
+                    text-align: center;
                     padding: 0;
                 }
             }
         }
-        
-        .rememberme-container {
-            text-align: right;
             
-            .ui-chkbox {
-                vertical-align: middle;
-            }
-            
-            label {
-                display: inline-block;
-                vertical-align: middle;
-                margin: 0 4px 0 0;
-            }
-        }
-        
         .input-wrapper {
             position: relative;
             i {
@@ -67,6 +54,8 @@
             }
             
             input {
+                width: 100%;
+                padding: .385em;
                 padding-right: 22px;
             }
         }
@@ -86,6 +75,8 @@
         }
         
         button {
+            padding: 0;
+            width: 100%;
             display: block;
             margin-bottom: 20px;
         }

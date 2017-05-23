@@ -3,15 +3,15 @@
     overflow: hidden;
     
     &.error {
-        background-image: url("\#{resource['paradise-layout:images/exception/error-bg.png']}");
+        background-image: url("../images/exception/error-bg.png");
     }
     
     &.access {
-        background-image: url("\#{resource['paradise-layout:images/exception/access-bg.png']}");
+        background-image: url("../images/exception/access-bg.png");
     }
     
     &.notfound {
-        background-image: url("\#{resource['paradise-layout:images/exception/404-bg.png']}");
+        background-image: url("../images/exception/404-bg.png");
     }
     
     .exception-panel {
