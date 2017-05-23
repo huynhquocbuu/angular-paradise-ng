@@ -45,12 +45,20 @@
             
         .input-wrapper {
             position: relative;
-            i {
+            
+            img {
                 position: absolute;
-                color: #bdc3c9;
-                top: 5px;
+                width: 14px;
                 right: 8px;
-                font-size: 16px;
+
+                &.user-icon {
+                    top: 6px;
+                    
+                }
+                
+                &.lock-icon {
+                    top: 5px;
+                }
             }
             
             input {
