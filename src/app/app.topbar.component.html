@@ -18,7 +18,7 @@
     </label>
     <input type="text" class="topbar-search" placeholder="Type your search here" id="topbar-search" />
 
-    <ul id="topbar-menu" class="fadeInDown" [ngClass]="{'topbar-menu-visible': app.topbarMenuActive}">
+    <ul id="topbar-menu" class="fadeInDown" [ngClass]="{'topbar-menu-visible': app.topbarMenuActive}" (click)="app.onTopbarMenuClick($event)">
         <li #profile [ngClass]="{'menuitem-active':app.activeTopbarItem === profile}" (click)="app.onTopbarItemClick($event, profile)">
             <a href="#">
                 <i class="topbar-icon fa fa-fw fa-user"></i>

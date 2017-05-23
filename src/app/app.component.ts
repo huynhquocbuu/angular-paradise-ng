@@ -26,16 +26,18 @@ export class AppComponent implements AfterViewInit {
     overlayMenuActive: boolean;
     
     mobileMenuActive: boolean;
+        
+    menuClick: boolean;
+    
+    menuButtonClick: boolean;
+    
+    topbarMenuButtonClick: boolean;
+    
+    topbarMenuClick: boolean;
     
     topbarMenuActive: boolean;
     
     activeTopbarItem: Element;
-    
-    topbarItemClick: boolean;
-    
-    menuClick: boolean;
-    
-    menuButtonClick: boolean;
     
     constructor(public renderer: Renderer) {}
     
@@ -45,10 +47,16 @@ export class AppComponent implements AfterViewInit {
                 this.mobileMenuActive = false;
                 this.overlayMenuActive = false;
             }
+            console.log(this.topbarMenuClick  + ',' + this.topbarMenuButtonClick);
+            if(!this.topbarMenuClick && !this.topbarMenuButtonClick) {
+                this.topbarMenuActive = false;
+            }
             
             this.menuClick = false;
             this.menuButtonClick = false;
-        });
+            this.topbarMenuClick = false;
+            this.topbarMenuButtonClick = false;
+         });
     }
     
     onMenuButtonClick(event: Event) {
@@ -68,19 +76,22 @@ export class AppComponent implements AfterViewInit {
     }
     
     onTopbarMenuButtonClick(event: Event) {
+        this.topbarMenuButtonClick = true;
         this.topbarMenuActive = !this.topbarMenuActive;
         event.preventDefault();
     }
     
     onTopbarItemClick(event: Event, item: Element) {
-        this.topbarItemClick = true;
-
         if(this.activeTopbarItem === item)
             this.activeTopbarItem = null;
         else
             this.activeTopbarItem = item;
 
         event.preventDefault();
+    }
+    
+    onTopbarMenuClick(event: Event) {
+        this.topbarMenuClick = true;
     }
     
     onMenuClick(event: Event) {
