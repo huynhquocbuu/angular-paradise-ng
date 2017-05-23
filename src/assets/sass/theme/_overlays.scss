@@ -1,30 +1,36 @@
 body {
     .ui-overlaypanel {
         @include overlay-shadow();
+        border: $overlayBorder;
         
         .ui-overlaypanel-close {
             background-color: $headerBgColor;
             color: $headerIconColor;
-            width: 1.5em;
-            height: 1.5em;
             text-align: center;
+            width: 1.231em;
+            height: 1.231em;
             @include transition(background-color $transitionDuration);
             
             &:hover {
-                color: darken($headerIconHoverColor, 10%);
+                background-color: $primaryColor;
+                color: $primaryTextColor;
             }
         }
     }
     
     .ui-dialog {
         @include overlay-shadow();
+        border: $overlayBorder;
         
         .ui-dialog-titlebar {
             padding: $headerPadding;
+            padding-top: 1em;
+            padding-bottom: 1em;
             
             .ui-dialog-title {
                 margin: 0;
                 float: none;
+                vertical-align: middle;
             }
             
             .ui-dialog-titlebar-icon {
@@ -81,6 +87,42 @@ body {
         
         &.ui-state-error {
             border: 0 none;
+        }
+        
+        .ui-tooltip {        
+            .ui-tooltip-text {
+                background-color: $tooltipBgColor;
+                color: $tooltipTextColor;
+                @include overlay-shadow();
+            }
+            
+            &.ui-state-error {
+                border: 0 none;
+            }
+            
+            &.ui-tooltip-right {
+                .ui-tooltip-arrow {
+                    border-right-color: $tooltipBgColor;
+                }
+            }
+            
+            &.ui-tooltip-left {
+                .ui-tooltip-arrow {
+                    border-left-color: $tooltipBgColor;
+                }
+            }
+            
+            &.ui-tooltip-top {
+                .ui-tooltip-arrow {
+                    border-top-color: $tooltipBgColor;
+                }
+            }
+            
+            &.ui-tooltip-bottom {
+                .ui-tooltip-arrow {
+                    border-bottom-color: $tooltipBgColor;
+                }
+            }
         }
     }
     

@@ -1,14 +1,25 @@
 body {
     .ui-messages {
+        .ui-messages-icon {
+            .ui-messages-icon {
+                font-size: 2em;
+            }
+        }
+        
         &.ui-messages-info {
             display: none;
             background-color: $infoMessageBgColor;
             border-color: $infoMessageBgColor;
             color: $infoMessageTextColor;
             
-            .ui-messages-info-icon {
-                font-size: 24px;
-                margin-top: -2px;
+            .ui-messages-icon {
+                color: darken($infoMessageBgColor, 30%);
+            }
+            
+            .ui-messages-close {
+                .fa {
+                    color:  $infoMessageTextColor;
+                }
             }
         }
         
@@ -17,9 +28,14 @@ body {
             border-color: $warnMessageBgColor;
             color: $warnMessageTextColor;
             
-            .ui-messages-warn-icon {
-                font-size: 24px;
-                margin-top: -2px;
+            .ui-messages-icon {
+                color: darken($warnMessageBgColor, 30%);
+            }
+                        
+            .ui-messages-close {
+                .fa {
+                    color:  $warnMessageTextColor;
+                }
             }
         }
         
@@ -28,9 +44,14 @@ body {
             border-color: $errorMessageBgColor;
             color: $errorMessageTextColor;
             
-            .ui-messages-error-icon {
-                font-size: 24px;
-                margin-top: -2px;
+            .ui-messages-icon {
+                color: darken($errorMessageBgColor, 30%);
+            }
+            
+            .ui-messages-close {
+                .fa {
+                    color:  $errorMessageTextColor;
+                }
             }
         }
         
@@ -39,21 +60,19 @@ body {
             border-color: $successMessageBgColor;
             color: $successMessageTextColor;
             
-            .ui-messages-fatal-icon {
-                font-size: 24px;
-                margin-top: -2px;
+            .ui-messages-icon {
+                color: darken($successMessageBgColor, 30%);
             }
-            
+
             .ui-messages-close {
                 .fa {
-                    color: $successMessageTextColor!important;
+                    color:  $successMessageTextColor;
                 }
             }
         }
         
         .ui-messages-close {
-            font-size: 16px;
-            color: $errorMessageTextColor;
+            font-size: 1.5em;
         }
     }
         
@@ -67,6 +86,10 @@ body {
             .ui-growl-message {
                 margin-left: 4em;
             }
+
+            .ui-growl-image {
+                font-size: 2.769em;
+            }
             
             &.ui-growl-message-info {
                 background-color: $infoMessageBgColor;
@@ -74,7 +97,7 @@ body {
                 color: $infoMessageTextColor;
                 
                 .ui-growl-image {
-                    font-size: 36px;
+                    color: darken($infoMessageBgColor, 30%);
                 }
             }  
             
@@ -84,7 +107,7 @@ body {
                 color: $warnMessageTextColor;
                 
                 .ui-growl-image {
-                    font-size: 36px;
+                    color: darken($warnMessageBgColor, 30%);
                 }
             }
             
@@ -94,7 +117,7 @@ body {
                 color: $errorMessageTextColor;
                 
                 .ui-growl-image {
-                    font-size: 36px;
+                    color: darken($errorMessageBgColor, 30%);
                 }
             }
             
@@ -104,7 +127,7 @@ body {
                 color: $successMessageTextColor;
                 
                 .ui-growl-image {
-                    font-size: 36px;
+                    color: darken($successMessageBgColor, 30%);
                 }
             }  
         }

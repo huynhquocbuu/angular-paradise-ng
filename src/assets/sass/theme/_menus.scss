@@ -110,7 +110,7 @@ body {
         padding: 0;
         
         &.ui-shadow {
-            border: 0 none;
+            border: $overlayBorder;
             @include overlay-shadow();
             overflow: hidden;
         }
