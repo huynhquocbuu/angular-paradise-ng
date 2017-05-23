@@ -109,10 +109,9 @@ body {
     .ui-menu {
         padding: 0;
         
-        &.ui-shadow {
+        &.ui-shadow, .ui-shadow {
             border: $overlayBorder;
             @include overlay-shadow();
-            overflow: hidden;
         }
         
         .ui-menu-list {
@@ -121,11 +120,12 @@ body {
                 width: 100%;
                 box-sizing: border-box;
                 border: 0 none;
+                background-color: darken($dividerColor,5%);
                 @include border-radius(0);
                 
                 h3 {
                     padding: $headerPadding;
-                    font-weight: 400;
+                    font-weight: 700;
                     
                     .ui-icon-triangle-1-s {
                         margin-top: -0.75em;    
@@ -166,7 +166,6 @@ body {
                     width: 100%;
                     box-sizing: border-box;
                     @include border-radius(0);
-                    @include transition(background-color $transitionDuration);
                     color: $textColor;
                     
                     &:hover {
@@ -182,6 +181,18 @@ body {
                     .ui-submenu-icon {
                         line-height: 1.3;
                         vertical-align: middle;
+                    }
+                }
+                
+                &:first-child {
+                    .ui-menuitem-link {
+                        @include border-radius-top($borderRadius);
+                    }
+                }
+                
+                &:last-child {
+                    .ui-menuitem-link {
+                        @include border-radius-bottom($borderRadius);
                     }
                 }
             }
@@ -200,46 +211,31 @@ body {
             background-color: $headerBgColor;
             border-color: $headerBorderColor;
             
-            > .ui-menu-list {
-                > .ui-menuitem {
-                    width: auto;
+            .ui-menubar-root-list {
+                > li {
+                    > a {
+                        line-height: 1.25;
+                        @include border-radius(0);
+                    }
                     
-                    > .ui-menuitem-link {
-                        color: $headerTextColor;
-                        
-                        .ui-menuitem-icon {
-                            color: $headerIconColor;
-                        }
-                        
-                        &:hover {
-                            color: $textColor;
-                            
-                            .ui-menuitem-icon {
-                                color: $textColor;
-                            }
+                    &:first-child {
+                        .ui-menuitem-link {
+                            @include border-radius(0);
+                            @include border-radius-left($borderRadius);
                         }
                     }
                     
-                    &.ui-menubar-options {
-                        margin-right: 0.6em;
+                    &:last-child {
+                        .ui-menuitem-link {
+                            @include border-radius(0);
+                        }
                     }
                 }
             }
+
         }
         
-        &.ui-megamenu {
-            .ui-menu-list {
-                > table {
-                    > tbody {
-                        > tr {
-                            > td {
-                                padding: 0;
-                            }
-                        }
-                    }
-                }
-            }
-            
+        &.ui-megamenu {            
             &.ui-megamenu-vertical { 
                 > .ui-menu-list {
                     .ui-menuitem {
@@ -356,7 +352,7 @@ body {
             a {
                 padding: $headerPadding;
                 color: $headerTextColor;
-                border-bottom: 1px solid #ffffff;
+                border: 1px solid $headerBorderColor;
             }
             
             &:not(.ui-state-active):hover {
