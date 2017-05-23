@@ -14,9 +14,7 @@ enum MenuMode {
 export class AppComponent implements AfterViewInit {
     
     menu: MenuMode = MenuMode.STATIC;
-    
-    theme: string = 'blue';
-    
+        
     layout: string = 'default';
     
     darkMenu: boolean;

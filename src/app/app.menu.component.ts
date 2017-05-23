@@ -29,11 +29,49 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
+                label: 'Layout Colors', icon: 'fa fa-fw fa-magic',
+                items: [
+                    {
+                        label: 'Flat', 
+                        icon: 'fa fa-fw fa-circle',
+                        items: [
+                            {label: 'Default', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('default')}},
+                            {label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('blue')}},
+                            {label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('green')}},
+                            {label: 'Turquoise', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('turquoise')}},
+                            {label: 'Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('purple')}},
+                            {label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('orange')}},
+                            {label: 'Deep Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('deeppurple')}},
+                            {label: 'Lime', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('lime')}},
+                        ]
+                    },
+                    {
+                        label: 'Special', 
+                        icon: 'fa fa-fw fa-fire',
+                        items: [
+                            {label: 'Horizon', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('horizon')}},
+                            {label: 'Bliss', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('bliss')}},
+                            {label: 'Crimson', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('crimson')}},
+                            {label: 'Disco', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('disco')}},
+                            {label: 'Sunset', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('sunset')}},
+                            {label: 'Deep Sea', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('deepsea')}},
+                            {label: 'Opa', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('opa')}},
+                            {label: 'Cheer', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('cheer')}},
+                            {label: 'Smoke', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('smoke')}},
+                        ]
+                    }
+                ]
+            },
+            {
                 label: 'Themes', icon: 'fa fa-fw fa-paint-brush',
                 items: [
-                    {label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('green')}},
                     {label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('blue')}},
-                    {label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('orange')}}
+                    {label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('green')}},
+                    {label: 'Turquoise', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('turquoise')}},
+                    {label: 'Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('purple')}},
+                    {label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('orange')}},
+                    {label: 'Deep Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('deeppurple')}},
+                    {label: 'Lime', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('lime')}}
                 ]
             },
             {
@@ -113,13 +151,14 @@ export class AppMenuComponent implements OnInit {
     }
 
     changeTheme(theme) {
-        this.app.theme = theme;
         let themeLink: HTMLLinkElement = <HTMLLinkElement> document.getElementById('theme-css');
+        themeLink.href = 'assets/theme/theme-' + theme + '.css';
+    }
+    
+    changeLayout(layout) {
+        this.app.layout = layout;
         let layoutLink: HTMLLinkElement = <HTMLLinkElement> document.getElementById('layout-css');
-        
-        themeLink.href = 'assets/theme/theme-' + theme +'.css';
-        layoutLink.href = 'assets/layout/css/layout-' + theme +'.css';
-        
+        layoutLink.href = 'assets/layout/css/layout-' + layout +'.css';
     }
 }
 
@@ -185,7 +224,9 @@ export class AppSubMenu implements OnDestroy {
         }
         
         //activate current item and deactivate active sibling if any
-        this.activeIndex = (this.activeIndex === index) ? null : index;
+        if(item.routerLink || item.items) {
+            this.activeIndex = (this.activeIndex === index) ? null : index;
+        }
                 
         //execute command
         if(item.command) {
