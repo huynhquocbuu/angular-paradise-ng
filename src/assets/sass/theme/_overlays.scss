@@ -7,13 +7,22 @@ body {
             background-color: $headerBgColor;
             color: $headerIconColor;
             text-align: center;
-            width: 1.231em;
-            height: 1.231em;
+            width: 1.538em;
+            height: 1.538em;
+            line-height: 1.538em;
+            border: 1px solid $headerBorderColor;
             @include transition(background-color $transitionDuration);
             
             &:hover {
                 background-color: $primaryColor;
                 color: $primaryTextColor;
+            }
+            
+            span {
+                width: 0.692em;
+                line-height: inherit;
+                position: relative;
+                top: -1px;
             }
         }
     }

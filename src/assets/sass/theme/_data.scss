@@ -4,7 +4,7 @@ body {
         background-color: $paginatorBgColor;
         
         .ui-paginator-first,.ui-paginator-prev,.ui-paginator-next,.ui-paginator-last {
-            color: $textSecondaryColor;
+            color: $textColor;
             border: 1px solid transparent;
             @include transition(color .3s);
             
@@ -20,13 +20,13 @@ body {
                 
         .ui-paginator-pages {
             .ui-paginator-page {
-                color: $textSecondaryColor;
+                color: $textColor;
                 padding: .1em .5em;
                 border: 1px solid transparent;
                 @include transition(color .3s);
                 
                 &.ui-state-active {
-                    color: #ffffff;
+                    color: $primaryTextColor;
                 }
                 
                 &:not(.ui-state-active):hover {
@@ -114,7 +114,7 @@ body {
                 &.ui-state-highlight {
                     border-color: darken($primaryColor,5%);
                 }
-                                
+                                                
                 td {
                     padding: $contentPadding;
                     
@@ -150,8 +150,7 @@ body {
                 }
                 
                 &.ui-widget-header {
-                    background-color: lighten($headerBgColor, 5%);
-                    border-color: $headerBgColor;
+                    border: 1px solid $contentBorderColor;
                     
                     a {
                         color: $headerTextColor;
@@ -406,6 +405,14 @@ body {
                         color: $textColor;
                         line-height: inherit;
                     }
+                    
+                    .ui-treetable-checkbox .ui-chkbox-icon {
+                        margin: 0;
+                        
+                        &.fa-check {
+                            color: $primaryColor;
+                        }
+                    }
                 }
             }
         }
@@ -448,6 +455,10 @@ body {
                 
                 .ui-chkbox {
                     margin: 0 .25em;
+                    
+                    .ui-chkbox-icon {
+                        margin: 0;
+                    }
                 }
                 
                 &.ui-treenode-selectable {
@@ -458,6 +469,10 @@ body {
                 
                 > span {
                     line-height: inherit;
+                }
+                
+                &.ui-treenode-dragover {
+                    @include list-item-hover();
                 }
             }
         }
@@ -470,7 +485,7 @@ body {
                 
                 .ui-treenode-content {
                     padding: $contentPadding;
-                    background-color: #ffffff;
+                    background-color: $contentBgColor;
                     border: 1px solid $contentBorderColor;
                     
                     &.ui-state-highlight {

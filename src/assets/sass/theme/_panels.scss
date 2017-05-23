@@ -76,9 +76,13 @@ body {
                 margin-right: .5em;
                 color: $headerIconColor;
             }
-            
-            &:hover {
-                background-color: $headerHoverBgColor;
+        }
+        
+        &.ui-fieldset-toggleable {
+            .ui-fieldset-legend {
+                &:hover {
+                    background-color: $headerHoverBgColor;
+                }
             }
         }
         
@@ -166,7 +170,7 @@ body {
             .ui-tabview-nav {
                 padding: 0;
                 border: 1px solid $headerBorderColor;
-                background: #ffffff;
+                background: $headerBgColor;
                 @include border-radius(0);
                 
                 li {
@@ -174,16 +178,11 @@ body {
                     @include border-radius(0);
                     margin: 0;
                     background-color: $headerBgColor;
+                    @include transition(background-color .3s);
                     
                     a {
                         padding: $headerPadding;
                         color: $headerTextColor;
-                        @include transition(background-color .3s);
-                        
-                        &:focus {
-                            outline: 0 none;
-                            background-color: lighten($headerHoverBgColor, 5%);
-                        }
                         
                         .ui-tabview-left-icon {
                             margin-right: .25em;
@@ -198,29 +197,20 @@ body {
                         margin-top: .65em;
                     }
                     
-                    &:not(.ui-state-active):not(.ui-state-disabled) {
-                        a:hover {
-                            background-color: $headerHoverBgColor;
-                        }
+                    &:not(.ui-state-active):not(.ui-state-disabled):hover {
+                        background-color: $headerHoverBgColor;
                     }
                                         
                     &.ui-state-active {
+                        background-color: $primaryColor;
+                        color: $primaryTextColor;
+                        
                         a {
-                            background-color: $primaryColor;
-                            color: #ffffff;
-                            
-                            &:focus {
-                                background-color: lighten($primaryColor, 5%);
-                                
-                            }
+                            color: $primaryTextColor;
                         }
-                        
+
                         .ui-icon-close {
-                            color: #ffffff;
-                        }
-                        
-                        &.ui-tabview-outline {
-                            background-color: lighten($primaryColor,5%);
+                            color: $primaryTextColor;
                         }
                     }
                     
@@ -234,30 +224,22 @@ body {
         
         &.ui-tabview-left,&.ui-tabview-right {
             .ui-tabview-nav {
-                li {
+                li, li a {
                     width: 100%;
                 }
             }    
+            
+            .ui-tabview-panel {
+                border-top: 1px solid $contentBorderColor;
+                border-left: 0 none;
+                border-right: 0 none;
+            }
         }
         
         .ui-tabview-panel {
             padding: $contentPadding;
             border: 1px solid $contentBorderColor;
             border-top: 0 none;
-        }
-    }
-    
-    .ui-scrollpanel {
-        .ui-scrollpanel-drag {
-            background-color: #a8acb1;
-        }
-        
-        .ui-scrollpanel-track {
-            background-color: #f0f3f5;
-        }
-        
-        .ui-scrollpanel-corner {
-            background-color: #f0f3f5;
         }
     }
     

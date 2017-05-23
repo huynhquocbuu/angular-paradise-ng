@@ -299,6 +299,7 @@ body {
                         vertical-align: middle;
                         display: inline-block;
                         float: none;
+                        line-height: 1;
                     }
                     
                     .ui-menuitem-icon {
@@ -346,13 +347,12 @@ body {
             padding: 0;
             font-size: $fontSize;
             color: $headerTextColor;
-            margin-bottom: 1px;
+            border: 1px solid $headerBorderColor;
             @include transition(background-color $transitionDuration);
                         
             a {
                 padding: $headerPadding;
                 color: $headerTextColor;
-                border: 1px solid $headerBorderColor;
             }
             
             &:not(.ui-state-active):hover {
@@ -373,6 +373,14 @@ body {
                 .ui-icon {
                     color: $primaryTextColor;
                 }
+            }
+        }
+        
+        .ui-panelmenu-panel {
+            margin-top: 2px;
+            
+            &:first-child {
+                margin-top: 0;
             }
         }
         
