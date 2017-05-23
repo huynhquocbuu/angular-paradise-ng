@@ -153,10 +153,10 @@
                 <h1>DataTable</h1>
                 <p-dataTable [value]="cars" selectionMode="single" [(selection)]="selectedCar3">
                     <p-header>DataTable</p-header>
-                    <p-column field="vin" header="Vin"></p-column>
-                    <p-column field="year" header="Year"></p-column>
-                    <p-column field="brand" header="Brand"></p-column>
-                    <p-column field="color" header="Color"></p-column>
+                    <p-column field="vin" header="Vin" sortable="true"></p-column>
+                    <p-column field="year" header="Year" sortable="true"></p-column>
+                    <p-column field="brand" header="Brand" sortable="true"></p-column>
+                    <p-column field="color" header="Color" sortable="true"></p-column>
                 </p-dataTable>
             </div>
         </div>
