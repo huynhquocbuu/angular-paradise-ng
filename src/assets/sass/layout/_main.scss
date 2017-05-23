@@ -258,6 +258,10 @@ body {
                             color: #ffffff;
                         }
                     }
+                    
+                    &.active-menuitem-routerlink {
+                        color: $primaryColor;
+                    }
                 }
                 
                 &.active-menuitem {
@@ -392,6 +396,10 @@ body {
                         
                         &:hover {
                             background-color: lighten($darkMenuBgColor, 10%);
+                        }
+                        
+                        &.active-menuitem-routerlink {
+                            color: lighten($primaryColor, 25%);
                         }
                     }
                     
