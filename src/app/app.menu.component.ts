@@ -142,6 +142,10 @@ export class AppMenuComponent implements OnInit {
                     <span>{{child.label}}</span>
                     <i class="fa fa-fw fa-angle-down" *ngIf="child.items"></i>
                 </a>
+                <div class="layout-menu-tooltip">
+                    <div class="layout-menu-tooltip-arrow"></div>
+                    <div class="layout-menu-tooltip-text">{{child.label}}</div>
+                </div>
                 <ul app-submenu [item]="child" *ngIf="child.items" [@children]="isActive(i) ? 'visible' : 'hidden'" [visible]="isActive(i)"></ul>
             </li>
         </ng-template>
