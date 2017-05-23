@@ -248,9 +248,10 @@ export class AppSubMenu implements OnDestroy {
         }
         
         //hide menu
-        //if(!item.items && (this.app.overlayMenu || !this.app.isDesktop())) {                
-            //this.app.sidebarActive = false;
-        //}
+        if(!item.items && (this.app.overlayMenu || this.app.isMobile())) {                
+            this.app.overlayMenuActive = false;
+            this.app.mobileMenuActive = false;
+        }
     }
     
     isActive(index: number): boolean {

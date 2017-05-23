@@ -1,4 +1,4 @@
-<div class="layout-menu-wrapper" [class.layout-menu-dark]="app.darkMenu">
+<div class="layout-menu-wrapper" [class.layout-menu-dark]="app.darkMenu" (click)=app.onMenuClick($event)>
     <div class="nano">
         <div class="nano-content sidebar-scroll-content">
             <div class="layout-menu-container">

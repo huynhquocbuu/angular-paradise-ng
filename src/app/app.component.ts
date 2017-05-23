@@ -33,15 +33,27 @@ export class AppComponent implements AfterViewInit {
     
     topbarItemClick: boolean;
     
+    menuClick: boolean;
+    
+    menuButtonClick: boolean;
+    
     constructor(public renderer: Renderer) {}
     
     ngAfterViewInit() {
         this.documentClickListener = this.renderer.listenGlobal('body', 'click', (event) => {            
+            if(!this.menuClick && !this.menuButtonClick) {
+                this.mobileMenuActive = false;
+                this.overlayMenuActive = false;
+            }
             
+            this.menuClick = false;
+            this.menuButtonClick = false;
         });
     }
     
     onMenuButtonClick(event: Event) {
+        this.menuButtonClick = true;
+        
         if(this.isMobile()) {
             this.mobileMenuActive = !this.mobileMenuActive;
         }
@@ -69,6 +81,10 @@ export class AppComponent implements AfterViewInit {
             this.activeTopbarItem = item;
 
         event.preventDefault();
+    }
+    
+    onMenuClick(event: Event) {
+        this.menuClick = true;
     }
     
     get slimMenu(): boolean {
