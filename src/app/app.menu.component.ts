@@ -188,8 +188,8 @@ export class AppMenuComponent implements OnInit {
                     <div class="layout-menu-tooltip-arrow"></div>
                     <div class="layout-menu-tooltip-text">{{child.label}}</div>
                 </div>
-                <ul app-submenu [item]="child" *ngIf="child.items&&!app.slimMenu" [@children]="isActive(i) ? 'visible' : 'hidden'" [visible]="isActive(i)" [reset]="reset"></ul>
-                <ul app-submenu [item]="child" *ngIf="child.items&&app.slimMenu" [visible]="isActive(i)" [ngStyle]="{'display': isActive(i) ? 'block' : 'none'}" [reset]="reset"></ul>
+                <ul app-submenu [item]="child" *ngIf="child.items&&(!app.slimMenu||!root)" [@children]="isActive(i) ? 'visible' : 'hidden'" [visible]="isActive(i)" [reset]="reset"></ul>
+                <ul app-submenu [item]="child" *ngIf="child.items&&app.slimMenu&&root" [visible]="isActive(i)" [ngStyle]="{'display': isActive(i) ? 'block' : 'none'}" [reset]="reset"></ul>
             </li>
         </ng-template>
     `,
