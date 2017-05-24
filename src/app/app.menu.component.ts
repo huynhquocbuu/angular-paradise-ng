@@ -188,21 +188,27 @@ export class AppMenuComponent implements OnInit {
                     <div class="layout-menu-tooltip-arrow"></div>
                     <div class="layout-menu-tooltip-text">{{child.label}}</div>
                 </div>
-                <ul app-submenu [item]="child" *ngIf="child.items&&(!app.slimMenu||!root)" [@children]="isActive(i) ? 'visible' : 'hidden'" [visible]="isActive(i)" [reset]="reset"></ul>
-                <ul app-submenu [item]="child" *ngIf="child.items&&app.slimMenu&&root" [visible]="isActive(i)" [ngStyle]="{'display': isActive(i) ? 'block' : 'none'}" [reset]="reset"></ul>
+                <ul app-submenu [item]="child" *ngIf="child.items" [visible]="isActive(i)" [reset]="reset"
+                    [@children]="app.slimMenu&&root ? isActive(i) ? 'visible' : 'hidden' : isActive(i) ? 'visibleAnimated' : 'hiddenAnimated'"></ul>
             </li>
         </ng-template>
     `,
     animations: [
         trigger('children', [
-            state('hidden', style({
+            state('hiddenAnimated', style({
                 height: '0px'
+            })),
+            state('visibleAnimated', style({
+                height: '*'
             })),
             state('visible', style({
                 height: '*'
             })),
-            transition('visible => hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
-            transition('hidden => visible', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
+            state('hidden', style({
+                height: '0px'
+            })),
+            transition('visibleAnimated => hiddenAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
+            transition('hiddenAnimated => visibleAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
         ])
     ]
 })
