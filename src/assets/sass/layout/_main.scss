@@ -551,6 +551,12 @@ body {
                             &:hover + .layout-menu-tooltip {
                                 display: block;
                             }
+                            
+                            &.active-menuitem {
+                                > ul {
+                                    height: auto !important;
+                                }
+                            }
                         }
                         
                         > ul {

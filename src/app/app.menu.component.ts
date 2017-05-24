@@ -167,7 +167,7 @@ export class AppMenuComponent implements OnInit {
     selector: '[app-submenu]',
     template: `
         <ng-template ngFor let-child let-i="index" [ngForOf]="(root ? item : item.items)">
-            <li [ngClass]="{'active-menuitem': isActive(i)}" *ngIf="child.visible === false ? false : true">
+            <li [ngClass]="{'active-menuitem': isActive(i)}">
                 <a [href]="child.url||'#'" (click)="itemClick($event,child,i)" *ngIf="!child.routerLink" [attr.tabindex]="!visible ? '-1' : null" [attr.target]="child.target"
                     (mouseenter)="hover=true" (mouseleave)="hover=false">
                     <i [ngClass]="child.icon"></i>
@@ -186,7 +186,8 @@ export class AppMenuComponent implements OnInit {
                     <div class="layout-menu-tooltip-arrow"></div>
                     <div class="layout-menu-tooltip-text">{{child.label}}</div>
                 </div>
-                <ul app-submenu [item]="child" *ngIf="child.items" [@children]="isActive(i) ? 'visible' : 'hidden'" [visible]="isActive(i)"></ul>
+                <ul app-submenu [item]="child" *ngIf="child.items&&!app.slimMenu" [@children]="isActive(i) ? 'visible' : 'hidden'" [visible]="isActive(i)"></ul>
+                <ul app-submenu [item]="child" *ngIf="child.items&&app.slimMenu" [visible]="isActive(i)" [ngStyle]="{'display': isActive(i) ? 'block' : 'none'}"></ul>
             </li>
         </ng-template>
     `,
