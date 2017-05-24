@@ -16,6 +16,6 @@ export class FileDemo {
         }
         
         this.msgs = [];
-        this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
+        this.msgs.push({severity: 'info', summary: 'Success', detail: 'Upload Completed'});
     }
 }

@@ -93,7 +93,7 @@ export class SampleDemo implements OnInit {
         this.carOptions.push({label: 'Jaguar', value: 'Jaguar'});
         this.carOptions.push({label: 'Mercedes', value: 'Mercedes'});
         this.carOptions.push({label: 'Renault', value: 'Renault'});
-        this.carOptions.push({label: 'VW', value: 'VW'});
+        this.carOptions.push({label: 'Volkswagen', value: 'Volkswagen'});
         this.carOptions.push({label: 'Volvo', value: 'Volvo'});
         
         this.types = [];
@@ -193,7 +193,7 @@ export class SampleDemo implements OnInit {
             {vin: 'jhto2g2', year: 2015, brand: 'BMW', color: 'White'},
             {vin: 'h453w54', year: 2012, brand: 'Honda', color: 'Blue'},
             {vin: 'g43gwwg', year: 1998, brand: 'Renault', color: 'White'},
-            {vin: 'gf45wg5', year: 2011, brand: 'VW', color: 'Red'},
+            {vin: 'gf45wg5', year: 2011, brand: 'Volkswagen', color: 'Red'},
             {vin: 'bhv5y5w', year: 2015, brand: 'Jaguar', color: 'Blue'},
             {vin: 'ybw5fsd', year: 2012, brand: 'Ford', color: 'Yellow'},
             {vin: '45665e5', year: 2011, brand: 'Mercedes', color: 'Brown'},
