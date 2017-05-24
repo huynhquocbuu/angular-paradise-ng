@@ -527,6 +527,16 @@ body {
                     }
                 }
                 
+                &.layout-menu-dark {
+                    .layout-menu {
+                        > li {
+                            > ul {
+                                left:75px;
+                            }
+                        }
+                    }
+                }
+                
                 .layout-menu {
                     padding: 0;
                     
