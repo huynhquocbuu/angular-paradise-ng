@@ -253,9 +253,15 @@ export class AppSubMenu implements OnDestroy {
         }
         
         //hide menu
-        if(!item.items && (this.app.overlayMenu || this.app.isMobile())) {                
-            this.app.overlayMenuActive = false;
-            this.app.mobileMenuActive = false;
+        if(!item.items) {
+            if(this.app.overlayMenu || this.app.isMobile()) {
+                this.app.overlayMenuActive = false;
+                this.app.mobileMenuActive = false;
+            }
+            
+            if(!this.root && this.app.slimMenu) {
+                this.app.resetSlim = true;
+            }                
         }
     }
     
