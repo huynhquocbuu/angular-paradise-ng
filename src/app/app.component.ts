@@ -39,6 +39,8 @@ export class AppComponent implements AfterViewInit {
     
     activeTopbarItem: Element;
     
+    resetSlim: boolean;
+        
     constructor(public renderer: Renderer) {}
     
     ngAfterViewInit() {
@@ -46,8 +48,9 @@ export class AppComponent implements AfterViewInit {
             if(!this.menuClick && !this.menuButtonClick) {
                 this.mobileMenuActive = false;
                 this.overlayMenuActive = false;
+                this.resetSlim = true;
             }
-            console.log(this.topbarMenuClick  + ',' + this.topbarMenuButtonClick);
+
             if(!this.topbarMenuClick && !this.topbarMenuButtonClick) {
                 this.topbarMenuActive = false;
             }
@@ -96,6 +99,7 @@ export class AppComponent implements AfterViewInit {
     
     onMenuClick(event: Event) {
         this.menuClick = true;
+        this.resetSlim = false;
     }
     
     get slimMenu(): boolean {

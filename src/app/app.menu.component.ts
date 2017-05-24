@@ -11,6 +11,8 @@ import {AppComponent} from './app.component';
 })
 export class AppMenuComponent implements OnInit {
 
+    @Input() reset: boolean;
+
     model: any[];
 
     constructor(@Inject(forwardRef(() => AppComponent)) public app:AppComponent) {}
@@ -186,8 +188,8 @@ export class AppMenuComponent implements OnInit {
                     <div class="layout-menu-tooltip-arrow"></div>
                     <div class="layout-menu-tooltip-text">{{child.label}}</div>
                 </div>
-                <ul app-submenu [item]="child" *ngIf="child.items&&!app.slimMenu" [@children]="isActive(i) ? 'visible' : 'hidden'" [visible]="isActive(i)"></ul>
-                <ul app-submenu [item]="child" *ngIf="child.items&&app.slimMenu" [visible]="isActive(i)" [ngStyle]="{'display': isActive(i) ? 'block' : 'none'}"></ul>
+                <ul app-submenu [item]="child" *ngIf="child.items&&!app.slimMenu" [@children]="isActive(i) ? 'visible' : 'hidden'" [visible]="isActive(i)" [reset]="reset"></ul>
+                <ul app-submenu [item]="child" *ngIf="child.items&&app.slimMenu" [visible]="isActive(i)" [ngStyle]="{'display': isActive(i) ? 'block' : 'none'}" [reset]="reset"></ul>
             </li>
         </ng-template>
     `,
@@ -211,6 +213,8 @@ export class AppSubMenu implements OnDestroy {
     @Input() root: boolean;
     
     @Input() visible: boolean;
+    
+    _reset: boolean;
         
     activeIndex: number;
     
@@ -268,6 +272,18 @@ export class AppSubMenu implements OnDestroy {
             for(let childItem of item.items) {
                 this.unsubscribe(childItem);
             }
+        }
+    }
+    
+    @Input() get reset(): boolean {
+        return this._reset;
+    }
+
+    set reset(val:boolean) {
+        this._reset = val;
+
+        if(this._reset && this.app.slimMenu) {
+            this.activeIndex = null;
         }
     }
         
