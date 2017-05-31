@@ -18,8 +18,8 @@ import {Component,ViewEncapsulation} from '@angular/core';
         
         pre {
             font-family: monospace;
-            background-color: #545b61;
-            color: #ffffff;
+            background-color: #dee4e9;
+            color: ##757575;
             padding: 1em;
             font-size: 14px;
             border-radius: 3px;

@@ -14,7 +14,9 @@ export class SampleDemo implements OnInit {
     
     filteredCountries: any[];
     
-    cities: SelectItem[];
+    cities1: SelectItem[];
+    
+    cities2: SelectItem[];
 
     selectedCity1: any;
     
@@ -70,14 +72,16 @@ export class SampleDemo implements OnInit {
         this.targetCars = [];
         this.carService.getCarsSmall().then(cars => this.orderListCars = cars);
         
-        this.cities = [];
-        this.cities.push({label:'Select City', value:null});
-        this.cities.push({label:'New York', value:{id:1, name: 'New York', code: 'NY'}});
-        this.cities.push({label:'Rome', value:{id:2, name: 'Rome', code: 'RM'}});
-        this.cities.push({label:'London', value:{id:3, name: 'London', code: 'LDN'}});
-        this.cities.push({label:'Istanbul', value:{id:4, name: 'Istanbul', code: 'IST'}});
-        this.cities.push({label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}});
+        this.cities1 = [];
+        this.cities1.push({label:'Select City', value:null});
+        this.cities1.push({label:'New York', value:{id:1, name: 'New York', code: 'NY'}});
+        this.cities1.push({label:'Rome', value:{id:2, name: 'Rome', code: 'RM'}});
+        this.cities1.push({label:'London', value:{id:3, name: 'London', code: 'LDN'}});
+        this.cities1.push({label:'Istanbul', value:{id:4, name: 'Istanbul', code: 'IST'}});
+        this.cities1.push({label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}});
                 
+        this.cities2 = this.cities1.slice(1,6);
+            
         this.splitButtonItems = [
             {label: 'Update', icon: 'fa-refresh'},
             {label: 'Delete', icon: 'fa-close'},

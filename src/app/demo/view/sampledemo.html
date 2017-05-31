@@ -35,7 +35,7 @@
                         <label for="dropdown">Dropdown</label>
                     </div>
                     <div class="ui-g-12 ui-md-4">
-                        <p-dropdown id="dropdown" [options]="cities" [(ngModel)]="selectedCity1" [autoWidth]="false"></p-dropdown>
+                        <p-dropdown id="dropdown" [options]="cities1" [(ngModel)]="selectedCity1" [autoWidth]="false"></p-dropdown>
                     </div>
                     <div class="ui-g-12 ui-md-2">
                         <label for="password">Password</label>
@@ -121,7 +121,7 @@
                         <label for="listbox">Listbox</label>
                     </div>
                     <div class="ui-g-12 ui-md-4">
-                        <p-listbox [options]="cities" [(ngModel)]="selectedCity2"></p-listbox>
+                        <p-listbox [options]="cities2" [(ngModel)]="selectedCity2"></p-listbox>
                     </div>
                     <div class="ui-g-12 ui-md-2">
                         Dialog
@@ -141,11 +141,11 @@
                         </div>
                     </div>
                     
-                    <footer>
-                        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                    <p-footer>
+                        <div class="ui-dialog-buttonpane ui-helper-clearfix">
                             <button type="button" label="Login" icon="fa-user" (click)="dialogVisible=false" pButton></button>
                         </div>
-                    </footer>
+                    </p-footer>
                 </p-dialog>
             </div>
             
