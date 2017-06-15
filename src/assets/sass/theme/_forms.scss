@@ -294,7 +294,8 @@ body {
         }
     }
             
-    .ui-inputswitch {        
+    .ui-inputswitch {     
+        height: 2em;
         .ui-inputswitch-on {
             background-color: $primaryColor;
             color: $primaryTextColor;
@@ -305,6 +306,11 @@ body {
             background-color: #a8acb1;
             color: #ffffff;
             font-weight: normal;
+        }
+        
+        .ui-inputswitch-on,
+        .ui-inputswitch-off {
+            line-height: 2em;
         }
 
         &:not(.ui-state-disabled):hover {
