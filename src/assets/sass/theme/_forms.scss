@@ -178,15 +178,15 @@ body {
         &.red-btn {
             background-color: $red;
             
-            &.ui-state-hover {
+            &:hover {
                 background-color: darken($red,5%);
             }
             
-            &.ui-state-focus {
+            &:focus {
                 background-color: darken($red,5%);
             }
             
-            &.ui-state-active {
+            &:active {
                 background-color: darken($red,10%);
             }
         }
