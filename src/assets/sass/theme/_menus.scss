@@ -253,6 +253,14 @@ body {
         }
         
         &.ui-slidemenu {
+            .ui-menuitem {
+                &.ui-menu-parent {
+                    .ui-menuitem-link {
+                        border-radius: 0;
+                    }
+                }
+            }
+            
             .ui-slidemenu-backward {
                 padding: $headerPadding;
                 width: 100%;
