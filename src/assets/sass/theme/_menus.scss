@@ -184,6 +184,13 @@ body {
                     }
                 }
                 
+                &.ui-menuitem-active {
+                    > .ui-menuitem-link {
+                        background-color: $primaryColor;
+                        color: #ffffff;
+                    }
+                }
+                
                 &:first-child {
                     .ui-menuitem-link {
                         @include border-radius-top($borderRadius);
