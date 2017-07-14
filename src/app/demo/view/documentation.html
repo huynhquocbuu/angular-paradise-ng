@@ -445,7 +445,19 @@ $datatableOddRowBgColor:#ffffff;
 $datatableEvenRowBgColor:#f6f8f9;
 $datatableHoverBgColor:#dee4e9;
 </pre>        
-
+            
+            <h1>Menu Item Badges</h1>
+            <p>Badges are numerical indicators of how many items are associated with a link.
+               The badge property is value of the badge and badgeStyleClass is style class of the badge.</p>
+<pre>
+label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge'
+</pre>  
+            <p>Paradise layout has 4 different badge style.There is a default badge which uses the accent color of paradise layout. And there is 3 other badge class for menu items.</p>
+            <ul>
+                <li>orange-badge</li>
+                <li>purple-badge</li>
+                <li>blue-badge</li>
+            </ul>
                                     
             <h1>Menu Modes</h1>
             <p>Menu has 3 modes; static, overlay and slim. Layout container element in application.html is used to define which mode to use by adding specific classes. List
@@ -464,6 +476,14 @@ $datatableHoverBgColor:#dee4e9;
             available inside primeng.css.</p> 
             
             <h1>Migration Guide</h1>
+            <p>1.0.1 to 1.1.0</p>
+            <ul>
+                <li>Update layout css files.</li>
+                <li>Update theme css files.</li>
+                <li>Update AppSubmenu component in app.menu.component.ts for menu item badges.</li>
+                <li>Update AppSubmenu component in app.menu.component.ts by replacing the itemClick method implementation.</li>
+            </ul>
+            
             <p>1.0.0 to 1.0.1</p>
             <ul>
                 <li>Includes version updates to PrimeNG 4, no change required.</li>

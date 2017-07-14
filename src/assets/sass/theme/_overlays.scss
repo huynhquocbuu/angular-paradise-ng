@@ -68,6 +68,11 @@ body {
                 margin: 0 .35em 0 0;
             }
         }
+        
+        .ui-dialog-footer {
+            border: 0 none;
+            border-top: 1px solid $contentBorderColor;
+        }
                 
         &.ui-confirm-dialog {
             .ui-dialog-content {
