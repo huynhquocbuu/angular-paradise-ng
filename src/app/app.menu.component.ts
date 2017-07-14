@@ -1,4 +1,4 @@
-import {Component,Input,OnInit,OnDestroy,EventEmitter,ViewChild,Inject,forwardRef} from '@angular/core';
+import {Component,Input,OnInit,EventEmitter,ViewChild,Inject,forwardRef} from '@angular/core';
 import {trigger,state,style,transition,animate} from '@angular/animations';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
@@ -65,7 +65,7 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'Themes', icon: 'fa fa-fw fa-paint-brush',
+                label: 'Themes', icon: 'fa fa-fw fa-paint-brush', badge: '8',
                 items: [
                     {label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('blue')}},
                     {label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('green')}},
@@ -78,7 +78,7 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'Components', icon: 'fa fa-fw fa-sitemap',
+                label: 'Components', icon: 'fa fa-fw fa-sitemap', badge: '2', badgeStyleClass: 'orange-badge',
                 items: [
                     {label: 'Sample Page', icon: 'fa fa-fw fa-columns', routerLink: ['/sample']},
                     {label: 'Forms', icon: 'fa fa-fw fa-code', routerLink: ['/forms']},
@@ -169,11 +169,12 @@ export class AppMenuComponent implements OnInit {
     selector: '[app-submenu]',
     template: `
         <ng-template ngFor let-child let-i="index" [ngForOf]="(root ? item : item.items)">
-            <li [ngClass]="{'active-menuitem': isActive(i)}">
+            <li [ngClass]="{'active-menuitem': isActive(i)}" [class]="child.badgeStyleClass">
                 <a [href]="child.url||'#'" (click)="itemClick($event,child,i)" *ngIf="!child.routerLink" [attr.tabindex]="!visible ? '-1' : null" [attr.target]="child.target"
                     (mouseenter)="hover=true" (mouseleave)="hover=false">
                     <i [ngClass]="child.icon"></i>
                     <span>{{child.label}}</span>
+                    <span class="menuitem-badge" *ngIf="child.badge">{{child.badge}}</span>
                     <i class="fa fa-fw fa-angle-down" *ngIf="child.items"></i>
                 </a>
 
@@ -182,6 +183,7 @@ export class AppMenuComponent implements OnInit {
                     (mouseenter)="hover=true" (mouseleave)="hover=false">
                     <i [ngClass]="child.icon"></i>
                     <span>{{child.label}}</span>
+                    <span class="menuitem-badge" *ngIf="child.badge">{{child.badge}}</span>
                     <i class="fa fa-fw fa-angle-down" *ngIf="child.items"></i>
                 </a>
                 <div class="layout-menu-tooltip">
@@ -212,7 +214,7 @@ export class AppMenuComponent implements OnInit {
         ])
     ]
 })
-export class AppSubMenu implements OnDestroy {
+export class AppSubMenu {
 
     @Input() item: MenuItem;
     
@@ -242,15 +244,7 @@ export class AppSubMenu implements OnDestroy {
                 
         //execute command
         if(item.command) {
-            if(!item.eventEmitter) {
-                item.eventEmitter = new EventEmitter();
-                item.eventEmitter.subscribe(item.command);
-            }
-            
-            item.eventEmitter.emit({
-                originalEvent: event,
-                item: item
-            });
+            item.command({originalEvent: event, item: item});
         }
 
         //prevent hash change
@@ -296,14 +290,6 @@ export class AppSubMenu implements OnDestroy {
 
         if(this._reset && this.app.slimMenu) {
             this.activeIndex = null;
-        }
-    }
-        
-    ngOnDestroy() {        
-        if(this.item && this.item.items) {
-            for(let item of this.item.items) {
-                this.unsubscribe(item);
-            }
         }
     }
 }

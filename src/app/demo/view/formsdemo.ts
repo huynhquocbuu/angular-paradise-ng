@@ -51,6 +51,8 @@ export class FormsDemo implements OnInit {
     
     splitButtonItems: MenuItem[];
     
+    color: string;
+    
     constructor(private countryService: CountryService) { }
     
     ngOnInit() {

@@ -183,6 +183,37 @@ body {
         }
     }
     
+    .ui-organizationchart {
+        .ui-organizationchart-node-content {
+            &.ui-organizationchart-selectable-node:not(.ui-state-highlight):hover {
+                @include list-item-hover();
+            }
+        }
+        .ui-organizationchart-line-down {
+            background-color: darken($contentBorderColor, 10%);
+        }
+        
+        .ui-organizationchart-line-left {
+            border-right: 1px solid darken($contentBorderColor, 10%);
+        }
+        
+        .ui-organizationchart-line-right {
+            
+        }
+        
+        .ui-organizationchart-line-top {
+            border-top: 1px solid darken($contentBorderColor, 10%);
+        }
+        
+        .ui-organizationchart-node-content {
+            border-color: darken($contentBorderColor, 10%);
+        }
+        
+        .ui-organizationchart-node-content .ui-node-toggler {
+            color: darken($contentBorderColor, 10%);
+        }
+    }
+    
     .ui-datagrid {
         .ui-datagrid-header {
             padding: $headerPadding;

@@ -84,6 +84,13 @@
     
     <div class="ui-g-12">
         <div class="card card-w-title">
+            <h1>Organization Chart</h1>
+            <p-organizationChart [value]="data" selectionMode="single" [(selection)]="selectedNode"></p-organizationChart>
+        </div>
+    </div>
+    
+    <div class="ui-g-12">
+        <div class="card card-w-title">
             <h1>Tree</h1>
             <p-tree [value]="files1" selectionMode="single" [(selection)]="selectedNode1"></p-tree>
         </div>

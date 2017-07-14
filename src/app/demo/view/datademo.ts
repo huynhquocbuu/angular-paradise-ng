@@ -29,6 +29,10 @@ export class DataDemo implements OnInit {
     
     cars3: Car[];
     
+    data: TreeNode[];
+    
+    selectedNode: TreeNode;
+    
     selectedCar: Car;
     
     sourceCars: Car[];
@@ -81,5 +85,36 @@ export class DataDemo implements OnInit {
 			center: 'title',
 			right: 'month,agendaWeek,agendaDay'
 		};
+        
+        this.data = [{
+            label: 'F.C Barcelona',
+            expanded: true,
+            children: [
+                {
+                    label: 'F.C Barcelona',
+                    expanded: true,
+                    children: [
+                        {
+                            label: 'Chelsea FC'
+                        },
+                        {
+                            label: 'F.C. Barcelona'
+                        }
+                    ]
+                },
+                {
+                    label: 'Real Madrid',
+                    expanded: true,
+                    children: [
+                        {
+                            label: 'Bayern Munich'
+                        },
+                        {
+                            label: 'Real Madrid'
+                        }
+                    ]
+                }
+            ]
+        }];
     }
 }
