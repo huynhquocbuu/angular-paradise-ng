@@ -409,7 +409,7 @@ body {
                     text-align: center;
                     background-color: $accentColor;
                     color: $primaryTextColor;
-                    font-size: $fontSize - 2;
+                    font-size: $fontSize - 1;
                     font-weight: 700;
                     line-height: 16px;
                     @include border-radius(50%);
