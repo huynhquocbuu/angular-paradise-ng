@@ -1071,6 +1071,18 @@ body {
         }
     }
     
+    .ui-fileupload-choose {
+        &.ui-button {
+            &:not(.ui-state-disabled):hover {
+                background-color: darken($primaryColor, 5%);
+            }
+            
+            &:not(.ui-state-disabled):active {
+                background-color: darken($primaryColor, 10%);
+            }
+        }
+    }
+    
     .ui-password-panel {
         @include overlay-shadow();
     }
