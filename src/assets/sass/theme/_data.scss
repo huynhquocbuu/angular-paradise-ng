@@ -188,6 +188,14 @@ body {
             &.ui-organizationchart-selectable-node:not(.ui-state-highlight):hover {
                 @include list-item-hover();
             }
+            
+            &.ui-state-highlight {
+                .ui-node-toggler {
+                    i {
+                        color: darken($primaryColor, 25%);
+                    }
+                }
+            }
         }
         .ui-organizationchart-line-down {
             background-color: darken($contentBorderColor, 10%);
@@ -211,6 +219,8 @@ body {
         
         .ui-organizationchart-node-content .ui-node-toggler {
             color: darken($contentBorderColor, 10%);
+            bottom: -.65em;
+            margin-left: -.43em;
         }
     }
     
