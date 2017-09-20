@@ -1,12 +1,10 @@
 import {Component,OnInit,OnDestroy} from '@angular/core';
-import {CarService} from '../service/carservice';
-import {NodeService} from '../service/nodeservice';
-import {EventService} from '../service/eventservice';
-import {Car} from '../domain/car';
-import {TreeNode} from 'primeng/primeng';
+import {TerminalService} from 'primeng/components/terminal/terminalservice';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
-    templateUrl: './miscdemo.html'
+    templateUrl: './miscdemo.html',
+    providers: [TerminalService]
 })
 export class MiscDemo implements OnInit,OnDestroy {
     
@@ -17,6 +15,15 @@ export class MiscDemo implements OnInit,OnDestroy {
     interval: any;
     
     response: string;
+  
+  subscription: Subscription;
+  
+  constructor(private terminalService: TerminalService) {
+    this.subscription = this.terminalService.commandHandler.subscribe(command => {
+      const response = (command === 'date') ? new Date().toDateString() : 'Unknown command: ' + command;
+      this.terminalService.sendResponse(response);
+    });
+  }
     
     ngOnInit() {
         this.interval = setInterval(() => {
