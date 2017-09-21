@@ -4,7 +4,7 @@ import {Car} from '../domain/car';
 
 @Injectable()
 export class CarService {
-    
+
     constructor(private http: Http) {}
 
     getCarsSmall() {

@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 
 @Injectable()
 export class NodeService {
-    
+
     constructor(private http: Http) {}
 
     getFiles() {
@@ -12,7 +12,7 @@ export class NodeService {
                     .then(res => <any[]> res.json().data)
                     .then(data => { return data; });
     }
-        
+
     getFilesystem() {
         return this.http.get('assets/demo/data/filesystem.json')
                     .toPromise()

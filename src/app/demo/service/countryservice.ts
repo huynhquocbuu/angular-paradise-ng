@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 
 @Injectable()
 export class CountryService {
-    
+
     constructor(private http: Http) {}
 
     getCountries() {

@@ -1,35 +1,35 @@
-import {Routes,RouterModule} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
-import {DashboardDemo} from './demo/view/dashboarddemo';
-import {SampleDemo} from './demo/view/sampledemo';
-import {FormsDemo} from './demo/view/formsdemo';
-import {DataDemo} from './demo/view/datademo';
-import {PanelsDemo} from './demo/view/panelsdemo';
-import {OverlaysDemo} from './demo/view/overlaysdemo';
-import {MenusDemo} from './demo/view/menusdemo';
-import {MessagesDemo} from './demo/view/messagesdemo';
-import {MiscDemo} from './demo/view/miscdemo';
-import {EmptyDemo} from './demo/view/emptydemo';
-import {ChartsDemo} from './demo/view/chartsdemo';
-import {FileDemo} from './demo/view/filedemo';
-import {UtilsDemo} from './demo/view/utilsdemo';
-import {Documentation} from './demo/view/documentation';
+import {DashboardDemoComponent} from './demo/view/dashboarddemo';
+import {SampleDemoComponent} from './demo/view/sampledemo';
+import {FormsDemoComponent} from './demo/view/formsdemo';
+import {DataDemoComponent} from './demo/view/datademo';
+import {PanelsDemoComponent} from './demo/view/panelsdemo';
+import {OverlaysDemoComponent} from './demo/view/overlaysdemo';
+import {MenusDemoComponent} from './demo/view/menusdemo';
+import {MessagesDemoComponent} from './demo/view/messagesdemo';
+import {MiscDemoComponent} from './demo/view/miscdemo';
+import {EmptyDemoComponent} from './demo/view/emptydemo';
+import {ChartsDemoComponent} from './demo/view/chartsdemo';
+import {FileDemoComponent} from './demo/view/filedemo';
+import {UtilsDemoComponent} from './demo/view/utilsdemo';
+import {DocumentationComponent} from './demo/view/documentation';
 
 export const routes: Routes = [
-    {path: '', component: DashboardDemo},
-    {path: 'sample', component: SampleDemo},
-    {path: 'forms', component: FormsDemo},
-    {path: 'data', component: DataDemo},
-    {path: 'panels', component: PanelsDemo},
-    {path: 'overlays', component: OverlaysDemo},
-    {path: 'menus', component: MenusDemo},
-    {path: 'messages', component: MessagesDemo},
-    {path: 'misc', component: MiscDemo},
-    {path: 'empty', component: EmptyDemo},
-    {path: 'charts', component: ChartsDemo},
-    {path: 'file', component: FileDemo},
-    {path: 'utils', component: UtilsDemo},
-    {path: 'documentation', component: Documentation}
+    {path: '', component: DashboardDemoComponent},
+    {path: 'sample', component: SampleDemoComponent},
+    {path: 'forms', component: FormsDemoComponent},
+    {path: 'data', component: DataDemoComponent},
+    {path: 'panels', component: PanelsDemoComponent},
+    {path: 'overlays', component: OverlaysDemoComponent},
+    {path: 'menus', component: MenusDemoComponent},
+    {path: 'messages', component: MessagesDemoComponent},
+    {path: 'misc', component: MiscDemoComponent},
+    {path: 'empty', component: EmptyDemoComponent},
+    {path: 'charts', component: ChartsDemoComponent},
+    {path: 'file', component: FileDemoComponent},
+    {path: 'utils', component: UtilsDemoComponent},
+    {path: 'documentation', component: DocumentationComponent}
 ];
 
 export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(routes);

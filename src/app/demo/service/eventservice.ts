@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 
 @Injectable()
 export class EventService {
-    
+
     constructor(private http: Http) {}
 
     getEvents() {

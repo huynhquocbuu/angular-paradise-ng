@@ -1,9 +1,9 @@
-import {NgModule}      from '@angular/core';
+import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule}    from '@angular/http';
+import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {LocationStrategy,HashLocationStrategy} from '@angular/common';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {AppRoutes} from './app.routes';
 import 'rxjs/add/operator/toPromise';
 
@@ -73,24 +73,24 @@ import {TooltipModule} from 'primeng/primeng';
 import {TreeModule} from 'primeng/primeng';
 import {TreeTableModule} from 'primeng/primeng';
 
-import {AppComponent}  from './app.component';
-import {AppMenuComponent,AppSubMenu}  from './app.menu.component';
-import {AppTopBar}  from './app.topbar.component';
-import {AppFooter}  from './app.footer.component';
-import {DashboardDemo} from './demo/view/dashboarddemo';
-import {SampleDemo} from './demo/view/sampledemo';
-import {FormsDemo} from './demo/view/formsdemo';
-import {DataDemo} from './demo/view/datademo';
-import {PanelsDemo} from './demo/view/panelsdemo';
-import {OverlaysDemo} from './demo/view/overlaysdemo';
-import {MenusDemo} from './demo/view/menusdemo';
-import {MessagesDemo} from './demo/view/messagesdemo';
-import {MiscDemo} from './demo/view/miscdemo';
-import {EmptyDemo} from './demo/view/emptydemo';
-import {ChartsDemo} from './demo/view/chartsdemo';
-import {FileDemo} from './demo/view/filedemo';
-import {UtilsDemo} from './demo/view/utilsdemo';
-import {Documentation} from './demo/view/documentation';
+import {AppComponent} from './app.component';
+import {AppMenuComponent, AppSubMenuComponent} from './app.menu.component';
+import {AppTopBarComponent} from './app.topbar.component';
+import {AppFooterComponent} from './app.footer.component';
+import {DashboardDemoComponent} from './demo/view/dashboarddemo';
+import {SampleDemoComponent} from './demo/view/sampledemo';
+import {FormsDemoComponent} from './demo/view/formsdemo';
+import {DataDemoComponent} from './demo/view/datademo';
+import {PanelsDemoComponent} from './demo/view/panelsdemo';
+import {OverlaysDemoComponent} from './demo/view/overlaysdemo';
+import {MenusDemoComponent} from './demo/view/menusdemo';
+import {MessagesDemoComponent} from './demo/view/messagesdemo';
+import {MiscDemoComponent} from './demo/view/miscdemo';
+import {EmptyDemoComponent} from './demo/view/emptydemo';
+import {ChartsDemoComponent} from './demo/view/chartsdemo';
+import {FileDemoComponent} from './demo/view/filedemo';
+import {UtilsDemoComponent} from './demo/view/utilsdemo';
+import {DocumentationComponent} from './demo/view/documentation';
 
 import {CarService} from './demo/service/carservice';
 import {CountryService} from './demo/service/countryservice';
@@ -173,29 +173,29 @@ import {NodeService} from './demo/service/nodeservice';
     declarations: [
         AppComponent,
         AppMenuComponent,
-        AppSubMenu,
-        AppTopBar,
-        AppFooter,
-        DashboardDemo,
-        SampleDemo,
-        FormsDemo,
-        DataDemo,
-        PanelsDemo,
-        OverlaysDemo,
-        MenusDemo,
-        MessagesDemo,
-        MessagesDemo,
-        MiscDemo,
-        ChartsDemo,
-        EmptyDemo,
-        FileDemo,
-        UtilsDemo,
-        Documentation
+        AppSubMenuComponent,
+        AppTopBarComponent,
+        AppFooterComponent,
+        DashboardDemoComponent,
+        SampleDemoComponent,
+        FormsDemoComponent,
+        DataDemoComponent,
+        PanelsDemoComponent,
+        OverlaysDemoComponent,
+        MenusDemoComponent,
+        MessagesDemoComponent,
+        MessagesDemoComponent,
+        MiscDemoComponent,
+        ChartsDemoComponent,
+        EmptyDemoComponent,
+        FileDemoComponent,
+        UtilsDemoComponent,
+        DocumentationComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
-        CarService,CountryService,EventService,NodeService
+        CarService, CountryService, EventService, NodeService
     ],
-    bootstrap:[AppComponent]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
