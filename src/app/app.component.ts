@@ -1,4 +1,4 @@
-import {Component, AfterViewInit, ElementRef, Renderer, ViewChild} from '@angular/core';
+import {Component, ElementRef, Renderer, ViewChild} from '@angular/core';
 
 enum MenuMode {
     STATIC,
@@ -11,7 +11,7 @@ enum MenuMode {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
 
     menu: MenuMode = MenuMode.STATIC;
 
@@ -40,26 +40,27 @@ export class AppComponent implements AfterViewInit {
     activeTopbarItem: Element;
 
     resetSlim: boolean;
+    
+    menuHoverActive: boolean;
 
     constructor(public renderer: Renderer) {}
 
-    ngAfterViewInit() {
-        this.documentClickListener = this.renderer.listenGlobal('body', 'click', (event) => {
-            if (!this.menuClick && !this.menuButtonClick) {
-                this.mobileMenuActive = false;
-                this.overlayMenuActive = false;
-                this.resetSlim = true;
-            }
+    onLayoutClick() {
+        if (!this.menuClick && !this.menuButtonClick) {
+            this.mobileMenuActive = false;
+            this.overlayMenuActive = false;
+            this.resetSlim = true;
+            this.menuHoverActive = false;
+        }
 
-            if (!this.topbarMenuClick && !this.topbarMenuButtonClick) {
-                this.topbarMenuActive = false;
-            }
+        if (!this.topbarMenuClick && !this.topbarMenuButtonClick) {
+            this.topbarMenuActive = false;
+        }
 
-            this.menuClick = false;
-            this.menuButtonClick = false;
-            this.topbarMenuClick = false;
-            this.topbarMenuButtonClick = false;
-         });
+        this.menuClick = false;
+        this.menuButtonClick = false;
+        this.topbarMenuClick = false;
+        this.topbarMenuButtonClick = false;
     }
 
     onMenuButtonClick(event: Event) {

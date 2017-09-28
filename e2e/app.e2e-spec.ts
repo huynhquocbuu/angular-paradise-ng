@@ -1,14 +1,10 @@
-import { MorpheusPage } from './app.po';
+import { ParadisePage } from './app.po';
 
-describe('morpheus App', () => {
-  let page: MorpheusPage;
+describe('paradise App', () => {
+  let page: ParadisePage;
 
   beforeEach(() => {
-    page = new MorpheusPage();
+    page = new ParadisePage();
   });
-
-  it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
-  });
+  
 });

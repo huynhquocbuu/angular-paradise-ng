@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, EventEmitter, ViewChild, Inject, forwardRef} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, ViewChild} from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
@@ -15,7 +15,7 @@ export class AppMenuComponent implements OnInit {
 
     model: any[];
 
-    constructor(@Inject(forwardRef(() => AppComponent)) public app: AppComponent) {}
+    constructor(public app: AppComponent) {}
 
     ngOnInit() {
         this.model = [
@@ -176,7 +176,7 @@ export class AppMenuComponent implements OnInit {
             <li [ngClass]="{'active-menuitem': isActive(i)}" [class]="child.badgeStyleClass">
                 <a [href]="child.url||'#'" (click)="itemClick($event,child,i)" *ngIf="!child.routerLink"
                    [attr.tabindex]="!visible ? '-1' : null" [attr.target]="child.target"
-                    (mouseenter)="hover=true" (mouseleave)="hover=false">
+                   (mouseenter)="onMouseEnter(i)">
                     <i [ngClass]="child.icon"></i>
                     <span>{{child.label}}</span>
                     <span class="menuitem-badge" *ngIf="child.badge">{{child.badge}}</span>
@@ -186,7 +186,7 @@ export class AppMenuComponent implements OnInit {
                 <a (click)="itemClick($event,child,i)" *ngIf="child.routerLink"
                     [routerLink]="child.routerLink" routerLinkActive="active-menuitem-routerlink"
                    [routerLinkActiveOptions]="{exact: true}" [attr.tabindex]="!visible ? '-1' : null" [attr.target]="child.target"
-                    (mouseenter)="hover=true" (mouseleave)="hover=false">
+                    (mouseenter)="onMouseEnter(i)">
                     <i [ngClass]="child.icon"></i>
                     <span>{{child.label}}</span>
                     <span class="menuitem-badge" *ngIf="child.badge">{{child.badge}}</span>
@@ -233,11 +233,13 @@ export class AppSubMenuComponent {
 
     activeIndex: number;
 
-    hover: boolean;
-
-    constructor(@Inject(forwardRef(() => AppComponent)) public app: AppComponent, public router: Router, public location: Location) {}
+    constructor(public app: AppComponent, public router: Router, public location: Location) {}
 
     itemClick(event: Event, item: MenuItem, index: number) {
+        if (this.root) {
+            this.app.menuHoverActive = !this.app.menuHoverActive;
+        }
+        
         // avoid processing disabled items
         if (item.disabled) {
             event.preventDefault();
@@ -269,6 +271,14 @@ export class AppSubMenuComponent {
             if (!this.root && this.app.slimMenu) {
                 this.app.resetSlim = true;
             }
+            
+            this.app.menuHoverActive = !this.app.menuHoverActive;
+        }
+    }
+    
+    onMouseEnter(index: number) {
+        if (this.root && this.app.menuHoverActive && this.app.slimMenu) {
+            this.activeIndex = index;
         }
     }
 
