@@ -10,6 +10,6 @@ export class CountryService {
         return this.http.get('assets/demo/data/countries.json')
                     .toPromise()
                     .then(res => <any[]> res.json().data)
-                    .then(data => { return data; });
+                    .then(data => data);
     }
 }

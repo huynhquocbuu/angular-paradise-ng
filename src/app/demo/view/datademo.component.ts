@@ -12,7 +12,7 @@ import {TreeNode} from 'primeng/primeng';
             margin: 0;
             padding: 0;
         }
-    
+
         @media (max-width:640px) {
             .cars-datalist .text-column {
                 text-align: center;

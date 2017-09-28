@@ -239,7 +239,7 @@ export class AppSubMenuComponent {
         if (this.root) {
             this.app.menuHoverActive = !this.app.menuHoverActive;
         }
-        
+
         // avoid processing disabled items
         if (item.disabled) {
             event.preventDefault();
@@ -271,11 +271,11 @@ export class AppSubMenuComponent {
             if (!this.root && this.app.slimMenu) {
                 this.app.resetSlim = true;
             }
-            
+
             this.app.menuHoverActive = !this.app.menuHoverActive;
         }
     }
-    
+
     onMouseEnter(index: number) {
         if (this.root && this.app.menuHoverActive && this.app.slimMenu) {
             this.activeIndex = index;

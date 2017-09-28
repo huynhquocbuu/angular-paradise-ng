@@ -9,13 +9,13 @@ import {Component, ViewEncapsulation} from '@angular/core';
             padding: 16px;
             font-size: 12px;
         }
-        
+
         .icon-grid i {
             display: block;
             margin: 0 auto;
             font-size: 24px;
         }
-        
+
         pre {
             font-family: monospace;
             background-color: #dee4e9;
@@ -25,7 +25,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
             border-radius: 3px;
             overflow: auto;
         }
-        
+
         .shadow-box {
             background-color: #607D8B;
             width: 100px;

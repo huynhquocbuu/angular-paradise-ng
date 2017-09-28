@@ -4,7 +4,7 @@ enum MenuMode {
     STATIC,
     OVERLAY,
     SLIM
-};
+}
 
 @Component({
   selector: 'app-root',
@@ -40,7 +40,7 @@ export class AppComponent {
     activeTopbarItem: Element;
 
     resetSlim: boolean;
-    
+
     menuHoverActive: boolean;
 
     constructor(public renderer: Renderer) {}

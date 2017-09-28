@@ -6,5 +6,5 @@ describe('paradise App', () => {
   beforeEach(() => {
     page = new ParadisePage();
   });
-  
+
 });
