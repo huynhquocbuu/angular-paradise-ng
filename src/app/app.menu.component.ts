@@ -1,19 +1,25 @@
-import {Component, Input, OnInit, EventEmitter, ViewChild} from '@angular/core';
+import {Component, AfterViewInit, Input, OnInit, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/primeng';
 import {AppComponent} from './app.component';
 
+declare var jQuery: any;
+
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html'
 })
-export class AppMenuComponent implements OnInit {
+export class AppMenuComponent implements OnInit,AfterViewInit {
 
     @Input() reset: boolean;
 
     model: any[];
+
+    layoutMenuScroller: HTMLDivElement;
+    
+    @ViewChild('layoutMenuScroller') layoutMenuScrollerViewChild: ElementRef;
 
     constructor(public app: AppComponent) {}
 
@@ -164,6 +170,33 @@ export class AppMenuComponent implements OnInit {
         this.app.layout = layout;
         const layoutLink: HTMLLinkElement = <HTMLLinkElement> document.getElementById('layout-css');
         layoutLink.href = 'assets/layout/css/layout-' + layout + '.css';
+    }
+
+    ngAfterViewInit() {
+        this.layoutMenuScroller = <HTMLDivElement> this.layoutMenuScrollerViewChild.nativeElement;
+        
+        if(!this.app.slimMenu) {
+            setTimeout(() => {
+                jQuery(this.layoutMenuScroller).nanoScroller({flash:true});
+            }, 10);
+        }
+    }
+
+    onWrapperClick(event: Event) {
+        this.app.onMenuClick(event);
+        this.updateNanoScroll();
+    }
+
+    updateNanoScroll() {
+        if(!this.app.slimMenu) {
+            setTimeout(() => {
+                jQuery(this.layoutMenuScroller).nanoScroller();
+            }, 500);
+        }
+    }
+
+    ngOnDestroy() {
+        jQuery(this.layoutMenuScroller).nanoScroller({flash: true});
     }
 }
 

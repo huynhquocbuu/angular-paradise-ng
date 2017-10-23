@@ -459,6 +459,7 @@ body {
 
         .nano {
             .nano-pane {
+                background: transparent;
                 .nano-slider {
                     background-color: #aaaaaa;
                     @include opacity(.3);
