@@ -125,6 +125,6 @@ export class AppComponent {
     }
 
     isMobile() {
-        return window.innerWidth < 640;
+        return window.innerWidth <= 640;
     }
 }
