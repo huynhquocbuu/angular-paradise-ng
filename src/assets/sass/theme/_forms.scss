@@ -480,6 +480,8 @@ body {
 
             .fa-caret-down {
                 color: $textSecondaryColor;
+                margin-top: .425em;
+                margin-left: 0;
                 @include icon_override("\f078");
             }
         }
@@ -910,6 +912,10 @@ body {
         .ui-button {
             border: 1px solid transparent;
         }
+        
+        .ui-menu {
+            min-width: 100%;
+        }
     }
 
     .ui-datepicker {
@@ -1100,7 +1106,7 @@ body {
             }
 
             &.ui-inputgroup-addon-checkbox, &.ui-inputgroup-addon-radiobutton {
-              padding: 0.286em 0.857em;
+              padding: .3em;
             }
         }
 

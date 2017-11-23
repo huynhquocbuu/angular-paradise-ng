@@ -6,6 +6,7 @@ body {
             border: 0 none;
             border-bottom: 1px solid $headerBorderColor;
             padding: $headerPadding;
+            line-height: 1;
             @include border-radius-top($borderRadius);
             @include border-radius-bottom(0px);
             
@@ -66,15 +67,20 @@ body {
             color: $headerTextColor;
             background-color: $headerBgColor;
             margin-left: .75em;
-            padding: $headerPadding;
+            padding: 0;
             @include transition(background-color .3s);
             
-            .ui-fieldset-toggler {
-                float: none;
-                display: inline-block;
-                vertical-align: middle;
-                margin-right: .5em;
-                color: $headerIconColor;
+            > a {
+                padding: $headerPadding;
+                color: $headerTextColor;
+                
+                .ui-fieldset-toggler {
+                    float: none;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: .5em;
+                    color: $headerIconColor;
+                }
             }
         }
         
@@ -122,37 +128,33 @@ body {
                         background-color: lighten($primaryColor, 5%);
                     }  
                 }
-                
-                span {
-                    color: $primaryTextColor;
-                }
+            }
 
-                .fa {
-                    color: $primaryTextColor;
-                }
-            }
-            
-            .fa-caret-right {
-                @include icon_override("\f054");
-            }
-            
-            .fa-caret-down {
-                @include icon_override("\f078");
-            }
-            
             > a {
-                padding: .5em 1em .5em 2em;
+                padding: .5em;
                 color: $headerTextColor;
                 outline: 0 none;     
                 @include transition(background-color .3s);
                 
                 &:focus {
                     background-color: lighten($headerHoverBgColor, 5%);
-                }         
-            }
-            
-            > span {
-                color: $headerTextColor;
+                }  
+                
+                .ui-accordion-header-text {
+                    vertical-align: middle;
+                } 
+                
+                .ui-accordion-toggle-icon {
+                    vertical-align: middle;
+                    
+                    &.fa-caret-right {
+                        @include icon_override("\f054");
+                    }
+                    
+                    &.fa-caret-down {
+                        @include icon_override("\f078");
+                    }
+                }      
             }
         }
         

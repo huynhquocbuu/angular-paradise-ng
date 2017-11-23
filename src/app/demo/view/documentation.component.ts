@@ -3,6 +3,10 @@ import {Component} from '@angular/core';
 @Component({
     templateUrl: './documentation.component.html',
     styles: [`
+        .docs p {
+            line-height: 1.5;
+        }
+        
         .docs pre {
             font-family: monospace;
             background-color: #dee4e9;
