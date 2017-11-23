@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
         .docs p {
             line-height: 1.5;
         }
-        
+
         .docs pre {
             font-family: monospace;
             background-color: #dee4e9;
