@@ -14,11 +14,15 @@ export class DashboardDemoComponent implements OnInit {
 
     cars: Car[];
 
+    cols: any[];
+
     chartData: any;
 
     events: any[];
 
     selectedCity: any;
+
+    selectedCar: Car;
 
     items: MenuItem[];
 
@@ -26,6 +30,13 @@ export class DashboardDemoComponent implements OnInit {
 
     ngOnInit() {
         this.carService.getCarsSmall().then(cars => this.cars = cars);
+
+        this.cols = [
+            { field: 'vin', header: 'Vin' },
+            { field: 'year', header: 'Year' },
+            { field: 'brand', header: 'Brand' },
+            { field: 'color', header: 'Color' }
+        ];
 
         this.eventService.getEvents().then(events => {this.events = events; });
 

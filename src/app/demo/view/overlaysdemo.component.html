@@ -13,23 +13,34 @@
                 <div class="ui-g-6">
                     <button type="button" pButton label="DataTable" (click)="op2.toggle($event)"></button>
                     <p-overlayPanel #op2 [showCloseIcon]="true" [dismissable]="false">
-                        <p-dataTable [value]="cars" [style]="{'width':'500px'}">
-                            <p-column field="vin" header="Vin" [sortable]="true"></p-column>
-                            <p-column field="year" header="Year" [sortable]="true"></p-column>
-                            <p-column field="brand" header="Brand" [sortable]="true"></p-column>
-                            <p-column field="color" header="Color" [sortable]="true"></p-column>
-                        </p-dataTable>
+                        <p-table [columns]="cols" [value]="cars" dataKey="vin" [style]="{'width':'500px'}">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                      {{col.header}}
+                                      <p-sortIcon [field]="col.field"></p-sortIcon>
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                <tr [pSelectableRow]="rowData">
+                                    <td *ngFor="let col of columns">
+                                      {{rowData[col.field]}}
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
                     </p-overlayPanel>
                 </div>
             </div>
         </div>
-        
+
         <div class="card">
             <h1>Dialog</h1>
             <p-dialog header="Godfather I" [(visible)]="display" modal="modal" showEffect="fade" width="400">
-                <div>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-                   His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-                   Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+                <div>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+                   His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                   Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
                    kind and benevolent to those who give respect,
                    but given to ruthless violence whenever anything stands against the good of the family.</div>
                 <p-footer>
@@ -42,20 +53,20 @@
 
             <button type="text" (click)="display=true" pButton icon="fa-external-link-square" label="Show"></button>
         </div>
-        
+
         <div class="card">
             <h1>Confirm Dialog</h1>
             <p-confirmDialog header="Confirmation" icon="fa fa-info" width="425"></p-confirmDialog>
 
             <button type="text" (click)="confirm()" pButton icon="fa-check" label="Confirm"></button>
         </div>
-        
+
         <div class="card">
             <h1>Tooltip</h1>
             <input type="text" pInputText pTooltip="Enter your username" placeholder="Right" tooltipEvent="focus">
         </div>
     </div>
-    
+
     <div class="ui-g-12 ui-lg-6">
         <!-- Right Side -->
         <div class="card">
