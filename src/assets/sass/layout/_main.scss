@@ -457,13 +457,22 @@ body {
             }
         }
 
-        .nano {
-            .nano-pane {
-                background: transparent;
-                .nano-slider {
-                    background-color: #aaaaaa;
-                    @include opacity(.3);
-                }
+        .ui-scrollpanel {
+            background: transparent;
+            border-radius: 0;
+            border: none;
+            .ui-scrollpanel-bar {
+                background-color: #aaaaaa;
+                @include opacity(.3);
+            }
+            .ui-scrollpanel-hidden {
+                display: block;
+                visibility: hidden;
+            }
+
+            .layout-menu-container {
+                width: 258px;
+                padding-right: 18px;
             }
         }
     }
@@ -558,16 +567,17 @@ body {
                 overflow: visible;
                 z-index: 100;
 
-                .nano {
-                    overflow: visible;
-
-                    .nano-content {
+                .ui-scrollpanel {
+                    border: none;
+                    border-radius: 0;
+                    .ui-scrollpanel-wrapper {
                         overflow: visible;
-                        margin-right: 0px !important;
+                        .ui-scrollpanel-content {
+                            overflow: visible;
+                        }
                     }
-
-                    .nano-pane {
-                        display: none !important;
+                    .layout-menu-container {
+                      width: 92px;
                     }
                 }
 

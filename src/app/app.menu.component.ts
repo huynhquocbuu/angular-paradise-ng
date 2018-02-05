@@ -2,10 +2,8 @@ import {Component, AfterViewInit, Input, OnInit, OnDestroy, EventEmitter, ViewCh
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
-import {MenuItem} from 'primeng/primeng';
+import {MenuItem, ScrollPanel} from 'primeng/primeng';
 import {AppComponent} from './app.component';
-
-declare var jQuery: any;
 
 @Component({
     selector: 'app-menu',
@@ -17,9 +15,7 @@ export class AppMenuComponent implements OnInit, OnDestroy, AfterViewInit {
 
     model: any[];
 
-    layoutMenuScroller: HTMLDivElement;
-
-    @ViewChild('layoutMenuScroller') layoutMenuScrollerViewChild: ElementRef;
+    @ViewChild('layoutMenuScroller') layoutMenuScrollerViewChild: ScrollPanel;
 
     constructor(public app: AppComponent) {}
 
@@ -173,30 +169,17 @@ export class AppMenuComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.layoutMenuScroller = <HTMLDivElement> this.layoutMenuScrollerViewChild.nativeElement;
-
-        if (!this.app.slimMenu) {
-            setTimeout(() => {
-                jQuery(this.layoutMenuScroller).nanoScroller({flash: true});
-            }, 10);
-        }
+      setTimeout(() => {this.layoutMenuScrollerViewChild.moveBar(); }, 100);
     }
 
     onWrapperClick(event: Event) {
         this.app.onMenuClick(event);
-        this.updateNanoScroll();
-    }
-
-    updateNanoScroll() {
-        if (!this.app.slimMenu) {
-            setTimeout(() => {
-                jQuery(this.layoutMenuScroller).nanoScroller();
-            }, 500);
-        }
+        setTimeout(() => {
+          this.layoutMenuScrollerViewChild.moveBar();
+        }, 450);
     }
 
     ngOnDestroy() {
-        jQuery(this.layoutMenuScroller).nanoScroller({flash: true});
     }
 }
 
@@ -266,7 +249,7 @@ export class AppSubMenuComponent {
 
     activeIndex: number;
 
-    constructor(public app: AppComponent, public router: Router, public location: Location) {}
+    constructor(public app: AppComponent, public router: Router, public location: Location, public appMenu: AppMenuComponent) {}
 
     itemClick(event: Event, item: MenuItem, index: number) {
         if (this.root) {
@@ -291,6 +274,9 @@ export class AppSubMenuComponent {
 
         // prevent hash change
         if (item.items || (!item.url && !item.routerLink)) {
+            setTimeout(() => {
+              this.appMenu.layoutMenuScrollerViewChild.moveBar();
+            }, 450);
             event.preventDefault();
         }
 

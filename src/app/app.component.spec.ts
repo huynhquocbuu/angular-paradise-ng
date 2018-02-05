@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppTopBarComponent } from './app.topbar.component';
 import { AppFooterComponent } from './app.footer.component';
 import { AppMenuComponent, AppSubMenuComponent } from './app.menu.component';
+import {ScrollPanel} from 'primeng/primeng';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -15,7 +16,8 @@ describe('AppComponent', () => {
         AppTopBarComponent,
         AppMenuComponent,
         AppSubMenuComponent,
-        AppFooterComponent
+        AppFooterComponent,
+        ScrollPanel
       ]
     });
     TestBed.compileComponents();

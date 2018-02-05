@@ -57,6 +57,7 @@ import {ProgressBarModule} from 'primeng/primeng';
 import {RadioButtonModule} from 'primeng/primeng';
 import {RatingModule} from 'primeng/primeng';
 import {ScheduleModule} from 'primeng/primeng';
+import {ScrollPanelModule} from 'primeng/primeng';
 import {SelectButtonModule} from 'primeng/primeng';
 import {SlideMenuModule} from 'primeng/primeng';
 import {SliderModule} from 'primeng/primeng';
@@ -155,6 +156,7 @@ import {NodeService} from './demo/service/nodeservice';
         RadioButtonModule,
         RatingModule,
         ScheduleModule,
+        ScrollPanelModule,
         SelectButtonModule,
         SlideMenuModule,
         SliderModule,

@@ -32,7 +32,6 @@
     "rxjs": "5.5.2",
     "web-animations-js": "2.3.1",
     "zone.js": "0.8.18",
-    "nanoscroller": "0.8.7",
     "primeng": "5.2.0"
   },
   "devDependencies": {
