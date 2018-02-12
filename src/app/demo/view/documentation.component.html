@@ -1,10 +1,10 @@
 <div class="ui-g">
     <div class="ui-g-12">
-        <div class="card docs"> 
-            
+        <div class="card docs">
+
             <h1>Current Version</h1>
-            <p>Angular 5 and PrimeNG 5</p>
-            
+            <p>Angular 5.2 and PrimeNG 5.2</p>
+
             <h1>Getting Started</h1>
             <p>Paradise is a true native application template for Angular and is distributed as a CLI project. If you don't have CLI installed already run the following commands to set it up. In case
             you have an application that do not use CLI, skip the <a href="#noncli">Integration with an Existing Non CLI Application</a> part.</p>
@@ -12,7 +12,7 @@
 npm install -g @angular-cli
 </pre>
 
-            <p>Once CLI is ready in your system, extract the contents of the Paradise zip file distribution, cd to the directory, 
+            <p>Once CLI is ready in your system, extract the contents of the Paradise zip file distribution, cd to the directory,
             install the libraries from npm and then execute "ng serve" to run the application in your local environment at http://localhost:4200/.</p>
 <pre>
 cd Paradise
@@ -36,11 +36,11 @@ Run 'ng test' to execute the unit tests via [Karma](https://karma-runner.github.
 Run 'ng e2e' to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 Run 'ng help' for more options.
-</pre>            
-                                    
+</pre>
+
             <h1>Structure</h1>
-            <p>Paradise consists of 3 main parts; the application layout, layout resources and theme resources for PrimeNG components. <i>app.component.html</i> inside app folder is the html template for the base layout, 
-                required resources for the layout are placed inside the <i>src/assets/layout</i> folder and similarly theme resources are inside <i>src/assets/theme</i> folder. 
+            <p>Paradise consists of 3 main parts; the application layout, layout resources and theme resources for PrimeNG components. <i>app.component.html</i> inside app folder is the html template for the base layout,
+                required resources for the layout are placed inside the <i>src/assets/layout</i> folder and similarly theme resources are inside <i>src/assets/theme</i> folder.
             </p>
 
             <h1>Template</h1>
@@ -48,32 +48,32 @@ Run 'ng help' for more options.
                 the main template. The component class app.component.ts implements the logic such as opening menus and layout modes.
             </p>
 <pre>
-&lt;div class="layout-wrapper" 
-    [ngClass]="&#123;'layout-menu-slim': slimMenu, 
-                'layout-menu-overlay': overlayMenu, 
+&lt;div class="layout-wrapper"
+    [ngClass]="&#123;'layout-menu-slim': slimMenu,
+                'layout-menu-overlay': overlayMenu,
                 'layout-menu-static': staticMenu,
                 'layout-menu-static-inactive': staticMenuInactive,
                 'layout-menu-overlay-active': overlayMenuActive,
                 'layout-menu-active': mobileMenuActive&#125;"&gt;
-    
+
     &lt;app-topbar&gt;&lt;/app-topbar&gt;
 
     &lt;div class="layout-main"&gt;
         &lt;app-menu [reset]="resetSlim"&gt;&lt;/app-menu&gt;
-        
+
         &lt;div class="layout-content"&gt;
             &lt;router-outlet&gt;&lt;/router-outlet&gt;
         &lt;/div&gt;
-        
+
         &lt;app-footer&gt;&lt;/app-footer&gt;
-    &lt;/div&gt;     
-    
-    &lt;div class="layout-mask" *ngIf="mobileMenuActive"&gt;&lt;/div&gt;   
+    &lt;/div&gt;
+
+    &lt;div class="layout-mask" *ngIf="mobileMenuActive"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
             <h1>Menu</h1>
-            <p>Menu is a separate component defined in app.menu.component.ts file based on PrimeNG MenuModel API. In order to define the menuitems, 
+            <p>Menu is a separate component defined in app.menu.component.ts file based on PrimeNG MenuModel API. In order to define the menuitems,
             navigate to app.menu.component.ts and define your own model. Here is the menu component from the sample application. The helper
             app-submenu component is also available in the same file.</p>
 <pre>
@@ -95,7 +95,7 @@ export class AppMenuComponent implements OnInit &#123;
     model: any[];
 
     constructor(@Inject(forwardRef(() => AppComponent)) public app:AppComponent) &#123;&#125;
-    
+
     ngOnInit() &#123;
         this.model = [
             &#123;label: 'Dashboard', icon: 'fa fa-fw fa-home', routerLink: ['/']&#125;,
@@ -113,7 +113,7 @@ export class AppMenuComponent implements OnInit &#123;
                 label: 'Layout Colors', icon: 'fa fa-fw fa-magic',
                 items: [
                     &#123;
-                        label: 'Flat', 
+                        label: 'Flat',
                         icon: 'fa fa-fw fa-circle',
                         items: [
                             &#123;label: 'Default', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('default')&#125;&#125;,
@@ -127,7 +127,7 @@ export class AppMenuComponent implements OnInit &#123;
                         ]
                     &#125;,
                     &#123;
-                        label: 'Special', 
+                        label: 'Special',
                         icon: 'fa fa-fw fa-fire',
                         items: [
                             &#123;label: 'Horizon', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('horizon')&#125;&#125;,
@@ -233,44 +233,22 @@ export class AppMenuComponent implements OnInit &#123;
     &#125;
 &#125;
 </pre>
-            
+
             <h1>Integration with an Existing CLI Project</h1>
-            <p>To setup Paradise in an existing project, copy the <i>src/assets</i> folder to your projects folder with the same name 
+            <p>To setup Paradise in an existing project, copy the <i>src/assets</i> folder to your projects folder with the same name
                 and replace the contents of app.component.ts, app.component.html with their counterparts in Paradise under <i>src/app</i> folder.</p>
-            
-            <p>Dependencies of Paradise are listed below and needs to be added to package.json</p>
-<pre>
-"primeng": "^4.0.0",             //required: PrimeNG components
-"jquery": "^3.1.1",              //optional: schedule and nanoscroller
-"chart.js": "^2.4.0",            //optional: chart 
-"fullcalendar": "^3.1.0",        //optional: schedule
-"moment": "^2.17.1",             //optional: chart and schedule
-"quill": "^1.1.8",               //optional: editor
-"nanoscroller": "0.8.7",         //optional: nanoscroller
-</pre>
-                        
-            <p>Add PrimeNG CSS at styles section in angular-cli.json and optional dependencies.</p>
 
-<pre>
+            <p>Install PrimeNG</p>
+            <pre>
+npm install primeng@latest --save
+</pre>
+
+            <p>Add PrimeNG CSS at styles section in angular-cli.json.</p>
+
+            <pre>
 "styles": [
-    "../node_modules/font-awesome/css/font-awesome.min.css",    //required: Icons
     "../node_modules/primeng/resources/primeng.min.css",        //required: PrimeNG components
-    "../node_modules/fullcalendar/dist/fullcalendar.min.css",   //optional: schedule
-    "../node_modules/quill/dist/quill.snow.css",                //optional: editor
-    "../node_modules/nanoscroller/bin/css/nanoscroller.css",    //optional: nanoscroller
     "styles.scss"                                               //your styles and overrides
-],
-</pre>
-
-            <p>Add the following scripts to your angular-cli.json depending on the optional dependencies.</p>
-<pre>
-"scripts": [
-    "../node_modules/jquery/dist/jquery.js",                                //optional: schedule and nanoscroller
-    "../node_modules/nanoscroller/bin/javascripts/jquery.nanoscroller.js",  //optional: nanoscroller
-    "../node_modules/moment/moment.js",                                     //optional: schedule and charts
-    "../node_modules/chart.js/dist/Chart.js",                               //optional: charts
-    "../node_modules/fullcalendar/dist/fullcalendar.js",                    //optional: schedule
-    "../node_modules/quill/dist/quill.js"                                   //optional: editor
 ],
 </pre>
 
@@ -282,10 +260,10 @@ export class AppMenuComponent implements OnInit &#123;
             <p>Copy the <i>src/assets</i> folder to your application and include the resources listed above with a module bundler like webpack or using link-script tags.</p>
             <p>Finally copy the contents of app.component.html to your application's main component template such as <i>app/application.html</i> along
             with the sub components which are app.menu.component.ts, app.topbar.component.ts and app.footer.component.ts.</p>
-                                    
-            <h1>Theme</h1>    
+
+            <h1>Theme</h1>
             <p>Paradise provides 8 PrimeNG themes out of the box, setup of a theme simple including the css of theme to your page that are located inside resources/theme folder.</p>
-            
+
             <ul>
                 <li>theme-blue</li>
                 <li>theme-deeppurple</li>
@@ -296,7 +274,7 @@ export class AppMenuComponent implements OnInit &#123;
                 <li>theme-purple</li>
                 <li>theme-turquoise</li>
             </ul>
-            
+
             <p>A custom theme can be developed by the following steps.</p>
             <ul>
                 <li>Choose a custom theme name such as theme-myown.</li>
@@ -305,22 +283,22 @@ export class AppMenuComponent implements OnInit &#123;
                 <li>Build the scss to generate css</li>
                 <li>Include the generated theme.css to your page.</li>
             </ul>
-            
-            <p>Here are the variables required to create a theme, you may need to change the last line according to the 
+
+            <p>Here are the variables required to create a theme, you may need to change the last line according to the
                 relative path of the sass folder in your application.</p>
-                
+
 <pre>
 $primaryColor:#63aee2;
 $primaryTextColor:#ffffff;
 
 @import '../sass/theme/_theme';
-</pre> 
-                
+</pre>
+
             <p> An example sass command to compile the css would be;</p>
-                
+
 <pre>
 sass src/assets/theme-myown/theme.scss src/assets/theme-myown/theme.css
-</pre> 
+</pre>
 
             <p>Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command
             so that sass generates the file whenever you make a customization. This builds all css files whenever a change is made to any scss file.</p>
@@ -336,10 +314,10 @@ sass -w resources/ --sourcemap=none
                 <li>Build the scss to generate css</li>
                 <li>Serve the css by importing it using a link tag or a bundler.</li>
             </ul>
-            
-            <p>Here are the variables required to create a layout, you may need to change the last line according to the 
+
+            <p>Here are the variables required to create a layout, you may need to change the last line according to the
                 relative path of the sass folder in your application.</p>
-            
+
 <pre>
 $topbarLeftBgColor:#3984b8;
 $topbarRightBgColor:#3984b8;
@@ -354,8 +332,8 @@ $darkMenuTextColor:#f6f8f9;
 $bodyBgColor:#F2F8FA;
 
 @import '../../sass/layout/_layout';
-</pre> 
-            
+</pre>
+
             <p>For both cases, several .scss files such as _layout.scss, _theme.scss or _variables.scss has to be present relative to your scss files, these are available inside the resources/sass folder in the distribution.</p>
             <p>In case you'd like to customize the structure not just the colors, the _variables.scss files are where the structural variables (e.g. font size, paddings) for the layout are defined.</p>
 <pre>
@@ -376,7 +354,7 @@ $pink:#e175a0;
 $turquoise:#39b8b6;
 $green:#3eb839;
 $red:#e17576;
-</pre> 
+</pre>
 
 <pre>
 /* PrimeNG Components Theme */
@@ -447,21 +425,21 @@ $paginatorHoverBgColor:#dee4e9;
 $datatableOddRowBgColor:#ffffff;
 $datatableEvenRowBgColor:#f6f8f9;
 $datatableHoverBgColor:#dee4e9;
-</pre>        
-            
+</pre>
+
             <h1>Menu Item Badges</h1>
             <p>Badges are numerical indicators of how many items are associated with a link.
                The badge property is value of the badge and badgeStyleClass is style class of the badge.</p>
 <pre>
 label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge'
-</pre>  
+</pre>
             <p>Paradise layout has 4 different badge style.There is a default badge which uses the accent color of paradise layout. And there is 3 other badge class for menu items.</p>
             <ul>
                 <li>orange-badge</li>
                 <li>purple-badge</li>
                 <li>blue-badge</li>
             </ul>
-                                    
+
             <h1>Menu Modes</h1>
             <p>Menu has 3 modes; static, overlay and slim. Layout container element in application.html is used to define which mode to use by adding specific classes. List
             below indicates the style classes for each mode.</p>
@@ -469,40 +447,50 @@ label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge'
                 <li>Static: "layout-wrapper layout-menu-static"</li>
                 <li>Overlay: "layout-wrapper layout-menu-overlay"</li>
                 <li>Slim: "layout-wrapper layout-menu-slim"</li>
-            </ul>      
+            </ul>
 
             <p>It is also possible to leave the choice to the user by keeping the preference at a component and using an expression to bind it so that user can switch between modes. Sample
-            application has an example implementation of such use case. Refer to app.component.ts for an example.</p>          
-                            
+            application has an example implementation of such use case. Refer to app.component.ts for an example.</p>
+
             <h1>Grid CSS</h1>
             <p>Paradise uses PrimeNG Grid CSS (ui-g-*) throughout the samples, we strongly suggest using Grid CSS as your layout framework as it is well tested and supported by PrimeNG. Grid CSS is
-            available inside primeng.css.</p> 
-            
+            available inside primeng.css.</p>
+
             <h1>Migration Guide</h1>
             <p>For seamless updates and easier maintenance, we suggest keeping your CSS customizations in a separate sass file so that your changes
             are not overriden with an update.</p>
 
-            <p>1.2.0 to 5.0.0</p>
+            <h4>5.0.0 to 5.2.0</h4>
+            <p>Adds support for PrimeNG 5.2.0 (e.g. TurboTable), replaces nanoscroller with PrimeNG ScrollPanel and reimplements ripple effect to run outside of NgZone for better performance.</p>
+            <ul>
+                <li>Remove nanoscroller as it is replaced by ScrollPanel component of PrimeNG.</li>
+                <li>Update app.component.ts.</li>
+                <li>Update app.menu.component.ts and app.menu.component.html.</li>
+                <li>Update layout css files.</li>
+                <li>Update theme css files.</li>
+            </ul>
+
+            <h4>1.2.0 to 5.0.0</h4>
             <ul>
                 <li>Update theme css files.</li>
                 <li>Update layout css files.</li>
                 <li>Update app.menu.component.ts, app.menu.component.html and app.component.ts.</li>
             </ul>
 
-            <p>1.1.0 to 1.2.0</p>
+            <h4>1.1.0 to 1.2.0</h4>
             <ul>
                 <li>Update theme css files.</li>
                 <li>Update app.menu.component.ts and app.component.ts.</li>
             </ul>
 
-            <p>1.0.1 to 1.1.0</p>
+            <h4>1.0.1 to 1.1.0</h4>
             <ul>
                 <li>Update layout css files.</li>
                 <li>Update theme css files.</li>
                 <li>Update AppSubmenu component in app.menu.component.ts.</li>
             </ul>
-            
-            <p>1.0.0 to 1.0.1</p>
+
+            <h4>1.0.0 to 1.0.1</h4>
             <ul>
                 <li>Includes version updates to PrimeNG 4, no change required.</li>
             </ul>
