@@ -33,8 +33,6 @@ export class AppComponent {
 
     topbarMenuButtonClick: boolean;
 
-    topbarMenuClick: boolean;
-
     topbarMenuActive: boolean;
 
     activeTopbarItem: Element;
@@ -53,13 +51,13 @@ export class AppComponent {
             this.menuHoverActive = false;
         }
 
-        if (!this.topbarMenuClick && !this.topbarMenuButtonClick) {
+        if (!this.topbarMenuButtonClick) {
+            this.activeTopbarItem = null;
             this.topbarMenuActive = false;
         }
 
         this.menuClick = false;
         this.menuButtonClick = false;
-        this.topbarMenuClick = false;
         this.topbarMenuButtonClick = false;
     }
 
@@ -84,6 +82,8 @@ export class AppComponent {
     }
 
     onTopbarItemClick(event: Event, item: Element) {
+        this.topbarMenuButtonClick = true;
+
         if (this.activeTopbarItem === item) {
             this.activeTopbarItem = null; } else {
             this.activeTopbarItem = item; }
@@ -91,8 +91,8 @@ export class AppComponent {
         event.preventDefault();
     }
 
-    onTopbarMenuClick(event: Event) {
-        this.topbarMenuClick = true;
+    onTopbarSubItemClick(event) {
+        event.preventDefault();
     }
 
     onMenuClick(event: Event) {

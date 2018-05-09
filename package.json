@@ -1,6 +1,6 @@
 {
   "name": "paradise",
-  "version": "5.2.1-SNAPSHOT",
+  "version": "5.2.1",
   "license": "PrimeNG Commercial",
   "scripts": {
     "ng": "ng",
