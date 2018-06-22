@@ -190,6 +190,69 @@ body {
         }
     }
 
+    .ui-button.ui-state-default.ui-button-secondary, .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default  {
+        &:enabled:focus {
+            outline: 0 none;
+            background-color: #f2f2f2;
+        }
+    }
+
+    .ui-button.ui-state-default.ui-button-info, .ui-buttonset.ui-button-info > .ui-button.ui-state-default  {
+        background-color: $blue;
+        border-color: $blue;
+
+        &:enabled:hover {
+            background-color: darken($blue,5%);
+        }
+
+        &:enabled:focus {
+            outline: 0 none;
+            background-color: darken($blue,5%);
+        }
+    }
+
+    .ui-button.ui-state-default.ui-button-success, .ui-buttonset.ui-button-success > .ui-button.ui-state-default  {
+        background-color: $green;
+        border-color: $green;
+
+        &:enabled:hover {
+            background-color: darken($green,5%);
+        }
+
+        &:enabled:focus {
+            outline: 0 none;
+            background-color: darken($green,5%);
+        }
+    }
+
+    .ui-button.ui-state-default.ui-button-warning, .ui-buttonset.ui-button-warning > .ui-button.ui-state-default  {
+        background-color: $orange;
+        border-color: $orange;
+
+        &:enabled:hover {
+            background-color: darken($orange,5%);
+        }
+
+        &:enabled:focus {
+            outline: 0 none;
+            background-color: darken($orange,5%);
+        }
+    }
+
+    .ui-button.ui-state-default.ui-button-danger, .ui-buttonset.ui-button-danger > .ui-button.ui-state-default  {
+        background-color: $red;
+        border-color: $red;
+
+        &:enabled:hover {
+            background-color: darken($red,5%);
+        }
+
+        &:enabled:focus {
+            outline: 0 none;
+            background-color: darken($red,5%);
+        }
+    }
+
     .ui-fluid {
         .ui-button-icon-only {
             width: auto;
