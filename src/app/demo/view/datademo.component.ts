@@ -3,7 +3,7 @@ import {CarService} from '../service/carservice';
 import {NodeService} from '../service/nodeservice';
 import {EventService} from '../service/eventservice';
 import {Car} from '../domain/car';
-import {TreeNode} from 'primeng/primeng';
+import {TreeNode, SelectItem} from 'primeng/primeng';
 
 @Component({
     templateUrl: './datademo.component.html',
