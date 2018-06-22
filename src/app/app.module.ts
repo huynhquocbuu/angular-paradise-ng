@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
@@ -104,7 +104,7 @@ import {NodeService} from './demo/service/nodeservice';
         BrowserModule,
         FormsModule,
         AppRoutes,
-        HttpModule,
+        HttpClientModule,
         BrowserAnimationsModule,
         AccordionModule,
         AutoCompleteModule,

@@ -1,4 +1,4 @@
-import {Component, ElementRef, Renderer, ViewChild} from '@angular/core';
+import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 
 enum MenuMode {
     STATIC,
@@ -41,7 +41,7 @@ export class AppComponent {
 
     menuHoverActive: boolean;
 
-    constructor(public renderer: Renderer) {}
+    constructor(public renderer: Renderer2) {}
 
     onLayoutClick() {
         if (!this.menuClick && !this.menuButtonClick) {

@@ -1,22 +1,22 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class NodeService {
 
-    constructor(private http: Http) {}
+    constructor(private http: HttpClient) {}
 
     getFiles() {
-        return this.http.get('assets/demo/data/files.json')
+        return this.http.get<any>('assets/demo/data/files.json')
                     .toPromise()
-                    .then(res => <any[]> res.json().data)
+                    .then(res => <any[]> res.data)
                     .then(data => data);
     }
 
     getFilesystem() {
-        return this.http.get('assets/demo/data/filesystem.json')
+        return this.http.get<any>('assets/demo/data/filesystem.json')
                     .toPromise()
-                    .then(res => <any[]> res.json().data)
+                    .then(res => <any[]> res.data)
                     .then(data => data);
     }
 }
