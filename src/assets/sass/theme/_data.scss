@@ -339,6 +339,16 @@ body {
         }
     }
 
+    .ui-dataview {
+        .ui-dataview-content {
+            border-bottom: none;
+        }
+
+        .ui-paginator {
+            padding: $headerPadding;
+        }
+    }
+
     .ui-datagrid {
         .ui-datagrid-header {
             padding: $headerPadding;
@@ -499,83 +509,140 @@ body {
     }
 
     .ui-treetable {
-        .ui-treetable-header {
+        .ui-paginator {
             padding: $headerPadding;
         }
-
-        .ui-treetable-footer {
+        .ui-treetable-caption,
+        .ui-treetable-summary {
             padding: $headerPadding;
+            text-align: center;
+            font-weight: bold;
         }
 
-        thead {
-            th {
-                background-color: #ffffff;
-                padding: $headerPadding;
-                border-color: $contentBorderColor;
-                color: $textColor;
+        .ui-treetable-caption {
+            border-bottom: 0 none;
+        }
 
-                &.ui-state-hover {
+        .ui-treetable-summary {
+            border-top: 0 none;
+        }
+
+        .ui-treetable-thead > tr > th,
+        .ui-treetable-tbody > tr > td,
+        .ui-treetable-tfoot > tr > td {
+            padding: $listItemPadding;
+        }
+
+        .ui-treetable-thead > tr > th,
+        .ui-treetable-tfoot > tr > td {
+            color: $headerTextColor;
+            border: 1px solid $contentBorderColor;
+        }
+
+        .ui-treetable-thead tr .ui-inputtext {
+            width: 100%;
+        }
+
+        .ui-treetable-scrollable-header {
+            border: none;
+        }
+
+        .ui-treetable-loading-content {
+            .pi-spin {
+                -webkit-animation: 2s linear infinite fa-spin;
+                animation: 2s linear infinite fa-spin;
+                color: #ffffff;
+            }
+        }
+
+        .ui-sortable-column {
+            color: $textColor;
+
+            a, a:hover {
+                color: $textSecondaryColor;
+            }
+
+            &:not(.ui-state-highlight):hover {
+                @include list-item-hover();
+
+                a, a:hover {
                     @include list-item-hover();
                 }
+            }
 
-                &.ui-state-active {
-                    background-color: $primaryColor;
-                    border-color: darken($primaryColor,5%);
-                }
+            &.ui-state-highlight {
+                background-color: $primaryColor;
+                color: $primaryTextColor;
+                border-top-color: $primaryColor;
 
-                .ui-column-title {
-                    font-weight: 700;
+                a, a:hover {
+                    color: $primaryTextColor;
                 }
+            }
+
+            .ui-sortable-column-icon {
+                vertical-align: middle;
             }
         }
 
-        tfoot {
-            td {
-                background-color: #ffffff;
-                padding: $headerPadding;
-                border-color: $dividerColor;
-            }
-        }
+        .ui-treetable-tbody {
+            > tr {
+                background: $contentBgColor;
 
-        tbody {
-            > div {
-                &.ui-treetable-row-selectable {
-                    cursor: pointer;
-
-                    &:not(.ui-state-highlight):hover {
-                        background-color: $listItemHoverBgColor;
-                        border-color: darken($contentBorderColor,5%);
-                    }
-
-                    &.ui-state-highlight {
-                        border-color: darken($primaryColor,5%);
-
-                        .ui-treetable-toggler {
-                            color: #ffffff;
-                        }
-                    }
-                }
-
-                td {
-                    padding: $contentPadding;
+                > td {
+                    background: inherit;
+                    border: 1px solid $contentBorderColor;
 
                     .ui-treetable-toggler {
-                        font-size: $fontSize + 2;
-                        vertical-align: middle;
-                        display: inline-block;
-                        float: none;
-                        color: $textColor;
-                        line-height: inherit;
-                    }
+                        color: $textSecondaryColor;
+                        .pi {
+                            &.pi-chevron-right {
+                                &:before {
+                                    content: "\e905";
+                                }
+                                vertical-align: middle;
+                            }
 
-                    .ui-treetable-checkbox .ui-chkbox-icon {
-                        margin: 0;
-
-                        &.pi-check {
-                            color: $primaryColor;
+                            &.pi-chevron-down {
+                                &:before {
+                                    content: "\e906";
+                                }
+                                vertical-align: middle;
+                            }
                         }
                     }
+
+                    .ui-treetable-chkbox {
+                        vertical-align: middle;
+                        margin-right: .4em;
+                    }
                 }
+
+                &.ui-state-highlight {
+                    background-color: $primaryColor;
+                    color: $primaryTextColor;
+
+                    > td {
+                        background: inherit;
+                        border: $dividerColor;
+
+                        .ui-treetable-toggler {
+                            color: $primaryTextColor;
+                        }
+                    }
+
+                    &.ui-contextmenu-selected {
+                        background-color: $primaryColor;
+                        color: $primaryTextColor;
+                    }
+                }
+            }
+        }
+
+        &.ui-treetable-hoverable-rows {
+            .ui-treetable-tbody > tr:not(.ui-state-highlight):hover {
+                cursor: pointer;
+                @include list-item-hover();
             }
         }
     }
