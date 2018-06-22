@@ -129,7 +129,7 @@ body {
     }
 
     .ui-menu {
-        width: 100%;
+        min-width: 12.5em;
         padding: 0;
 
         :first-child.ui-submenu-header {
@@ -370,7 +370,7 @@ body {
             }
         }
     }
-  
+
     .ui-tabmenu {
         border: 0 none;
 

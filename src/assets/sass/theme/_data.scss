@@ -5,6 +5,9 @@ body {
 
         .ui-paginator-first,.ui-paginator-prev,.ui-paginator-next,.ui-paginator-last {
             color: $textColor;
+            padding: 0;
+            display: inline-block;
+            vertical-align: bottom;
             border: 1px solid transparent;
             @include transition(color .3s);
 
@@ -19,9 +22,15 @@ body {
         }
 
         .ui-paginator-pages {
+            padding: 0;
+            vertical-align: middle;
+            display: inline-block;
+
             .ui-paginator-page {
                 color: $textColor;
-                padding: .1em .5em;
+                padding: 0;
+                vertical-align: middle;
+                display: inline-block;
                 border: 1px solid transparent;
                 @include transition(color .3s);
 
@@ -71,13 +80,32 @@ body {
         }
 
         .ui-sortable-column {
+            color: $headerTextColor;
+
+            a, a:hover {
+                color: $headerTextColor;
+            }
+
             &:not(.ui-state-highlight):hover {
-              background-color: $datatableHoverBgColor;
+                @include list-item-hover();
+
+                a, a:hover {
+                    @include list-item-hover();
+                }
             }
 
             &.ui-state-highlight {
-              background-color: $primaryColor;
-              color: $primaryTextColor;
+                background-color: $primaryColor;
+                color: $primaryTextColor;
+                border-top-color: $primaryColor;
+
+                a, a:hover {
+                    color: $primaryTextColor;
+                }
+            }
+
+            .ui-sortable-column-icon {
+                vertical-align: middle;
             }
         }
 
@@ -222,11 +250,11 @@ body {
                         color: $textColor;
                         @include transition(color .3s);
 
-                        &.fa-chevron-circle-right {
+                        &.pi-chevron-circle-right {
                             @include icon_override("\f054");
                         }
 
-                        &.fa-chevron-circle-down {
+                        &.pi-chevron-circle-down {
                             @include icon_override("\f078");
                         }
 
@@ -457,8 +485,14 @@ body {
                     color: darken($headerIconColor, 10%);
                 }
 
-                &.fa-dot-circle-o {
+                &.pi-circle-off {
+                    color: $headerIconColor;
+                    @include icon-override("\F10C")
+                }
+
+                &.pi-circle-on {
                     color: $primaryColor;
+                    @include icon-override("\F192")
                 }
             }
         }
@@ -537,7 +571,7 @@ body {
                     .ui-treetable-checkbox .ui-chkbox-icon {
                         margin: 0;
 
-                        &.fa-check {
+                        &.pi-check {
                             color: $primaryColor;
                         }
                     }

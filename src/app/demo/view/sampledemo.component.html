@@ -96,14 +96,14 @@
                         Button
                     </div>
                     <div class="ui-g-12 ui-md-4">
-                        <button pButton type="button" label="Edit" icon="fa-edit"></button>
+                        <button pButton type="button" label="Edit" icon="fa fa-edit"></button>
                     </div>
 
                     <div class="ui-g-12 ui-md-2">
                         SplitButton
                     </div>
                     <div class="ui-g-12 ui-md-4">
-                        <p-splitButton label="Save" icon="fa-save" [model]="splitButtonItems"></p-splitButton>
+                        <p-splitButton label="Save" icon="fa fa-save" [model]="splitButtonItems"></p-splitButton>
                     </div>
                     <div class="ui-g-12 ui-md-2">
                         <label for="multiselect">MultiSelect</label>
@@ -135,7 +135,7 @@
                         Dialog
                     </div>
                     <div class="ui-g-12 ui-md-4">
-                        <button type="button" label="Login" icon="fa-external-link" (click)="dialogVisible=true" pButton></button>
+                        <button type="button" label="Login" icon="fa fa-external-link" (click)="dialogVisible=true" pButton></button>
                     </div>
                 </div>
 
@@ -151,7 +151,7 @@
 
                     <p-footer>
                         <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                            <button type="button" label="Login" icon="fa-user" (click)="dialogVisible=false" pButton></button>
+                            <button type="button" label="Login" icon="fa fa-user" (click)="dialogVisible=false" pButton></button>
                         </div>
                     </p-footer>
                 </p-dialog>
@@ -208,7 +208,7 @@
 
             <div class="card card-w-title">
                 <h1>Menu</h1>
-                <p-menu [model]="menuItems"></p-menu>
+                <p-menu [model]="menuItems" [style]="{'width':'100%'}"></p-menu>
             </div>
 
             <div class="card card-w-title">

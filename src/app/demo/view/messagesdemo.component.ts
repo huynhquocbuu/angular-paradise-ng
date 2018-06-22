@@ -2,7 +2,12 @@ import {Component} from '@angular/core';
 import {Message} from 'primeng/primeng';
 
 @Component({
-    templateUrl: './messagesdemo.component.html'
+    templateUrl: './messagesdemo.component.html',
+    styles: [`
+        :host ::ng-deep button {
+            margin-right: .25em;
+        }
+    `]
 })
 export class MessagesDemoComponent {
 

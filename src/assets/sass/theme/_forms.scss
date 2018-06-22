@@ -69,27 +69,15 @@ body {
             .ui-button-text {
                 padding: .385em .6em .385em 2em;
             }
-
-            .fa {
-                margin-top: -.5em;
-            }
         }
 
         &.ui-button-text-icon-right {
             .ui-button-text {
                 padding: .385em 2em .385em .6em;
             }
-
-            .fa {
-                margin-top: -.5em;
-            }
         }
 
         &.ui-button-icon-only {
-            .fa {
-                margin-left: -.6em;
-            }
-
             .ui-button-text {
                 padding: .385em;
             }
@@ -246,6 +234,10 @@ body {
         }
     }
 
+    .ui-chkbox-label {
+        margin: 0 0 0 .5em;
+    }
+
     .ui-radiobutton {
         display: inline-block;
         vertical-align: middle;
@@ -287,12 +279,19 @@ body {
                 width: 8px;
                 height: 8px;
                 display: inline-block;
+                margin-top: 0.23em;
+                position: initial;
+                margin-left: 0;
 
                 &:before {
                     display: none;
                 }
             }
         }
+    }
+
+    .ui-radiobutton-label {
+        margin: 0 0 0 .5em;
     }
 
     .ui-inputswitch {
@@ -335,7 +334,7 @@ body {
         .ui-autocomplete-dropdown {
             width: 2em;
 
-            .fa {
+            .pi {
                 @include icon_override("\f078");
             }
 
@@ -478,10 +477,8 @@ body {
             text-align: center;
             padding: 0;
 
-            .fa-caret-down {
+            .pi-caret-down {
                 color: $textSecondaryColor;
-                margin-top: .425em;
-                margin-left: 0;
                 @include icon_override("\f078");
             }
         }
@@ -491,7 +488,7 @@ body {
             @include border-shadow();
 
             .ui-dropdown-trigger {
-                .fa-caret-down {
+                .pi-caret-down {
                     color: $primaryColor;
                 }
             }
@@ -512,7 +509,7 @@ body {
                 padding-right: 20px;
             }
 
-            .fa {
+            .pi {
                 top: 12px;
                 right: 15px;
             }
@@ -559,8 +556,7 @@ body {
             padding: 0;
             text-align: center;
 
-            .fa {
-                margin-top: .425em;
+            .pi {
                 width: auto;
                 color: $textSecondaryColor;
                 @include icon_override("\f078");
@@ -576,7 +572,7 @@ body {
             @include border-shadow();
 
             .ui-multiselect-trigger {
-                .fa {
+                .pi {
                     color: $primaryColor;
                 }
             }
@@ -608,7 +604,7 @@ body {
                     text-indent: 1.5em;
                 }
 
-                .fa {
+                .pi {
                     color: $textColor;
                     top: .3em;
                     left: 0.2em;
@@ -689,7 +685,7 @@ body {
                     padding-left: 1.5em;
                 }
 
-                .fa {
+                .pi {
                     top: .2em;
                     left: .4em;
                 }
@@ -751,12 +747,12 @@ body {
             }
         }
 
-        .fa {
-            font-size: 20px;
-            height: 20px;
-            width: 20px;
+        .pi {
+            font-size: 25px;
+            height: 25px;
+            width: 25px;
 
-            &.fa-ban {
+            &.pi-ban {
                 color: $pink;
 
                 &:hover {
@@ -914,7 +910,8 @@ body {
         }
 
         .ui-menu {
-            min-width: 100%;
+            width: 100%;
+            min-width: 12.5em;
         }
     }
 
