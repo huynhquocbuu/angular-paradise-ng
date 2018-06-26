@@ -576,6 +576,11 @@ body {
                             overflow: visible;
                         }
                     }
+
+                    .ui-scrollpanel-bar {
+                        display: none;
+                    }
+
                     .layout-menu-container {
                       width: 92px;
                     }
