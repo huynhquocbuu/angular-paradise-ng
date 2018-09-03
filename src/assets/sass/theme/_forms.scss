@@ -597,7 +597,7 @@ body {
                 padding: $listItemPadding;
                 @include border-radius(0);
 
-                &:not(.ui-state-highlight):hover {
+                &:not(.ui-state-highlight):not(.ui-state-disabled):hover {
                     @include list-item-hover();
                 }
 
@@ -726,7 +726,7 @@ body {
                     vertical-align: middle;
                 }
 
-                &:not(.ui-state-highlight):hover {
+                &:not(.ui-state-highlight):not(.ui-state-disabled):hover {
                     border-radius: 0;
                     @include list-item-hover();
                 }
@@ -1017,6 +1017,12 @@ body {
                     }
                 }
             }
+
+            .ui-monthpicker {
+                a.ui-monthpicker-month:not(.ui-state-active):hover {
+                    background-color: $listItemHoverBgColor;
+                }
+            }
         }
 
         .ui-datepicker-header {
@@ -1028,14 +1034,12 @@ body {
 
             .ui-datepicker-prev {
                 cursor: pointer;
-                top:1em;
                 color: $headerIconColor;
                 @include transition(color $transitionDuration);
             }
 
             .ui-datepicker-next {
                 cursor: pointer;
-                top:1em;
                 color: $headerIconColor;
                 @include transition(color $transitionDuration);
             }
@@ -1047,12 +1051,16 @@ body {
             td {
                 padding: 2px;
 
-                a,span {
+                > a, > span {
                     min-width: 15px;
                     text-align: center;
                     color: $textColor;
                     padding: .35em;
                     @include border-radius($borderRadius);
+                }
+
+                > a {
+                    cursor: pointer;
 
                     &:hover {
                         background-color: $listItemHoverBgColor;
@@ -1086,6 +1094,42 @@ body {
 
                 &:hover {
                     color: $primaryColor;
+                }
+            }
+        }
+
+        .ui-monthpicker {
+            .ui-monthpicker-month {
+                color: $textColor;
+
+                &.ui-state-active {
+                    color: $primaryTextColor;
+                    background-color: $primaryColor;
+                }
+            }
+        }
+
+        &.ui-datepicker-multiple-month {
+            width: auto;
+            .ui-datepicker-group {
+                border-right: 1px solid $dividerColor;
+                padding-top: 0;
+                padding-bottom: 0;
+
+                .ui-datepicker-calendar-container {
+                    tbody {
+                        padding-right: .25em;
+                        padding-left: .25em;
+                    }
+                }
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                    border-right: 0 none;
                 }
             }
         }
@@ -1176,11 +1220,15 @@ body {
         }
     }
 
+    .ui-calendar .ui-datepicker {
+        min-width: 20em;
+    }
+
     /* Validation */
     .ui-inputtext.ng-dirty.ng-invalid,
     p-dropdown.ng-dirty.ng-invalid > .ui-dropdown,
     p-autocomplete.ng-dirty.ng-invalid > .ui-autocomplete > .ui-inputtext,
-    p-calendar.ng-dirty.ng-invalid > span > .ui-inputtext,
+    p-calendar.ng-dirty.ng-invalid > .ui-calendar > .ui-inputtext,
     p-chips.ng-dirty.ng-invalid > .ui-inputtext,
     p-inputmask.ng-dirty.ng-invalid > .ui-inputtext,
     p-checkbox.ng-dirty.ng-invalid .ui-chkbox-box,
