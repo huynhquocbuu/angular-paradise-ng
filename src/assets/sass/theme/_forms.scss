@@ -397,10 +397,6 @@ body {
         .ui-autocomplete-dropdown {
             width: 2em;
 
-            .pi {
-                @include icon_override("\f078");
-            }
-
             &.ui-button-icon-only {
                 .ui-button-text {
                     padding: 0.385em;
@@ -542,7 +538,6 @@ body {
 
             .pi-caret-down {
                 color: $textSecondaryColor;
-                @include icon_override("\f078");
             }
         }
 
@@ -622,7 +617,6 @@ body {
             .pi {
                 width: auto;
                 color: $textSecondaryColor;
-                @include icon_override("\f078");
             }
         }
 
@@ -1021,22 +1015,14 @@ body {
                 cursor: pointer;
                 top:1em;
                 color: $headerIconColor;
-                @include icon_override("\f053");
                 @include transition(color $transitionDuration);
-                span {
-                    display: none;
-                }
             }
 
             .ui-datepicker-next {
                 cursor: pointer;
                 top:1em;
                 color: $headerIconColor;
-                @include icon_override("\f054");
                 @include transition(color $transitionDuration);
-                span {
-                    display: none;
-                }
             }
         }
 
@@ -1124,12 +1110,6 @@ body {
 
             .ui-button {
                 margin-right: 8px;
-
-                &.ui-fileupload-upload {
-                    .ui-icon {
-                        @include icon_override("\f093");
-                    }
-                }
             }
         }
 

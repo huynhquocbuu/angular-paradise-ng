@@ -146,14 +146,6 @@ body {
 
                 .ui-accordion-toggle-icon {
                     vertical-align: middle;
-
-                    &.pi-caret-right {
-                        @include icon_override("\f054");
-                    }
-
-                    &.pi-caret-down {
-                        @include icon_override("\f078");
-                    }
                 }
             }
         }
@@ -247,6 +239,10 @@ body {
 
     .ui-toolbar {
         padding: $headerPadding;
+
+        .ui-toolbar-separator {
+            margin: 0 .5em;
+        }
     }
 }
 

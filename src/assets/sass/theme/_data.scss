@@ -15,7 +15,7 @@ body {
                 color: $primaryColor;
             }
 
-            &:focus {
+            &:not(.ui-state-disabled):focus {
                 outline: 0 none;
                 border: 1px solid $primaryColor;
             }
@@ -250,14 +250,6 @@ body {
                         color: $textColor;
                         @include transition(color .3s);
 
-                        &.pi-chevron-circle-right {
-                            @include icon_override("\f054");
-                        }
-
-                        &.pi-chevron-circle-down {
-                            @include icon_override("\f078");
-                        }
-
                         &:hover {
                             color: $primaryColor;
                         }
@@ -471,14 +463,6 @@ body {
             margin-top: .4em;
             @include transition(color .3s);
 
-            &.ui-carousel-next-button {
-                @include icon-override("\f054");
-            }
-
-            &.ui-carousel-prev-button {
-                @include icon-override("\f053");
-            }
-
             &:not(.ui-state-disabled):hover {
                 color: $primaryColor;
             }
@@ -497,12 +481,10 @@ body {
 
                 &.pi-circle-off {
                     color: $headerIconColor;
-                    @include icon-override("\F10C")
                 }
 
                 &.pi-circle-on {
                     color: $primaryColor;
-                    @include icon-override("\F192")
                 }
             }
         }
@@ -747,14 +729,46 @@ body {
     .fc {
         .fc-toolbar {
             .ui-icon-circle-triangle-e {
-                @include icon_override("\f054");
+                background: none !important;
+                font-family: 'primeicons';
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                display: inline-block;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-indent: 0px !important;
+                text-align: center;
+
+                &:before {
+                    content: "\e901";
+                }
                 height: auto;
                 width: auto;
                 overflow: visible;
             }
 
             .ui-icon-circle-triangle-w {
-                @include icon_override("\f053");
+                background: none !important;
+                font-family: 'primeicons';
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                display: inline-block;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-indent: 0px !important;
+                text-align: center;
+
+                &:before {
+                    content: "\e900";
+                }
                 height: auto;
                 width: auto;
                 overflow: visible;
