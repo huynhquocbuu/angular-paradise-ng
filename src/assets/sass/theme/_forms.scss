@@ -191,8 +191,24 @@ body {
     }
 
     .ui-button.ui-state-default.ui-button-secondary, .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default  {
+        background-color: $secondary;
+        border-color: $secondary;
+        color: $textColor;
+
+        &:enabled:hover {
+            border-color: darken($secondary,5%);
+            background-color: darken($secondary,5%);
+        }
+
         &:enabled:focus {
+            border-color: $secondary;
             outline: 0 none;
+            background-color: lighten($secondary,2%);
+        }
+
+        &:enabled:active {
+            border-color: darken($secondary,10%);
+            background-color: darken($secondary,10%);
         }
     }
 
