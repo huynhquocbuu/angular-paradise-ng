@@ -82,14 +82,14 @@ body {
         .ui-sortable-column {
             color: $headerTextColor;
 
-            a, a:hover {
+            .ui-sortable-column-icon {
                 color: $headerTextColor;
             }
 
             &:not(.ui-state-highlight):hover {
                 @include list-item-hover();
 
-                a, a:hover {
+                .ui-sortable-column-icon {
                     @include list-item-hover();
                 }
             }
@@ -99,13 +99,9 @@ body {
                 color: $primaryTextColor;
                 border-top-color: $primaryColor;
 
-                a, a:hover {
+                .ui-sortable-column-icon {
                     color: $primaryTextColor;
                 }
-            }
-
-            .ui-sortable-column-icon {
-                vertical-align: middle;
             }
         }
 
@@ -149,7 +145,7 @@ body {
         }
 
         &.ui-table-hoverable-rows {
-            .ui-table-tbody > tr:not(.ui-state-highlight):not(.ui-contextmenu-selected):hover {
+            .ui-table-tbody > tr.ui-selectable-row:not(.ui-state-highlight):not(.ui-contextmenu-selected):hover {
               cursor: pointer;
               background-color: $datatableHoverBgColor;
             }
@@ -540,14 +536,14 @@ body {
         .ui-sortable-column {
             color: $textColor;
 
-            a, a:hover {
+            .ui-sortable-column-icon {
                 color: $textSecondaryColor;
             }
 
             &:not(.ui-state-highlight):hover {
                 @include list-item-hover();
 
-                a, a:hover {
+                .ui-sortable-column-icon {
                     @include list-item-hover();
                 }
             }
@@ -557,7 +553,7 @@ body {
                 color: $primaryTextColor;
                 border-top-color: $primaryColor;
 
-                a, a:hover {
+                .ui-sortable-column-icon {
                     color: $primaryTextColor;
                 }
             }
