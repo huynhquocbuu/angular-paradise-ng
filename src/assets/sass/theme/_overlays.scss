@@ -18,6 +18,25 @@ body {
                 color: $primaryTextColor;
             }
         }
+
+        &:after {
+            border-color: rgba($contentBgColor, 0);
+            border-bottom-color: $contentBgColor;
+        }
+
+        &:before {
+            border-bottom-color: rgba(0, 0, 0, 0.05);
+        }
+
+        &.ui-overlaypanel-flipped {
+            &:after {
+                border-top-color: $contentBgColor;
+            }
+
+            &:before {
+                border-top-color: rgba(0, 0, 0, 0.05);
+            }
+        }
     }
 
     .ui-dialog {

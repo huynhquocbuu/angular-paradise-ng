@@ -51,7 +51,7 @@
                 <ng-template let-car pTemplate="listItem">
                     <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
                         <div class="ui-g-12 ui-md-3" style="text-align:center">
-                            <img src="assets/demo/images/car/{{car.brand}}.gif">
+                            <img width="72" src="assets/demo/images/car/{{car.brand}}-big.gif">
                         </div>
                         <div class="ui-g-12 ui-md-8 car-details">
                             <div class="ui-g">
@@ -84,7 +84,7 @@
                 <ng-template let-car pTemplate="gridItem">
                     <div style="padding:.5em" class="ui-g-12 ui-md-3">
                         <p-panel [header]="car.vin" [style]="{'text-align':'center'}">
-                            <img src="assets/demo/images/car/{{car.brand}}.gif">
+                            <img width="48" src="assets/demo/images/car/{{car.brand}}-big.gif">
                             <div class="car-detail">{{car.year}} - {{car.color}}</div>
                             <hr class="ui-widget-content" style="border-top:0">
                             <button pButton type="button" icon="pi pi-search"  style="margin-top:0"></button>
@@ -95,6 +95,61 @@
         </div>
     </div>
 
+    <div class="ui-g-12">
+        <div class="card card-w-title">
+            <h1>VirtualScroller</h1>
+            <p-virtualScroller [value]="cars3" scrollHeight="500px" [itemSize]="150" [rows]="40" [cache]="false"
+                               [lazy]="true" (onLazyLoad)="loadCarsLazy($event)" [totalRecords]="200">
+                <p-header>
+                    List of Cars
+                </p-header>
+                <ng-template let-car pTemplate="item" let-i="index">
+                    <div class="ui-g car-item">
+                        <div class="ui-g-12 ui-md-2 index-col" style="text-align:center">
+                            <div style="font-size: 24px; text-align: center; padding-top: 48px">{{i}}</div>
+                        </div>
+                        <div class="ui-g-12 ui-md-2 image-col" style="text-align:center">
+                            <img style="padding-top: 23px" width="72" src="assets/demo/images/car/{{car?.brand}}-big.gif">
+                        </div>
+                        <div class="ui-g-12 ui-md-8">
+                            <div class="ui-g">
+                                <div class="ui-g-2 ui-sm-6">Vin: </div>
+                                <div class="ui-g-10 ui-sm-6">{{car?.vin}}</div>
+
+                                <div class="ui-g-2 ui-sm-6">Year: </div>
+                                <div class="ui-g-10 ui-sm-6">{{car?.year}}</div>
+
+                                <div class="ui-g-2 ui-sm-6">Brand: </div>
+                                <div class="ui-g-10 ui-sm-6">{{car?.brand}}</div>
+
+                                <div class="ui-g-2 ui-sm-6">Color: </div>
+                                <div class="ui-g-10 ui-sm-6">{{car?.color}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template let-car pTemplate="loadingItem">
+                    <div class="ui-g car-item empty-car-item">
+                        <div class="ui-g-12 ui-md-2 index-col">
+                            <div class="empty-car-item-index"></div>
+                        </div>
+                        <div class="ui-g-12 ui-md-2 image-col">
+                            <div class="empty-car-item-image"></div>
+                        </div>
+                        <div class="ui-g-12 ui-md-8">
+                            <div class="ui-g">
+                                <div class="ui-g-12"><div class="empty-car-item-text"></div></div>
+                                <div class="ui-g-12"><div class="empty-car-item-text"></div></div>
+                                <div class="ui-g-12"><div class="empty-car-item-text"></div></div>
+                                <div class="ui-g-12"><div class="empty-car-item-text"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-virtualScroller>
+        </div>
+    </div>
+
     <div class="ui-g-12 ui-md-8">
         <div class="card card-w-title">
             <h1>PickList</h1>
@@ -102,7 +157,7 @@
                 [sourceStyle]="{'height':'250px'}" [targetStyle]="{'height':'250px'}">
                 <ng-template let-car pTemplate="item">
                     <div class="ui-helper-clearfix">
-                        <img src="assets/demo/images/car/{{car.brand}}.gif" style="display:inline-block;margin:2px 0 2px 2px"/>
+                        <img width="48" src="assets/demo/images/car/{{car.brand}}-big.gif" style="display:inline-block;margin:2px 0 2px 2px"/>
                         <div style="font-size:16px;float:right;margin:15px 5px 0 0">{{car.brand}}</div>
                     </div>
                 </ng-template>
@@ -116,7 +171,7 @@
             <p-orderList [value]="orderListCars" [listStyle]="{'height':'250px'}" [responsive]="true" header="OrderList">
                 <ng-template let-car pTemplate="item">
                     <div class="ui-helper-clearfix">
-                        <img src="assets/demo/images/car/{{car.brand}}.gif" style="display:inline-block;margin:2px 0 2px 2px" />
+                        <img width="48" src="assets/demo/images/car/{{car.brand}}-big.gif" style="display:inline-block;margin:2px 0 2px 2px" />
                         <div style="font-size:16px;float:right;margin:15px 5px 0 0">{{car.brand}}</div>
                     </div>
                 </ng-template>
@@ -150,6 +205,9 @@
         <div class="card card-w-title">
             <h1>TreeTable</h1>
             <p-treeTable [value]="files4" [columns]="cols2" selectionMode="checkbox" [(selection)]="selectedNode3">
+                <ng-template pTemplate="caption">
+                    FileSystem
+                </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Name</th>
@@ -184,7 +242,7 @@
                 <ng-template let-car pTemplate="item">
                     <div class="ui-g" style="text-align:center">
                         <div class="ui-g-12" style="text-align:Center">
-                            <img src="assets/demo/images/car/{{car.brand}}.gif" />
+                            <img width="48" src="assets/demo/images/car/{{car.brand}}-big.gif" />
                         </div>
                         <div class="ui-g-6">Vin: </div>
                         <div class="ui-g-6" style="font-weight:bold">{{car.vin}}</div>
