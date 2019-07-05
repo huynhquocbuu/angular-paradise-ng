@@ -4,6 +4,9 @@ import {NodeService} from '../service/nodeservice';
 import {EventService} from '../service/eventservice';
 import {Car} from '../domain/car';
 import {TreeNode, SelectItem, LazyLoadEvent} from 'primeng/primeng';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 @Component({
     templateUrl: './datademo.component.html',
@@ -190,13 +193,13 @@ export class DataDemoComponent implements OnInit {
         ];
 
         this.fullcalendarOptions = {
+            plugins: [ dayGridPlugin, timeGridPlugin, interactionPlugin ],
             defaultDate: '2016-01-12',
             header: {
-                left: 'prev,next, today',
+                left: 'prev,next today',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            editable: true
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            }
         };
 
         this.data = [{

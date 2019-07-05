@@ -395,8 +395,6 @@ body {
 
     .ui-orderlist {
         .ui-orderlist-controls {
-            margin-right: 10px;
-
             button {
                 font-size: $fontSize + 2;
             }
@@ -405,7 +403,7 @@ body {
         .ui-orderlist-caption {
             padding: $headerPadding;
             box-sizing: border-box;
-            width: 200px;
+            border-bottom: 0;
         }
 
         .ui-orderlist-list {
@@ -723,59 +721,79 @@ body {
     }
 
     .fc {
-        .fc-toolbar {
-            .ui-icon-circle-triangle-e {
-                background: none !important;
-                font-family: 'primeicons';
-                speak: none;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-                display: inline-block;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                text-indent: 0px !important;
-                text-align: center;
+        .fc-button {
+            color: $primaryTextColor;
+            background-color: $primaryColor;
+            border: 1px solid transparent;
+            font-size: $fontSize;
+            font-family: $fontFamily;
+            height: 2.25em;
+            padding: 0 1em;
 
-                &:before {
-                    content: "\e901";
-                }
-                height: auto;
-                width: auto;
-                overflow: visible;
-            }
-
-            .ui-icon-circle-triangle-w {
-                background: none !important;
-                font-family: 'primeicons';
-                speak: none;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-                display: inline-block;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                text-indent: 0px !important;
-                text-align: center;
-
-                &:before {
-                    content: "\e900";
-                }
-                height: auto;
-                width: auto;
-                overflow: visible;
-            }
-        }
-        .fc-event-container {
-            .fc-event {
-                border-color: $primaryColor;
+            &:enabled:not(:focus):not(.fc-button-active):hover {
                 background-color: darken($primaryColor,5%);
+                border-color: darken($primaryColor,5%);
+            }
+
+            &:enabled:not(.fc-button-active):focus {
+                outline: 0 none;
+                background-color: lighten($primaryColor,5%);
+                border-color: lighten($primaryColor,5%);
+                box-shadow: none;
+            }
+
+            &.fc-button-active {
+                background-color: darken($primaryColor,10%);
+                border-color: darken($primaryColor,10%);
+
+                &:focus {
+                    box-shadow: none;
+                }
             }
         }
+
+        th {
+            padding: $headerPadding;
+        }
+
+        .fc-head {
+            .fc-row {
+                background-color: $headerBgColor;
+                color: $headerTextColor;
+
+                th {
+                    border: 1px solid $headerBorderColor;
+                }
+            }
+        }
+
+        td.fc-today {
+            background-color: $primaryColor;
+            border: 1px solid $primaryColor;
+            color: $primaryTextColor;
+        }
+
+        .fc-toolbar {
+            .ui-state-active {
+                background-color: $contentBgColor;
+                border: 1px solid $contentBorderColor;
+            }
+        }
+
+        table {
+            box-sizing: border-box;
+        }
+
+        div.ui-widget-content {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .fc-event {
+            border-color: $primaryColor;
+            background-color: darken($primaryColor,5%);
+        }
+
     }
 
     .ui-virtualscroller {

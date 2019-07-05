@@ -19,7 +19,7 @@ export class AppComponent {
 
     darkMenu: boolean;
 
-    documentClickListener: Function;
+    documentClickListener: () => void;
 
     staticMenuInactive: boolean;
 

@@ -1,10 +1,14 @@
-import { ParadisePage } from './app.po';
+import {ParadisePage} from './app.po';
 
-describe('paradise App', () => {
-  let page: ParadisePage;
+describe('Paradise App', () => {
+    let page: ParadisePage;
 
-  beforeEach(() => {
-    page = new ParadisePage();
-  });
+    beforeEach(() => {
+        page = new ParadisePage();
+    });
 
+    it('should display welcome message', () => {
+        page.navigateTo();
+        expect(page.getTitleText()).toEqual('Welcome to Paradise!');
+    });
 });
