@@ -7,7 +7,6 @@ body {
         }
 
         &.ui-messages-info {
-            display: none;
             background-color: $infoMessageBgColor;
             border-color: $infoMessageBgColor;
             color: $infoMessageTextColor;
