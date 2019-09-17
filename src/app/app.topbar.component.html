@@ -1,6 +1,6 @@
 <div class="topbar">
     <a routerLink="/" class="topbar-logo">
-        <img [attr.src]="app.layout === 'default' ? 'assets/layout/images/logo-black.png' : 'assets/layout/images/logo-white.png'" style="border: 0 none">
+        <img [src]="app.layout === 'default' ? 'assets/layout/images/logo-black.png' : 'assets/layout/images/logo-white.png'" style="border: 0 none">
     </a>
 
     <a href="#" id="menu-button" (click)="app.onMenuButtonClick($event)">

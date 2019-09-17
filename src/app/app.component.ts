@@ -15,9 +15,9 @@ export class AppComponent {
 
     menu: MenuMode = MenuMode.STATIC;
 
-    layout = 'default';
+    layout = 'deepsea';
 
-    darkMenu: boolean;
+    darkMenu = true;
 
     documentClickListener: () => void;
 

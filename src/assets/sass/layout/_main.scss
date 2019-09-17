@@ -441,10 +441,6 @@ body {
                         &:hover {
                             background-color: lighten($darkMenuBgColor, 10%);
                         }
-
-                        &.active-menuitem-routerlink {
-                            color: lighten($primaryColor, 25%);
-                        }
                     }
 
                     &.active-menuitem {
