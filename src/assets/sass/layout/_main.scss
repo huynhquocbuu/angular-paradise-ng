@@ -8,6 +8,7 @@ body {
     font-size: $fontSize;
     color: $textColor;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     padding:0;
     margin:0;
     min-height: 100%;
@@ -192,6 +193,7 @@ body {
         top: 70px;
         height: 100%;
         width: 240px;
+        overflow: auto;
         border-right: solid 1px #dee4e9;
         background-color: #ffffff;
         @include box-sizing(border-box);

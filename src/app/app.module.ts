@@ -28,7 +28,6 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FullCalendarModule } from 'primeng/fullcalendar';
 import { GalleriaModule } from 'primeng/galleria';
-import { GrowlModule } from 'primeng/growl';
 import { InplaceModule } from 'primeng/inplace';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputSwitchModule } from 'primeng/inputswitch';
@@ -126,7 +125,6 @@ import {NodeService} from './demo/service/nodeservice';
         FileUploadModule,
         FullCalendarModule,
         GalleriaModule,
-        GrowlModule,
         InplaceModule,
         InputMaskModule,
         InputSwitchModule,

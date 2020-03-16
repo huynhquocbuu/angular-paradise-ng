@@ -1,17 +1,10 @@
 {
     "extends": "tslint:recommended",
     "rules": {
-        "variable-name": [
-            true,
-            "ban-keywords",
-            "check-format",
-            "allow-leading-underscore",
-            "allow-pascal-case"
-        ],
         "array-type": false,
         "arrow-parens": false,
         "deprecation": {
-            "severity": "warn"
+            "severity": "warning"
         },
         "component-class-suffix": true,
         "contextual-lifecycle": true,

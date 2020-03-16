@@ -1,4 +1,4 @@
-import {Component, AfterViewInit, Input, OnInit, OnDestroy, EventEmitter, ViewChild, ElementRef} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
@@ -9,13 +9,11 @@ import {AppComponent} from './app.component';
     selector: 'app-menu',
     templateUrl: './app.menu.component.html'
 })
-export class AppMenuComponent implements OnInit, OnDestroy, AfterViewInit {
+export class AppMenuComponent implements OnInit {
 
     @Input() reset: boolean;
 
     model: any[];
-
-    @ViewChild('layoutMenuScroller', { static: true }) layoutMenuScrollerViewChild: ScrollPanel;
 
     constructor(public app: AppComponent) {}
 
@@ -168,18 +166,8 @@ export class AppMenuComponent implements OnInit, OnDestroy, AfterViewInit {
         layoutLink.href = 'assets/layout/css/layout-' + layout + '.css';
     }
 
-    ngAfterViewInit() {
-      setTimeout(() => {this.layoutMenuScrollerViewChild.moveBar(); }, 100);
-    }
-
     onWrapperClick(event: Event) {
         this.app.onMenuClick(event);
-        setTimeout(() => {
-          this.layoutMenuScrollerViewChild.moveBar();
-        }, 450);
-    }
-
-    ngOnDestroy() {
     }
 }
 
@@ -276,9 +264,6 @@ export class AppSubMenuComponent {
 
         // prevent hash change
         if (item.items || (!item.url && !item.routerLink)) {
-            setTimeout(() => {
-              this.appMenu.layoutMenuScrollerViewChild.moveBar();
-            }, 450);
             event.preventDefault();
         }
 
@@ -298,7 +283,7 @@ export class AppSubMenuComponent {
     }
 
     onMouseEnter(index: number) {
-        if (this.root && this.app.menuHoverActive && this.app.slimMenu) {
+        if (this.root && this.app.menuHoverActive && this.app.slimMenu && !this.app.isMobile()) {
             this.activeIndex = index;
         }
     }

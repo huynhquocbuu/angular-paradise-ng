@@ -1,5 +1,4 @@
 <div class="layout-menu-wrapper" [class.layout-menu-dark]="app.darkMenu" (click)="onWrapperClick($event)">
-    <p-scrollPanel #layoutMenuScroller [style]="{height: '100%'}">
         <div class="layout-menu-container">
             <div class="mobile-search">
                 <i class="fa fa-fw fa-search topbar-search-icon"></i>
@@ -7,6 +6,5 @@
             </div>
             <ul app-submenu [item]="model" root="true" class="layout-menu" visible="true" [reset]="reset" parentActive="true"></ul>
         </div>
-    </p-scrollPanel>
 </div>
 
