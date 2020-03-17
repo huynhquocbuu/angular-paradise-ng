@@ -1,4 +1,5 @@
-import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import {Component, Renderer2} from '@angular/core';
+import { MenuService } from './app.menu.service';
 
 enum MenuMode {
     STATIC,
@@ -37,17 +38,19 @@ export class AppComponent {
 
     activeTopbarItem: Element;
 
-    resetSlim: boolean;
-
     menuHoverActive: boolean;
 
-    constructor(public renderer: Renderer2) {}
+    constructor(public renderer: Renderer2, private menuService: MenuService) {}
 
     onLayoutClick() {
         if (!this.menuClick && !this.menuButtonClick) {
+
+            if (this.slimMenu) {
+                this.menuService.reset();
+            }
+
             this.mobileMenuActive = false;
             this.overlayMenuActive = false;
-            this.resetSlim = true;
             this.menuHoverActive = false;
         }
 
@@ -97,7 +100,6 @@ export class AppComponent {
 
     onMenuClick(event: Event) {
         this.menuClick = true;
-        this.resetSlim = false;
     }
 
     get slimMenu(): boolean {

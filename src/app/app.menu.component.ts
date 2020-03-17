@@ -1,8 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {trigger, state, style, transition, animate} from '@angular/animations';
-import {Location} from '@angular/common';
-import {Router} from '@angular/router';
-import {MenuItem, ScrollPanel} from 'primeng/primeng';
+import {Component, Input, OnInit} from '@angular/core';
 import {AppComponent} from './app.component';
 
 @Component({
@@ -79,25 +75,25 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'Components', icon: 'fa fa-fw fa-sitemap', badge: '2', badgeStyleClass: 'orange-badge',
+                label: 'Components', icon: 'fa fa-fw fa-sitemap', badge: '2', badgeStyleClass: 'orange-badge', routerLink: ['/components'],
                 items: [
-                    {label: 'Sample Page', icon: 'fa fa-fw fa-columns', routerLink: ['/sample']},
-                    {label: 'Forms', icon: 'fa fa-fw fa-code', routerLink: ['/forms']},
-                    {label: 'Data', icon: 'fa fa-fw fa-table', routerLink: ['/data']},
-                    {label: 'Panels', icon: 'fa fa-fw fa-list-alt', routerLink: ['/panels']},
-                    {label: 'Overlays', icon: 'fa fa-fw fa-square', routerLink: ['/overlays']},
-                    {label: 'Menus', icon: 'fa fa-fw fa-minus-square-o', routerLink: ['/menus']},
-                    {label: 'Messages', icon: 'fa fa-fw fa-circle-o-notch', routerLink: ['/messages']},
-                    {label: 'Charts', icon: 'fa fa-fw fa-area-chart', routerLink: ['/charts']},
-                    {label: 'File', icon: 'fa fa-fw fa-arrow-circle-o-up', routerLink: ['/file']},
-                    {label: 'Misc', icon: 'fa fa-fw fa-user-secret', routerLink: ['/misc']}
+                    {label: 'Sample Page', icon: 'fa fa-fw fa-columns', routerLink: ['/components/sample']},
+                    {label: 'Forms', icon: 'fa fa-fw fa-code', routerLink: ['/components/forms']},
+                    {label: 'Data', icon: 'fa fa-fw fa-table', routerLink: ['/components/data']},
+                    {label: 'Panels', icon: 'fa fa-fw fa-list-alt', routerLink: ['/components/panels']},
+                    {label: 'Overlays', icon: 'fa fa-fw fa-square', routerLink: ['/components/overlays']},
+                    {label: 'Menus', icon: 'fa fa-fw fa-minus-square-o', routerLink: ['/components/menus']},
+                    {label: 'Messages', icon: 'fa fa-fw fa-circle-o-notch', routerLink: ['/components/messages']},
+                    {label: 'Charts', icon: 'fa fa-fw fa-area-chart', routerLink: ['/components/charts']},
+                    {label: 'File', icon: 'fa fa-fw fa-arrow-circle-o-up', routerLink: ['/components/file']},
+                    {label: 'Misc', icon: 'fa fa-fw fa-user-secret', routerLink: ['/components/misc']}
                 ]
             },
             {label: 'Landing Page', icon: 'fa fa-fw fa-certificate', url: 'assets/pages/landing.html', target: '_blank'},
             {
-                label: 'Template Pages', icon: 'fa fa-fw fa-life-saver',
+                label: 'Template Pages', icon: 'fa fa-fw fa-life-saver', routerLink: ['/pages'],
                 items: [
-                    {label: 'Empty Page', icon: 'fa fa-fw fa-square-o', routerLink: ['/empty']},
+                    {label: 'Empty Page', icon: 'fa fa-fw fa-square-o', routerLink: ['/pages/empty']},
                     {label: 'Login Page', icon: 'fa fa-fw fa-sign-in', url: 'assets/pages/login.html', target: '_blank'},
                     {label: 'Error Page', icon: 'fa fa-fw fa-exclamation-circle', url: 'assets/pages/error.html', target: '_blank'},
                     {label: '404 Page', icon: 'fa fa-fw fa-times', url: 'assets/pages/404.html', target: '_blank'},
@@ -195,163 +191,5 @@ export class AppMenuComponent implements OnInit {
 
     onWrapperClick(event: Event) {
         this.app.onMenuClick(event);
-    }
-}
-
-@Component({
-    /* tslint:disable:component-selector */
-    selector: '[app-submenu]',
-    /* tslint:enable:component-selector */
-    template: `
-        <ng-template ngFor let-child let-i="index" [ngForOf]="(root ? item : item.items)">
-            <li [ngClass]="{'active-menuitem': isActive(i)}" [class]="child.badgeStyleClass">
-                <a [href]="child.url||'#'" (click)="itemClick($event,child,i)" *ngIf="!child.routerLink"
-                   [attr.tabindex]="!visible ? '-1' : null" [attr.target]="child.target"
-                   (mouseenter)="onMouseEnter(i)">
-                    <i [ngClass]="child.icon"></i>
-                    <span>{{child.label}}</span>
-                    <span class="menuitem-badge" *ngIf="child.badge">{{child.badge}}</span>
-                    <i class="fa fa-fw fa-angle-down" *ngIf="child.items"></i>
-                </a>
-
-                <a (click)="itemClick($event,child,i)" *ngIf="child.routerLink"
-                    [routerLink]="child.routerLink" routerLinkActive="active-menuitem-routerlink"
-                   [routerLinkActiveOptions]="{exact: true}" [attr.tabindex]="!visible ? '-1' : null" [attr.target]="child.target"
-                    (mouseenter)="onMouseEnter(i)">
-                    <i [ngClass]="child.icon"></i>
-                    <span>{{child.label}}</span>
-                    <span class="menuitem-badge" *ngIf="child.badge">{{child.badge}}</span>
-                    <i class="fa fa-fw fa-angle-down" *ngIf="child.items"></i>
-                </a>
-                <div class="layout-menu-tooltip">
-                    <div class="layout-menu-tooltip-arrow"></div>
-                    <div class="layout-menu-tooltip-text">{{child.label}}</div>
-                </div>
-                <ul app-submenu [item]="child" *ngIf="child.items" [visible]="isActive(i)" [reset]="reset" [parentActive]="isActive(i)"
-                    [@children]="app.slimMenu&&root ? isActive(i) ? 'visible' : 'hidden' : isActive(i) ?
-                    'visibleAnimated' : 'hiddenAnimated'"></ul>
-            </li>
-        </ng-template>
-    `,
-    animations: [
-        trigger('children', [
-            state('hiddenAnimated', style({
-                height: '0px'
-            })),
-            state('visibleAnimated', style({
-                height: '*'
-            })),
-            state('visible', style({
-                height: '*'
-            })),
-            state('hidden', style({
-                height: '0px'
-            })),
-            transition('visibleAnimated => hiddenAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
-            transition('hiddenAnimated => visibleAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
-        ])
-    ]
-})
-export class AppSubMenuComponent {
-
-    @Input() item: MenuItem;
-
-    @Input() root: boolean;
-
-    @Input() visible: boolean;
-
-    _parentActive: boolean;
-
-    _reset: boolean;
-
-    activeIndex: number;
-
-    constructor(public app: AppComponent, public router: Router, public location: Location, public appMenu: AppMenuComponent) {}
-
-    itemClick(event: Event, item: MenuItem, index: number) {
-        if (this.root) {
-            this.app.menuHoverActive = !this.app.menuHoverActive;
-        }
-
-        // avoid processing disabled items
-        if (item.disabled) {
-            event.preventDefault();
-            return true;
-        }
-
-        // activate current item and deactivate active sibling if any
-        if (item.routerLink || item.items) {
-            this.activeIndex = (this.activeIndex === index) ? null : index;
-        }
-
-        // execute command
-        if (item.command) {
-            item.command({originalEvent: event, item});
-        }
-
-        // prevent hash change
-        if (item.items || (!item.url && !item.routerLink)) {
-            event.preventDefault();
-        }
-
-        // hide menu
-        if (!item.items) {
-            if (this.app.overlayMenu || this.app.isMobile()) {
-                this.app.overlayMenuActive = false;
-                this.app.mobileMenuActive = false;
-            }
-
-            if (!this.root && this.app.slimMenu) {
-                this.app.resetSlim = true;
-            }
-
-            this.app.menuHoverActive = !this.app.menuHoverActive;
-        }
-    }
-
-    onMouseEnter(index: number) {
-        if (this.root && this.app.menuHoverActive && this.app.slimMenu && !this.app.isMobile()) {
-            this.activeIndex = index;
-        }
-    }
-
-    isActive(index: number): boolean {
-        return this.activeIndex === index;
-    }
-
-    unsubscribe(item: any) {
-        if (item.eventEmitter) {
-            item.eventEmitter.unsubscribe();
-        }
-
-        if (item.items) {
-            for (const childItem of item.items) {
-                this.unsubscribe(childItem);
-            }
-        }
-    }
-
-    @Input() get reset(): boolean {
-        return this._reset;
-    }
-
-    set reset(val: boolean) {
-        this._reset = val;
-
-        if (this._reset && this.app.slimMenu) {
-            this.activeIndex = null;
-        }
-    }
-
-    @Input() get parentActive(): boolean {
-        return this._parentActive;
-    }
-
-    set parentActive(val: boolean) {
-        this._parentActive = val;
-
-        if (!this._parentActive) {
-            this.activeIndex = null;
-        }
     }
 }

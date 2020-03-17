@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { AppTopBarComponent } from './app.topbar.component';
 import { AppFooterComponent } from './app.footer.component';
-import { AppMenuComponent, AppSubMenuComponent } from './app.menu.component';
+import { AppMenuComponent } from './app.menu.component';
 import { ScrollPanelModule} from 'primeng/primeng';
 
 describe('AppComponent', () => {
@@ -15,7 +15,6 @@ describe('AppComponent', () => {
       declarations: [ AppComponent,
         AppTopBarComponent,
         AppMenuComponent,
-        AppSubMenuComponent,
         AppFooterComponent
       ]
     });

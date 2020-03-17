@@ -1,22 +1,22 @@
 <div class="layout-wrapper" (click)="onLayoutClick()"
-    [ngClass]="{'layout-menu-slim': slimMenu, 
-                'layout-menu-overlay': overlayMenu, 
+    [ngClass]="{'layout-menu-slim': slimMenu,
+                'layout-menu-overlay': overlayMenu,
                 'layout-menu-static': staticMenu,
                 'layout-menu-static-inactive': staticMenuInactive,
                 'layout-menu-overlay-active': overlayMenuActive,
                 'layout-menu-active': mobileMenuActive}">
-    
+
     <app-topbar></app-topbar>
 
     <div class="layout-main">
-        <app-menu [reset]="resetSlim"></app-menu>
-        
+        <app-menu></app-menu>
+
         <div class="layout-content">
             <router-outlet></router-outlet>
         </div>
-        
+
         <app-footer></app-footer>
-    </div>     
-    
-    <div class="layout-mask" *ngIf="mobileMenuActive"></div>   
+    </div>
+
+    <div class="layout-mask" *ngIf="mobileMenuActive"></div>
 </div>

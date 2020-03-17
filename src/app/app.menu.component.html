@@ -4,7 +4,10 @@
                 <i class="fa fa-fw fa-search topbar-search-icon"></i>
                 <input type="text" class="topbar-search" placeholder="Type your search here"/>
             </div>
-            <ul app-submenu [item]="model" root="true" class="layout-menu" visible="true" [reset]="reset" parentActive="true"></ul>
+
+            <ul class="layout-menu">
+                <li app-menuitem *ngFor="let item of model; let i = index;" [item]="item" [index]="i" [root]="true"></li>
+            </ul>
         </div>
 </div>
 

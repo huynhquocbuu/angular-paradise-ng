@@ -454,25 +454,6 @@ body {
 
             }
         }
-
-        .ui-scrollpanel {
-            background: transparent;
-            border-radius: 0;
-            border: none;
-            .ui-scrollpanel-bar {
-                background-color: #aaaaaa;
-                @include opacity(.3);
-            }
-            .ui-scrollpanel-hidden {
-                display: block;
-                visibility: hidden;
-            }
-
-            .layout-menu-container {
-                width: 258px;
-                padding-right: 18px;
-            }
-        }
     }
 
     .layout-content {
@@ -564,25 +545,6 @@ body {
                 width: 75px;
                 overflow: visible;
                 z-index: 100;
-
-                .ui-scrollpanel {
-                    border: none;
-                    border-radius: 0;
-                    .ui-scrollpanel-wrapper {
-                        overflow: visible;
-                        .ui-scrollpanel-content {
-                            overflow: visible;
-                        }
-                    }
-
-                    .ui-scrollpanel-bar {
-                        display: none;
-                    }
-
-                    .layout-menu-container {
-                      width: 92px;
-                    }
-                }
 
                 &.layout-menu-dark {
                     .layout-menu {
