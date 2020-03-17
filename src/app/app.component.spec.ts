@@ -6,17 +6,18 @@ import { AppComponent } from './app.component';
 import { AppTopBarComponent } from './app.topbar.component';
 import { AppFooterComponent } from './app.footer.component';
 import { AppMenuComponent } from './app.menu.component';
-import { ScrollPanelModule} from 'primeng/primeng';
+import { MenuService } from './app.menu.service';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule, ScrollPanelModule ],
+      imports: [ RouterTestingModule ],
       declarations: [ AppComponent,
         AppTopBarComponent,
         AppMenuComponent,
         AppFooterComponent
-      ]
+      ],
+        providers: [MenuService]
     });
     TestBed.compileComponents();
   });
