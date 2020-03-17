@@ -606,8 +606,13 @@ body {
             }
         }
 
+        .ui-dropdown-clear-icon {
+            color: $textColor;
+        }
+
         .ui-dropdown-trigger {
             background-color: #ffffff;
+            color: $textColor;
             width: 2em;
             text-align: center;
             padding: 0;
@@ -667,7 +672,7 @@ body {
                 }
             }
 
-            .ui-selectonemenu-item-group {
+            .ui-dropdown-item-group {
                 @include border-radius(0);
                 padding: $listItemPadding;
                 background-color: darken($listItemBgColor,10%);
@@ -680,6 +685,7 @@ body {
         border: 1px solid $inputBorderColor;
 
         .ui-multiselect-label {
+            color: $textColor;
             padding: $inputPadding;
             padding-right: 2.3em;
         }
@@ -776,15 +782,27 @@ body {
                 .ui-chkbox {
                     position: static;
                     margin-top: 0;
+                    margin-right: 8px;
                     display: inline-block;
                     vertical-align: middle;
                 }
 
                 label {
+                    color: $textColor;
                     padding: 0;
                     margin: 0 0 0 0.615em;
                     display: inline-block;
                     vertical-align: middle;
+                }
+
+                span {
+                    color: $textColor;
+                }
+
+                &.ui-state-highlight {
+                    span {
+                        color: $primaryTextColor;
+                    }
                 }
 
                 &:not(.ui-state-highlight):not(.ui-state-disabled):hover {
@@ -994,6 +1012,7 @@ body {
         .ui-button {
             background-color: $toggleButtonBgColor;
             color: darken($textColor, 15%);
+            min-width: 2em;
             border: 1px solid transparent;
             @include border-radius(0px);
 
@@ -1141,6 +1160,11 @@ body {
                 &.ui-datepicker-today {
                     a {
                         background-color: darken($dividerColor, 10%);
+
+                        &.ui-state-active {
+                            color: $primaryTextColor;
+                            background-color: $primaryColor;
+                        }
                     }
                 }
             }

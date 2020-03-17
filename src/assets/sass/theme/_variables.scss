@@ -67,3 +67,19 @@ $paginatorHoverBgColor:#dee4e9;
 $datatableOddRowBgColor:#ffffff;
 $datatableEvenRowBgColor:#f6f8f9;
 $datatableHoverBgColor:#dee4e9;
+
+//carousel
+$carouselNavButtonsBgColor: $primaryColor;
+$carouselNavButtonsBorder: solid 1px transparent;
+$carouselNavButtonsBorderRadius: 2px;
+$carouselNavButtonsMargin: .2em;
+$carouselNavButtonsColor: $primaryTextColor;
+$carouselNavButtonsHoverBgColor: darken($primaryColor,5%);
+$carouselNavButtonsHoverColor: $primaryTextColor;
+$carouselNavButtonsHoverBorderColor: solid 1px transparent;
+$carouselNavButtonsTransition: color $transitionDuration;
+$carouselDotIconWidth: 20px;
+$carouselDotIconHeight: 6px;
+$carouselDotIconBgColor: #b2c1cd;
+$carouselDotIconMargin: 0 .2em;
+$carouselActiveDotIconBgColor: $primaryColor;

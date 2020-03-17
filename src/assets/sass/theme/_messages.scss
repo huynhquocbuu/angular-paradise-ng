@@ -106,6 +106,10 @@ body {
             color: #fff;
             right: .25em;
         }
+
+        .ui-message-icon, .ui-message-text {
+            line-height: 1.5em;
+        }
     }
 
     .ui-growl {

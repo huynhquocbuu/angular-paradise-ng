@@ -3,7 +3,10 @@
         <div class="card docs">
 
             <h1>Current Version</h1>
-            <p>Angular 8 and PrimeNG 8</p>
+            <p>Angular 9 and PrimeNG 9</p>
+
+            <h1>Dependencies</h1>
+            <p>Paradise has no direct dependency other than PrimeNG. More information about dependencies is available at <a href="https://www.primefaces.org/why-primeng-templates/">Why PrimeNG Templates</a> article.</p>
 
             <h1>Getting Started</h1>
             <p>Paradise is a true native application template for Angular and is distributed as a CLI project. If you don't have CLI installed already run the following commands to set it up. In case
@@ -470,6 +473,16 @@ label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge'
             </ul>
 
             <h1>Migration Guide</h1>
+            <h4>8.0.0 to 9.0.0</h4>
+            <p>Angular 9 and PrimeNG 9</p>
+            <ul>
+                <li>Update dependencies with <a href="https://angular.io/cli/update">ng update</a>.</li>
+                <li>Update theme.css and layout.css files.</li>
+                <li>Update app.menu.component.ts and app.menu.component.html while retaining your MenuModel.</li>
+                <li>Include app.menuitem.component.ts under app folder and define it app.module.ts with declarations property.</li>
+                <li>Include app.menu.service.ts under app folder and define it app.module.ts with providers property.</li>
+            </ul>
+
             <h4>7.0.0 to 8.0.0</h4>
             <ul>
                 <li>Update your project to Angular 8 with ng update. View the official update guide -<a href="https://update.angular.io/">https://update.angular.io/</a>- for more information.</li>
