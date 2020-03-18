@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppComponent} from './app.component';
 
 @Component({
@@ -6,8 +6,6 @@ import {AppComponent} from './app.component';
     templateUrl: './app.menu.component.html'
 })
 export class AppMenuComponent implements OnInit {
-
-    @Input() reset: boolean;
 
     model: any[];
 

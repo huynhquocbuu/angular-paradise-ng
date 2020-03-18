@@ -62,7 +62,7 @@ Run 'ng help' for more options.
     &lt;app-topbar&gt;&lt;/app-topbar&gt;
 
     &lt;div class="layout-main"&gt;
-        &lt;app-menu [reset]="resetSlim"&gt;&lt;/app-menu&gt;
+        &lt;app-menu&gt;&lt;/app-menu&gt;
 
         &lt;div class="layout-content"&gt;
             &lt;router-outlet&gt;&lt;/router-outlet&gt;
@@ -77,15 +77,10 @@ Run 'ng help' for more options.
 
             <h1>Menu</h1>
             <p>Menu is a separate component defined in app.menu.component.ts file based on PrimeNG MenuModel API. In order to define the menuitems,
-            navigate to app.menu.component.ts and define your own model. Here is the menu component from the sample application. The helper
-            app-submenu component is also available in the same file.</p>
+            navigate to app.menu.component.ts and define your own model. Here is the menu component from the sample application.</p>
 <pre>
-import &#123;Component,Input,OnInit,OnDestroy,EventEmitter,ViewChild,Inject,forwardRef&#125; from '@angular/core';
-import &#123;trigger,state,style,transition,animate&#125; from '@angular/animations';
-import &#123;Location&#125; from '@angular/common';
-import &#123;Router&#125; from '@angular/router';
-import &#123;MenuItem&#125; from 'primeng/primeng';
-import &#123;AppComponent&#125; from './app.component';
+import &#123;Component, OnInit &#125; from '@angular/core';
+import &#123;AppComponent &#125; from './app.component';
 
 @Component(&#123;
     selector: 'app-menu',
@@ -93,11 +88,9 @@ import &#123;AppComponent&#125; from './app.component';
 &#125;)
 export class AppMenuComponent implements OnInit &#123;
 
-    @Input() reset: boolean;
-
     model: any[];
 
-    constructor(@Inject(forwardRef(() => AppComponent)) public app:AppComponent) &#123;&#125;
+    constructor(public app:AppComponent) &#123;&#125;
 
     ngOnInit() &#123;
         this.model = [
@@ -160,25 +153,25 @@ export class AppMenuComponent implements OnInit &#123;
                 ]
             &#125;,
             &#123;
-                label: 'Components', icon: 'fa fa-fw fa-sitemap',
+                label: 'Components', icon: 'fa fa-fw fa-sitemap', routerLink: ['/components'],
                 items: [
-                    &#123;label: 'Sample Page', icon: 'fa fa-fw fa-columns', routerLink: ['/sample']&#125;,
-                    &#123;label: 'Forms', icon: 'fa fa-fw fa-code', routerLink: ['/forms']&#125;,
-                    &#123;label: 'Data', icon: 'fa fa-fw fa-table', routerLink: ['/data']&#125;,
-                    &#123;label: 'Panels', icon: 'fa fa-fw fa-list-alt', routerLink: ['/panels']&#125;,
-                    &#123;label: 'Overlays', icon: 'fa fa-fw fa-square', routerLink: ['/overlays']&#125;,
-                    &#123;label: 'Menus', icon: 'fa fa-fw fa-minus-square-o', routerLink: ['/menus']&#125;,
-                    &#123;label: 'Messages', icon: 'fa fa-fw fa-circle-o-notch', routerLink: ['/messages']&#125;,
-                    &#123;label: 'Charts', icon: 'fa fa-fw fa-area-chart', routerLink: ['/charts']&#125;,
-                    &#123;label: 'File', icon: 'fa fa-fw fa-arrow-circle-o-up', routerLink: ['/file']&#125;,
-                    &#123;label: 'Misc', icon: 'fa fa-fw fa-user-secret', routerLink: ['/misc']&#125;
+                    &#123;label: 'Sample Page', icon: 'fa fa-fw fa-columns', routerLink: ['/components/sample']&#125;,
+                    &#123;label: 'Forms', icon: 'fa fa-fw fa-code', routerLink: ['/components/forms']&#125;,
+                    &#123;label: 'Data', icon: 'fa fa-fw fa-table', routerLink: ['/components/data']&#125;,
+                    &#123;label: 'Panels', icon: 'fa fa-fw fa-list-alt', routerLink: ['/components/panels']&#125;,
+                    &#123;label: 'Overlays', icon: 'fa fa-fw fa-square', routerLink: ['/components/overlays']&#125;,
+                    &#123;label: 'Menus', icon: 'fa fa-fw fa-minus-square-o', routerLink: ['/components/menus']&#125;,
+                    &#123;label: 'Messages', icon: 'fa fa-fw fa-circle-o-notch', routerLink: ['/components/messages']&#125;,
+                    &#123;label: 'Charts', icon: 'fa fa-fw fa-area-chart', routerLink: ['/components/charts']&#125;,
+                    &#123;label: 'File', icon: 'fa fa-fw fa-arrow-circle-o-up', routerLink: ['/components/file']&#125;,
+                    &#123;label: 'Misc', icon: 'fa fa-fw fa-user-secret', routerLink: ['/components/misc']&#125;
                 ]
             &#125;,
             &#123;label: 'Landing Page', icon: 'fa fa-fw fa-certificate', url: 'assets/pages/landing.html', target: '_blank'&#125;,
             &#123;
-                label: 'Template Pages', icon: 'fa fa-fw fa-life-saver',
+                label: 'Template Pages', icon: 'fa fa-fw fa-life-saver', routerLink: ['/pages'],
                 items: [
-                    &#123;label: 'Empty Page', icon: 'fa fa-fw fa-square-o', routerLink: ['/empty']&#125;,
+                    &#123;label: 'Empty Page', icon: 'fa fa-fw fa-square-o', routerLink: ['/pages/empty']&#125;,
                     &#123;label: 'Login Page', icon: 'fa fa-fw fa-sign-in', url: 'assets/pages/login.html', target: '_blank'&#125;,
                     &#123;label: 'Error Page', icon: 'fa fa-fw fa-exclamation-circle', url: 'assets/pages/error.html', target: '_blank'&#125;,
                     &#123;label: '404 Page', icon: 'fa fa-fw fa-times', url: 'assets/pages/404.html', target: '_blank'&#125;,
@@ -430,6 +423,22 @@ $paginatorHoverBgColor:#dee4e9;
 $datatableOddRowBgColor:#ffffff;
 $datatableEvenRowBgColor:#f6f8f9;
 $datatableHoverBgColor:#dee4e9;
+
+//carousel
+$carouselNavButtonsBgColor: $primaryColor;
+$carouselNavButtonsBorder: solid 1px transparent;
+$carouselNavButtonsBorderRadius: 2px;
+$carouselNavButtonsMargin: .2em;
+$carouselNavButtonsColor: $primaryTextColor;
+$carouselNavButtonsHoverBgColor: darken($primaryColor,5%);
+$carouselNavButtonsHoverColor: $primaryTextColor;
+$carouselNavButtonsHoverBorderColor: solid 1px transparent;
+$carouselNavButtonsTransition: color $transitionDuration;
+$carouselDotIconWidth: 20px;
+$carouselDotIconHeight: 6px;
+$carouselDotIconBgColor: #b2c1cd;
+$carouselDotIconMargin: 0 .2em;
+$carouselActiveDotIconBgColor: $primaryColor;
 </pre>
 
             <h1>Menu Item Badges</h1>
