@@ -7,10 +7,10 @@ import {Component} from '@angular/core';
             line-height: 1.5;
         }
 
-        .docs pre {
+        .docs pre.doc-command {
             font-family: monospace;
-            background-color: #dee4e9;
-            color: #757575;
+			background-color: #323e4b;
+			color: #ffffff;
             padding: 1em;
             font-size: 14px;
             border-radius: 3px;

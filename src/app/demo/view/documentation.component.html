@@ -11,13 +11,13 @@
             <h1>Getting Started</h1>
             <p>Paradise is a true native application template for Angular and is distributed as a CLI project. If you don't have CLI installed already run the following commands to set it up. In case
             you have an application that do not use CLI, skip the <a href="#noncli">Integration with an Existing Non CLI Application</a> part.</p>
-<pre>
+<pre class="doc-command">
 npm install -g @angular-cli
 </pre>
 
             <p>Once CLI is ready in your system, extract the contents of the Paradise zip file distribution, cd to the directory,
             install the libraries from npm and then execute "ng serve" to run the application in your local environment at http://localhost:4200/.</p>
-<pre>
+<pre class="doc-command">
 cd Paradise
 npm install
 ng serve
@@ -27,7 +27,7 @@ ng serve
 
             <h1>Important CLI Commands</h1>
             <p>Following commands are derived from CLI.</p>
-<pre>
+<pre class="doc-command">
 Run 'ng serve' for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run 'ng generate component component-name' to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
@@ -51,6 +51,7 @@ Run 'ng help' for more options.
                 the main template. The component class app.component.ts implements the logic such as opening menus and layout modes.
             </p>
 <pre>
+<code class="language-markup" pCode>
 &lt;div class="layout-wrapper"
     [ngClass]="&#123;'layout-menu-slim': slimMenu,
                 'layout-menu-overlay': overlayMenu,
@@ -73,12 +74,16 @@ Run 'ng help' for more options.
 
     &lt;div class="layout-mask" *ngIf="mobileMenuActive"&gt;&lt;/div&gt;
 &lt;/div&gt;
+</code>
 </pre>
 
             <h1>Menu</h1>
             <p>Menu is a separate component defined in app.menu.component.ts file based on PrimeNG MenuModel API. In order to define the menuitems,
             navigate to app.menu.component.ts and define your own model. Here is the menu component from the sample application.</p>
+
+<div style="height:400px;overflow: auto;">
 <pre>
+<code class="language-javascript" pCode>
 import &#123;Component, OnInit &#125; from '@angular/core';
 import &#123;AppComponent &#125; from './app.component';
 
@@ -228,26 +233,30 @@ export class AppMenuComponent implements OnInit &#123;
         ];
     &#125;
 &#125;
+</code>
 </pre>
+</div>
 
             <h1>Integration with an Existing CLI Project</h1>
             <p>To setup Paradise in an existing project, copy the <i>src/assets</i> folder to your projects folder with the same name
                 and replace the contents of app.component.ts, app.component.html with their counterparts in Paradise under <i>src/app</i> folder.</p>
 
             <p>Install PrimeNG</p>
-            <pre>
+<pre class="doc-command">
 npm install primeng@latest --save
 npm install primeicons@latest --save
 </pre>
 
             <p>Add PrimeNG CSS at styles section in angular.json.</p>
 
-            <pre>
+<pre>
+<code class="language-json" pCode>
 "styles": [
     "../node_modules/primeng/resources/primeng.min.css",        //required: PrimeNG components
     "node_modules/primeicons/primeicons.css",                   //required: PrimeIcons
     "styles.scss"                                               //your styles and overrides
 ],
+</code>
 </pre>
 
             <p>Last part is adding theme and layout css files, in the CLI app they are defined using link tags in index.html so the demo can switch them on
@@ -286,21 +295,23 @@ npm install primeicons@latest --save
                 relative path of the sass folder in your application.</p>
 
 <pre>
+<code class="language-css" pCode>
 $primaryColor:#63aee2;
 $primaryTextColor:#ffffff;
 
 @import '../sass/theme/_theme';
+</code>
 </pre>
 
             <p> An example sass command to compile the css would be;</p>
 
-<pre>
+<pre class="doc-command">
 sass src/assets/theme-myown/theme.scss src/assets/theme-myown/theme.css
 </pre>
 
             <p>Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command
             so that sass generates the file whenever you make a customization. This builds all css files whenever a change is made to any scss file.</p>
-<pre>
+<pre class="doc-command">
 sass --watch src/:src/ --no-source-map
 </pre>
 
@@ -317,6 +328,7 @@ sass --watch src/:src/ --no-source-map
                 relative path of the sass folder in your application.</p>
 
 <pre>
+<code class="language-css" pCode>
 $topbarLeftBgColor:#3984b8;
 $topbarRightBgColor:#3984b8;
 $topbarLeftTextColor:#ffffff;
@@ -330,11 +342,13 @@ $darkMenuTextColor:#f6f8f9;
 $bodyBgColor:#F2F8FA;
 
 @import '../../sass/layout/_layout';
+</code>
 </pre>
 
             <p>For both cases, several .scss files such as _layout.scss, _theme.scss or _variables.scss has to be present relative to your scss files, these are available inside the resources/sass folder in the distribution.</p>
             <p>In case you'd like to customize the structure not just the colors, the _variables.scss files are where the structural variables (e.g. font size, paddings) for the layout are defined.</p>
 <pre>
+<code class="language-css" pCode>
 /*  Common  */
 $fontFamily:"Roboto","Helvetica Neue",sans-serif;
 $fontSize:13px;
@@ -352,9 +366,12 @@ $pink:#e175a0;
 $turquoise:#39b8b6;
 $green:#3eb839;
 $red:#e17576;
+</code>
 </pre>
 
+<div style="height:400px;overflow: auto;">
 <pre>
+<code class="language-css" pCode>
 /* PrimeNG Components Theme */
 @import '../_variables';
 
@@ -439,13 +456,17 @@ $carouselDotIconHeight: 6px;
 $carouselDotIconBgColor: #b2c1cd;
 $carouselDotIconMargin: 0 .2em;
 $carouselActiveDotIconBgColor: $primaryColor;
+</code>
 </pre>
+</div>
 
             <h1>Menu Item Badges</h1>
             <p>Badges are numerical indicators of how many items are associated with a link.
                The badge property is value of the badge and badgeStyleClass is style class of the badge.</p>
 <pre>
+<code class="language-json" pCode>
 label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge'
+</code>
 </pre>
             <p>Paradise layout has 4 different badge style.There is a default badge which uses the accent color of paradise layout. And there is 3 other badge class for menu items.</p>
             <ul>
