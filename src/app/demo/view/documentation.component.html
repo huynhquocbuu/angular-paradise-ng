@@ -1,33 +1,33 @@
-<div class="ui-g">
-    <div class="ui-g-12">
+<div class="p-grid">
+    <div class="p-col-12">
         <div class="card docs">
 
-            <h1>Current Version</h1>
-            <p>Angular 9 and PrimeNG 9</p>
+            <h4>Current Version</h4>
+            <p>Angular 10 and PrimeNG 10</p>
 
-            <h1>Dependencies</h1>
+            <h4>Dependencies</h4>
             <p>Paradise has no direct dependency other than PrimeNG. More information about dependencies is available at <a href="https://www.primefaces.org/why-primeng-templates/">Why PrimeNG Templates</a> article.</p>
 
-            <h1>Getting Started</h1>
+            <h4>Getting Started</h4>
             <p>Paradise is a true native application template for Angular and is distributed as a CLI project. If you don't have CLI installed already run the following commands to set it up. In case
             you have an application that do not use CLI, skip the <a href="#noncli">Integration with an Existing Non CLI Application</a> part.</p>
-<pre class="doc-command">
+<app-code ngPreserveWhitespaces ngNonBindable lang="markup">
 npm install -g @angular-cli
-</pre>
+</app-code>
 
             <p>Once CLI is ready in your system, extract the contents of the Paradise zip file distribution, cd to the directory,
             install the libraries from npm and then execute "ng serve" to run the application in your local environment at http://localhost:4200/.</p>
-<pre class="doc-command">
+<app-code ngPreserveWhitespaces ngNonBindable lang="markup">
 cd Paradise
 npm install
 ng serve
-</pre>
+</app-code>
 
             <p>That's it, you may now start with the development of your application.</p>
 
-            <h1>Important CLI Commands</h1>
+            <h4>Important CLI Commands</h4>
             <p>Following commands are derived from CLI.</p>
-<pre class="doc-command">
+<app-code ngPreserveWhitespaces ngNonBindable lang="markup">
 Run 'ng serve' for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run 'ng generate component component-name' to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
@@ -39,26 +39,26 @@ Run 'ng test' to execute the unit tests via [Karma](https://karma-runner.github.
 Run 'ng e2e' to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 Run 'ng help' for more options.
-</pre>
+</app-code>
 
-            <h1>Structure</h1>
+            <h4>Structure</h4>
             <p>Paradise consists of 3 main parts; the application layout, layout resources and theme resources for PrimeNG components. <i>app.component.html</i> inside app folder is the html template for the base layout,
                 required resources for the layout are placed inside the <i>src/assets/layout</i> folder and similarly theme resources are inside <i>src/assets/theme</i> folder.
             </p>
 
-            <h1>Template</h1>
+            <h4>Template</h4>
             <p>Main layout is the html view of the app.component.ts, it is divided into a couple of sections such as topbar, sidebar and footer. Here is the code for
                 the main template. The component class app.component.ts implements the logic such as opening menus and layout modes.
             </p>
-<pre>
-<code class="language-markup" pCode>
+<app-code ngPreserveWhitespaces ngNonBindable>
 &lt;div class="layout-wrapper"
     [ngClass]="&#123;'layout-menu-slim': slimMenu,
                 'layout-menu-overlay': overlayMenu,
                 'layout-menu-static': staticMenu,
                 'layout-menu-static-inactive': staticMenuInactive,
                 'layout-menu-overlay-active': overlayMenuActive,
-                'layout-menu-active': mobileMenuActive&#125;"&gt;
+                'layout-menu-active': mobileMenuActive,
+                'p-input-filled': inputStyle === 'filled', 'p-ripple-disabled': !ripple&#125;"&gt;
 
     &lt;app-topbar&gt;&lt;/app-topbar&gt;
 
@@ -72,20 +72,20 @@ Run 'ng help' for more options.
         &lt;app-footer&gt;&lt;/app-footer&gt;
     &lt;/div&gt;
 
+    &lt;app-config&gt;&lt;/app-config&gt;
+
     &lt;div class="layout-mask" *ngIf="mobileMenuActive"&gt;&lt;/div&gt;
 &lt;/div&gt;
-</code>
-</pre>
+</app-code>
 
-            <h1>Menu</h1>
+            <h4>Menu</h4>
             <p>Menu is a separate component defined in app.menu.component.ts file based on PrimeNG MenuModel API. In order to define the menuitems,
             navigate to app.menu.component.ts and define your own model. Here is the menu component from the sample application.</p>
 
 <div style="height:400px;overflow: auto;">
-<pre>
-<code class="language-javascript" pCode>
+<app-code ngPreserveWhitespaces ngNonBindable lang="javascript">
 import &#123;Component, OnInit &#125; from '@angular/core';
-import &#123;AppComponent &#125; from './app.component';
+import &#123;AppMainComponent &#125; from './app.main.component';
 
 @Component(&#123;
     selector: 'app-menu',
@@ -95,180 +95,142 @@ export class AppMenuComponent implements OnInit &#123;
 
     model: any[];
 
-    constructor(public app:AppComponent) &#123;&#125;
+    constructor(public app:AppMainComponent) &#123;&#125;
 
     ngOnInit() &#123;
         this.model = [
-            &#123;label: 'Dashboard', icon: 'fa fa-fw fa-home', routerLink: ['/']&#125;,
-            &#123;
-                label: 'Menu Modes', icon: 'fa fa-fw fa-bars',
+           &#123;label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']&#125;,
+           &#123;
+                label: 'UI Kit', icon: 'pi pi-fw pi-star', routerLink: ['/uikit'], badge: 8,
                 items: [
-                    &#123;label: 'Static Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToStaticMenu()&#125;,
-                    &#123;label: 'Overlay Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToOverlayMenu()&#125;,
-                    &#123;label: 'Slim Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToSlimMenu()&#125;,
-                    &#123;label: 'Light Menu', icon: 'fa fa-sun-o fa-fw',  command: () => this.app.darkMenu = false&#125;,
-                    &#123;label: 'Dark Menu', icon: 'fa fa-moon-o fa-fw',  command: () => this.app.darkMenu = true&#125;
+                   &#123;label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout']&#125;,
+                   &#123;label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input']&#125;,
+                   &#123;label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel']&#125;,
+                   &#123;label: 'Button', icon: 'pi pi-fw pi-mobile', routerLink: ['/uikit/button'], class: 'rotated-icon'&#125;,
+                   &#123;label: 'Table', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/table']&#125;,
+                   &#123;label: 'List', icon: 'pi pi-fw pi-list', routerLink: ['/uikit/list']&#125;,
+                   &#123;label: 'Tree', icon: 'pi pi-fw pi-share-alt', routerLink: ['/uikit/tree']&#125;,
+                   &#123;label: 'Panel', icon: 'pi pi-fw pi-tablet', routerLink: ['/uikit/panel']&#125;,
+                   &#123;label: 'Overlay', icon: 'pi pi-fw pi-clone', routerLink: ['/uikit/overlay']&#125;,
+                   &#123;label: 'Media', icon: 'pi pi-fw pi-image', routerLink: ['/uikit/media']&#125;,
+                   &#123;label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu']&#125;,
+                   &#123;label: 'Message', icon: 'pi pi-fw pi-comment', routerLink: ['/uikit/message']&#125;,
+                   &#123;label: 'File', icon: 'pi pi-fw pi-file', routerLink: ['/uikit/file']&#125;,
+                   &#123;label: 'Chart', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/uikit/charts']&#125;,
+                   &#123;label: 'Misc', icon: 'pi pi-fw pi-circle-off', routerLink: ['/uikit/misc']&#125;
                 ]
-            &#125;,
-            &#123;
-                label: 'Layout Colors', icon: 'fa fa-fw fa-magic',
+           &#125;,
+           &#123;
+                label: 'Utilities', icon: 'pi pi-fw pi-compass', routerLink: ['utilities'],
                 items: [
-                    &#123;
-                        label: 'Flat',
-                        icon: 'fa fa-fw fa-circle',
+                   &#123;label: 'Display', icon: 'pi pi-fw pi-desktop', routerLink: ['utilities/display']&#125;,
+                   &#123;label: 'Elevation', icon: 'pi pi-fw pi-external-link', routerLink: ['utilities/elevation']&#125;,
+                   &#123;label: 'FlexBox', icon: 'pi pi-fw pi-directions', routerLink: ['utilities/flexbox']&#125;,
+                   &#123;label: 'Icons', icon: 'pi pi-fw pi-search', routerLink: ['utilities/icons']&#125;,
+                   &#123;label: 'Text', icon: 'pi pi-fw pi-pencil', routerLink: ['utilities/text']&#125;,
+                   &#123;label: 'Widgets', icon: 'pi pi-fw pi-star-o', routerLink: ['utilities/widgets']&#125;,
+                   &#123;label: 'Grid System', icon: 'pi pi-fw pi-th-large', routerLink: ['utilities/grid']&#125;,
+                   &#123;label: 'Spacing', icon: 'pi pi-fw pi-arrow-right', routerLink: ['utilities/spacing']&#125;,
+                   &#123;label: 'Typography', icon: 'pi pi-fw pi-align-center', routerLink: ['utilities/typography']&#125;
+                ]
+           &#125;,
+           &#123;
+                label: 'Pages', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages'], badge: 10,
+                items: [
+                   &#123;label: 'Crud', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/crud']&#125;,
+                   &#123;label: 'Calendar', icon: 'pi pi-fw pi-calendar-plus', routerLink: ['/pages/calendar']&#125;,
+                   &#123;label: 'Landing', icon: 'pi pi-fw pi-globe', url: 'assets/pages/landing.html', target: '_blank'&#125;,
+                   &#123;label: 'Login', icon: 'pi pi-fw pi-sign-in', routerLink: ['/login']&#125;,
+                   &#123;label: 'Invoice', icon: 'pi pi-fw pi-dollar', routerLink: ['/pages/invoice']&#125;,
+                   &#123;label: 'Help', icon: 'pi pi-fw pi-question-circle', routerLink: ['/pages/help']&#125;,
+                   &#123;label: 'Error', icon: 'pi pi-fw pi-times-circle', routerLink: ['/error']&#125;,
+                   &#123;label: 'Not Found', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/notfound']&#125;,
+                   &#123;label: 'Access Denied', icon: 'pi pi-fw pi-lock', routerLink: ['/access']&#125;,
+                   &#123;label: 'Empty', icon: 'pi pi-fw pi-circle-off', routerLink: ['/pages/empty']&#125;
+                ]
+           &#125;,
+           &#123;
+                label: 'Hierarchy', icon: 'pi pi-fw pi-align-left',
+                items: [
+                   &#123;
+                        label: 'Submenu 1', icon: 'pi pi-fw pi-align-left',
                         items: [
-                            &#123;label: 'Default', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('default')&#125;&#125;,
-                            &#123;label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('blue')&#125;&#125;,
-                            &#123;label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('green')&#125;&#125;,
-                            &#123;label: 'Turquoise', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('turquoise')&#125;&#125;,
-                            &#123;label: 'Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('purple')&#125;&#125;,
-                            &#123;label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('orange')&#125;&#125;,
-                            &#123;label: 'Deep Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('deeppurple')&#125;&#125;,
-                            &#123;label: 'Lime', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('lime')&#125;&#125;,
+                           &#123;
+                                label: 'Submenu 1.1', icon: 'pi pi-fw pi-align-left',
+                                items: [
+                                   &#123;label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-align-left'&#125;,
+                                   &#123;label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-align-left'&#125;,
+                                   &#123;label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-align-left'&#125;,
+                                ]
+                           &#125;,
+                           &#123;
+                                label: 'Submenu 1.2', icon: 'pi pi-fw pi-align-left',
+                                items: [
+                                   &#123;label: 'Submenu 1.2.1', icon: 'pi pi-fw pi-align-left'&#125;
+                                ]
+                           &#125;,
                         ]
-                    &#125;,
-                    &#123;
-                        label: 'Special',
-                        icon: 'fa fa-fw fa-fire',
+                   &#125;,
+                   &#123;
+                        label: 'Submenu 2', icon: 'pi pi-fw pi-align-left',
                         items: [
-                            &#123;label: 'Horizon', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('horizon')&#125;&#125;,
-                            &#123;label: 'Bliss', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('bliss')&#125;&#125;,
-                            &#123;label: 'Crimson', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('crimson')&#125;&#125;,
-                            &#123;label: 'Disco', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('disco')&#125;&#125;,
-                            &#123;label: 'Sunset', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('sunset')&#125;&#125;,
-                            &#123;label: 'Deep Sea', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('deepsea')&#125;&#125;,
-                            &#123;label: 'Opa', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('opa')&#125;&#125;,
-                            &#123;label: 'Cheer', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('cheer')&#125;&#125;,
-                            &#123;label: 'Smoke', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeLayout('smoke')&#125;&#125;,
+                           &#123;
+                                label: 'Submenu 2.1', icon: 'pi pi-fw pi-align-left',
+                                items: [
+                                   &#123;label: 'Submenu 2.1.1', icon: 'pi pi-fw pi-align-left'&#125;,
+                                   &#123;label: 'Submenu 2.1.2', icon: 'pi pi-fw pi-align-left'&#125;,
+                                ]
+                           &#125;,
+                           &#123;
+                                label: 'Submenu 2.2', icon: 'pi pi-fw pi-align-left',
+                                items: [
+                                   &#123;label: 'Submenu 2.2.1', icon: 'pi pi-fw pi-align-left'&#125;,
+                                ]
+                           &#125;,
                         ]
-                    &#125;
+                   &#125;
                 ]
-            &#125;,
-            &#123;
-                label: 'Themes', icon: 'fa fa-fw fa-paint-brush',
-                items: [
-                    &#123;label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('blue')&#125;&#125;,
-                    &#123;label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('green')&#125;&#125;,
-                    &#123;label: 'Turquoise', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('turquoise')&#125;&#125;,
-                    &#123;label: 'Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('purple')&#125;&#125;,
-                    &#123;label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('orange')&#125;&#125;,
-                    &#123;label: 'Deep Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('deeppurple')&#125;&#125;,
-                    &#123;label: 'Lime', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('lime')&#125;&#125;,
-                    &#123;label: 'Light Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => &#123;this.changeTheme('lightblue')&#125;&#125;,
-                ]
-            &#125;,
-            &#123;
-                label: 'Components', icon: 'fa fa-fw fa-sitemap', routerLink: ['/components'],
-                items: [
-                    &#123;label: 'Sample Page', icon: 'fa fa-fw fa-columns', routerLink: ['/components/sample']&#125;,
-                    &#123;label: 'Forms', icon: 'fa fa-fw fa-code', routerLink: ['/components/forms']&#125;,
-                    &#123;label: 'Data', icon: 'fa fa-fw fa-table', routerLink: ['/components/data']&#125;,
-                    &#123;label: 'Panels', icon: 'fa fa-fw fa-list-alt', routerLink: ['/components/panels']&#125;,
-                    &#123;label: 'Overlays', icon: 'fa fa-fw fa-square', routerLink: ['/components/overlays']&#125;,
-                    &#123;label: 'Menus', icon: 'fa fa-fw fa-minus-square-o', routerLink: ['/components/menus']&#125;,
-                    &#123;label: 'Messages', icon: 'fa fa-fw fa-circle-o-notch', routerLink: ['/components/messages']&#125;,
-                    &#123;label: 'Charts', icon: 'fa fa-fw fa-area-chart', routerLink: ['/components/charts']&#125;,
-                    &#123;label: 'File', icon: 'fa fa-fw fa-arrow-circle-o-up', routerLink: ['/components/file']&#125;,
-                    &#123;label: 'Misc', icon: 'fa fa-fw fa-user-secret', routerLink: ['/components/misc']&#125;
-                ]
-            &#125;,
-            &#123;label: 'Landing Page', icon: 'fa fa-fw fa-certificate', url: 'assets/pages/landing.html', target: '_blank'&#125;,
-            &#123;
-                label: 'Template Pages', icon: 'fa fa-fw fa-life-saver', routerLink: ['/pages'],
-                items: [
-                    &#123;label: 'Empty Page', icon: 'fa fa-fw fa-square-o', routerLink: ['/pages/empty']&#125;,
-                    &#123;label: 'Login Page', icon: 'fa fa-fw fa-sign-in', url: 'assets/pages/login.html', target: '_blank'&#125;,
-                    &#123;label: 'Error Page', icon: 'fa fa-fw fa-exclamation-circle', url: 'assets/pages/error.html', target: '_blank'&#125;,
-                    &#123;label: '404 Page', icon: 'fa fa-fw fa-times', url: 'assets/pages/404.html', target: '_blank'&#125;,
-                    &#123;label: 'Access Denied Page', icon: 'fa fa-fw fa-exclamation-triangle', url: 'assets/pages/access.html', target: '_blank'&#125;
-                ]
-            &#125;,
-            &#123;
-                label: 'Menu Hierarchy', icon: 'fa fa-fw fa-gg',
-                items: [
-                    &#123;
-                        label: 'Submenu 1', icon: 'fa fa-fw fa-sign-in',
-                        items: [
-                            &#123;
-                                label: 'Submenu 1.1', icon: 'fa fa-fw fa-sign-in',
-                                items: [
-                                    &#123;label: 'Submenu 1.1.1', icon: 'fa fa-fw fa-sign-in'&#125;,
-                                    &#123;label: 'Submenu 1.1.2', icon: 'fa fa-fw fa-sign-in'&#125;,
-                                    &#123;label: 'Submenu 1.1.3', icon: 'fa fa-fw fa-sign-in'&#125;,
-                                ]
-                            &#125;,
-                            &#123;
-                                label: 'Submenu 1.2', icon: 'fa fa-fw fa-sign-in',
-                                items: [
-                                    &#123;label: 'Submenu 1.2.1', icon: 'fa fa-fw fa-sign-in'&#125;,
-                                    &#123;label: 'Submenu 1.2.2', icon: 'fa fa-fw fa-sign-in'&#125;
-                                ]
-                            &#125;,
-                        ]
-                    &#125;,
-                    &#123;
-                        label: 'Submenu 2', icon: 'fa fa-fw fa-sign-in',
-                        items: [
-                            &#123;
-                                label: 'Submenu 2.1', icon: 'fa fa-fw fa-sign-in',
-                                items: [
-                                    &#123;label: 'Submenu 2.1.1', icon: 'fa fa-fw fa-sign-in'&#125;,
-                                    &#123;label: 'Submenu 2.1.2', icon: 'fa fa-fw fa-sign-in'&#125;,
-                                    &#123;label: 'Submenu 2.1.3', icon: 'fa fa-fw fa-sign-in'&#125;,
-                                ]
-                            &#125;,
-                            &#123;
-                                label: 'Submenu 2.2', icon: 'fa fa-fw fa-sign-in',
-                                items: [
-                                    &#123;label: 'Submenu 2.2.1', icon: 'fa fa-fw fa-sign-in'&#125;,
-                                    &#123;label: 'Submenu 2.2.2', icon: 'fa fa-fw fa-sign-in'&#125;
-                                ]
-                            &#125;,
-                        ]
-                    &#125;
-                ]
-            &#125;,
-            &#123;label: 'Utils', icon: 'fa fa-fw fa-wrench', routerLink: ['/utils']&#125;,
-            &#123;label: 'Documentation', icon: 'fa fa-fw fa-book', routerLink: ['/documentation']&#125;
+           &#125;,
+           &#123;
+                label: 'Buy Now', icon: 'pi pi-fw pi-shopping-cart', url: ['https://www.primefaces.org/store']
+           &#125;,
+           &#123;
+                label: 'Documentation', icon: 'pi pi-fw pi-info-circle', routerLink: ['/documentation']
+           &#125;
         ];
     &#125;
 &#125;
-</code>
-</pre>
+</app-code>
 </div>
 
-            <h1>Integration with an Existing CLI Project</h1>
+            <h4>Integration with an Existing CLI Project</h4>
             <p>To setup Paradise in an existing project, copy the <i>src/assets</i> folder to your projects folder with the same name
                 and replace the contents of app.component.ts, app.component.html with their counterparts in Paradise under <i>src/app</i> folder.</p>
 
             <p>Install PrimeNG</p>
-<pre class="doc-command">
+<app-code ngPreserveWhitespaces ngNonBindable lang="markup">
 npm install primeng@latest --save
 npm install primeicons@latest --save
-</pre>
+</app-code>
 
             <p>Add PrimeNG CSS at styles section in angular.json.</p>
 
-<pre>
-<code class="language-json" pCode>
+<app-code ngPreserveWhitespaces ngNonBindable lang="json">
 "styles": [
-    "../node_modules/primeng/resources/primeng.min.css",        //required: PrimeNG components
-    "node_modules/primeicons/primeicons.css",                   //required: PrimeIcons
-    "styles.scss"                                               //your styles and overrides
+    "styles.scss"           //your styles and overrides
 ],
-</code>
-</pre>
+</app-code>
 
             <p>Last part is adding theme and layout css files, in the CLI app they are defined using link tags in index.html so the demo can switch them on
             the fly by changing the path however if this is not a requirement, you may also add them to the styles configuration so they go inside the bundle.</p>
 
-            <h1 id="noncli">Integration with an Existing Non-CLI Project</h1>
+            <h4 id="noncli">Integration with an Existing Non-CLI Project</h4>
             <p>For an existing project that do not use CLI, setup steps are more or less similar. Start with installing the dependencies listed above in package.json</p>
             <p>Copy the <i>src/assets</i> folder to your application and include the resources listed above with a module bundler like webpack or using link-script tags.</p>
             <p>Finally copy the contents of app.component.html to your application's main component template such as <i>app/application.html</i> along
             with the sub components which are app.menu.component.ts, app.topbar.component.ts and app.footer.component.ts.</p>
 
-            <h1>Theme</h1>
+            <h4>Theme</h4>
             <p>Paradise provides 8 PrimeNG themes out of the box, setup of a theme simple including the css of theme to your page that are located inside resources/theme folder.</p>
 
             <ul>
@@ -294,26 +256,30 @@ npm install primeicons@latest --save
             <p>Here are the variables required to create a theme, you may need to change the last line according to the
                 relative path of the sass folder in your application.</p>
 
-<pre>
-<code class="language-css" pCode>
-$primaryColor:#63aee2;
-$primaryTextColor:#ffffff;
+<app-code ngPreserveWhitespaces ngNonBindable lang="css">
+$primaryColor: #3984b8;
+$primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
+$primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default;
+$primaryDarkerColor: scale-color($primaryColor, $lightness: -20%) !default;
+$primaryTextColor: #ffffff;
+
+$highlightBg: $primaryColor;
+$highlightTextColor: $primaryTextColor;
 
 @import '../sass/theme/_theme';
-</code>
-</pre>
+</app-code>
 
             <p> An example sass command to compile the css would be;</p>
 
-<pre class="doc-command">
+<app-code ngPreserveWhitespaces ngNonBindable lang="markup">
 sass src/assets/theme-myown/theme.scss src/assets/theme-myown/theme.css
-</pre>
+</app-code>
 
             <p>Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command
             so that sass generates the file whenever you make a customization. This builds all css files whenever a change is made to any scss file.</p>
-<pre class="doc-command">
+<app-code ngPreserveWhitespaces ngNonBindable lang="markup">
 sass --watch src/:src/ --no-source-map
-</pre>
+</app-code>
 
             <p>Same can also be applied to layout itself;</p>
             <ul>
@@ -327,8 +293,7 @@ sass --watch src/:src/ --no-source-map
             <p>Here are the variables required to create a layout, you may need to change the last line according to the
                 relative path of the sass folder in your application.</p>
 
-<pre>
-<code class="language-css" pCode>
+<app-code ngPreserveWhitespaces ngNonBindable lang="css">
 $topbarLeftBgColor:#3984b8;
 $topbarRightBgColor:#3984b8;
 $topbarLeftTextColor:#ffffff;
@@ -342,14 +307,13 @@ $darkMenuTextColor:#f6f8f9;
 $bodyBgColor:#F2F8FA;
 
 @import '../../sass/layout/_layout';
-</code>
-</pre>
+</app-code>
 
-            <p>For both cases, several .scss files such as _layout.scss, _theme.scss or _variables.scss has to be present relative to your scss files, these are available inside the resources/sass folder in the distribution.</p>
+            <p>For both cases, several .scss files such as _layout.scss, _theme.scss or _variables.scss has to be present relative to your scss files, these are available inside the assets/sass folder in the distribution.</p>
             <p>In case you'd like to customize the structure not just the colors, the _variables.scss files are where the structural variables (e.g. font size, paddings) for the layout are defined.</p>
-<pre>
-<code class="language-css" pCode>
-/*  Common  */
+
+<h5>sass/layout/_variables.scss</h5>
+<app-code ngPreserveWhitespaces ngNonBindable lang="css">
 $fontFamily:"Roboto","Helvetica Neue",sans-serif;
 $fontSize:13px;
 $textColor:#757575;
@@ -366,108 +330,754 @@ $pink:#e175a0;
 $turquoise:#39b8b6;
 $green:#3eb839;
 $red:#e17576;
-</code>
-</pre>
+$secondary:#f4f4f4;
 
+$darkMenuTextColor:#ffffff;
+</app-code>
+
+<h5>sass/theme/_variables.scss</h5>
 <div style="height:400px;overflow: auto;">
-<pre>
-<code class="language-css" pCode>
-/* PrimeNG Components Theme */
-@import '../_variables';
+<app-code ngPreserveWhitespaces ngNonBindable lang="css">
+//reused color variables
+$shade000:#ffffff !default;    //surface
+$shade100:#f8f9fa !default;    //header background
+$shade200:#e9ecef !default;    //hover background
+$shade300:#dee2e6 !default;    //border, divider
+$shade400:#ced4da !default;    //input border
+$shade500:#adb5bd !default;    //input icon
+$shade600:#6c757d !default;    //text secondary color
+$shade700:#495057 !default;    //text color
+$shade800:#343a40 !default;    //unused
+$shade900:#212529 !default;    //unused
 
-/* Icons */
-$iconFontSize:13px;
-$iconWidth:16px;
+//global
+$fontFamily:"Roboto","Helvetica Neue",sans-serif;
+$fontSize:1rem !default;
+$fontWeight:normal !default;
+$textColor:$shade700 !default;
+$textSecondaryColor:$shade600 !default;
+$borderRadius:3px !default;
+$transitionDuration:.2s !default;
+$formElementTransition:background-color $transitionDuration, color $transitionDuration, border-color $transitionDuration, box-shadow $transitionDuration !default;
+$actionIconTransition:background-color $transitionDuration, color $transitionDuration, box-shadow $transitionDuration !default;
+$listItemTransition:box-shadow $transitionDuration !default;
+$primeIconFontSize:1rem !default;
+$divider:1px solid $shade300 !default;
+$inlineSpacing:.5rem !default;
+$disabledOpacity:.6 !default;
+$maskBg:rgba(0, 0, 0, 0.4) !default;
+$loadingIconFontSize:2rem !default;
+$errorColor:#f44336 !default;
 
-/* Validatioj */
-$inputInvalidBorderColor:#e17576;
-$inputInvalidBgColor:#ffffff;
+//scale
+$scaleSM:0.875 !default;
+$scaleLG:1.25 !default;
 
-/* Headers */
-$headerPadding:.5em 1em;
-$headerBgColor:#ffffff;
-$headerTextColor:#757575;
-$headerHoverBgColor:#dee4e9;
-$headerHoverTextColor:#757575;
-$headerBorderColor:#c7cdd1;
-$headerIconColor:#757575;
-$headerIconHoverColor:$primaryColor;
+//focus
+$focusOutlineColor:$primaryLightColor !default;
+$focusOutline:0 none !default;
+$focusOutlineOffset:0 !default;
+$focusShadow:0 0 0 0.2rem $focusOutlineColor !default;
 
-/* Contents */
-$contentPadding:.5em 1em;
-$contentBorderColor:#c7cdd1;
-$contentBgColor:#ffffff;
+//action icons
+$actionIconWidth:2rem !default;
+$actionIconHeight:2rem !default;
+$actionIconBg:transparent !default;
+$actionIconBorder:0 none !default;
+$actionIconColor:$shade600 !default;
+$actionIconHoverBg:$shade200 !default;
+$actionIconHoverBorderColor:transparent !default;
+$actionIconHoverColor:$shade700 !default;
+$actionIconBorderRadius:50% !default;
 
-/* Forms */
-$inputBgColor:#ffffff;
-$inputPadding:.385em;
-$inputBorderColor:#bdc3c9;
-$inputHoverBorderColor:#979ca0;
-$inputBtnBgColor:#ffffff;
-$inputBtnBgHoverColor:#ffffff;
-$inputBtnBgActiveColor:#ffffff;
+//input field (e.g. inputtext, spinner, inputmask)
+$inputPadding:.5rem .5rem !default;
+$inputTextFontSize:1rem !default;
 
-/* Buttons */
-$buttonTextColor:#ffffff;
-$toggleButtonBgColor:#c6cbcf;
+$inputBg:$shade000 !default;
+$inputTextColor:$shade700 !default;
+$inputIconColor:$shade600 !default;
+$inputBorder:1px solid $shade400 !default;
+$inputHoverBorderColor:$primaryColor !default;
+$inputFocusBorderColor:$primaryColor !default;
+$inputErrorBorderColor:$errorColor !default;
+$inputPlaceholderTextColor:$shade600 !default;
+$inputFilledBg:$shade100 !default;
+$inputFilledHoverBg:$inputFilledBg !default;
+$inputFilledFocusBg:$shade000 !default;
 
-/* List Items */
-$listItemPadding:.5em 1em;
-$listItemBgColor:#ffffff;
-$listItemHoverBgColor:#dee4e9;
-$listItemHoverTextColor:#757575;
+//input groups
+$inputGroupBg:$shade200 !default;
+$inputGroupTextColor:$shade600 !default;
+$inputGroupAddOnMinWidth:2.357rem !default;
 
-/* Messages */
-$infoMessageBgColor:#a8c9e0;
-$infoMessageTextColor:#393b3e;
-$warnMessageBgColor:#f8eab9;
-$warnMessageTextColor:#393b3e;
-$errorMessageBgColor:#fac7c8;
-$errorMessageTextColor:#393b3e;
-$fatalMessageBgColor:#bdc3c9;
-$fatalMessageTextColor:#393b3e;
-$successMessageBgColor:#64c660;
-$successMessageTextColor:#ffffff;
+//input lists (e.g. dropdown, autocomplete, multiselect, orderlist)
+$inputListBg:$shade000 !default;
+$inputListTextColor:$shade700 !default;
+$inputListBorder:$inputBorder !default;
+$inputListPadding:.5rem 0 !default;
+$inputListItemPadding:.5rem 1rem !default;
+$inputListItemBg:transparent !default;
+$inputListItemTextColor:$shade700 !default;
+$inputListItemHoverBg:$shade200 !default;
+$inputListItemTextHoverColor:$shade700 !default;
+$inputListItemBorder:0 none !default;
+$inputListItemBorderRadius:0 !default;
+$inputListItemMargin:0 !default;
+$inputListItemFocusShadow:inset 0 0 0 0.15rem $focusOutlineColor !default;
+$inputListHeaderPadding:.5rem 1rem !default;
+$inputListHeaderMargin:0 !default;
+$inputListHeaderBg:$shade100 !default;
+$inputListHeaderTextColor:$shade700 !default;
+$inputListHeaderBorder:0 none !default;
 
-/* Overlays */
-$overlayBorder: 0 none;
-$tooltipBgColor: #393b3e;
-$tooltipTextColor: #ffffff;
+//inputs with overlays (e.g. autocomplete, dropdown, multiselect)
+$inputOverlayBg:$inputListBg !default;
+$inputOverlayHeaderBg:$inputListHeaderBg !default;
+$inputOverlayBorder:0 none !default;
+$inputOverlayShadow:0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12) !default;
 
-/* Data */
-$paginatorBgColor:#ffffff;
-$paginatorHoverBgColor:#dee4e9;
-$datatableOddRowBgColor:#ffffff;
-$datatableEvenRowBgColor:#f6f8f9;
-$datatableHoverBgColor:#dee4e9;
+//button
+$buttonPadding:.5rem 1rem !default;
+$buttonIconOnlyWidth:2.357rem !default;
+$buttonIconOnlyPadding:.5rem 0 !default;
+$buttonBg:$primaryColor !default;
+$buttonTextColor:$primaryTextColor !default;
+$buttonBorder:1px solid $primaryColor !default;
+$buttonHoverBg:$primaryDarkColor !default;
+$buttonTextHoverColor:$primaryTextColor !default;
+$buttonHoverBorderColor:$primaryDarkColor !default;
+$buttonActiveBg:$primaryDarkerColor !default;
+$buttonTextActiveColor:$primaryTextColor !default;
+$buttonActiveBorderColor:$primaryDarkerColor !default;
+$raisedButtonShadow:0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12) !default;
+$roundedButtonBorderRadius:2rem !default;
+
+$textButtonHoverBgOpacity:.04 !default;
+$textButtonActiveBgOpacity:.16 !default;
+$outlinedButtonBorder:1px solid !default;
+$plainButtonTextColor:$textSecondaryColor !default;
+$plainButtonHoverBgColor:$shade200 !default;
+$plainButtonActiveBgColor:$shade300 !default;
+
+$secondaryButtonBg:#607D8B !default;
+$secondaryButtonTextColor:#ffffff !default;
+$secondaryButtonBorder:1px solid $secondaryButtonBg !default;
+$secondaryButtonHoverBg:scale-color($secondaryButtonBg, $lightness: -10%) !default;
+$secondaryButtonTextHoverColor:$secondaryButtonTextColor !default;
+$secondaryButtonHoverBorderColor:scale-color($secondaryButtonBg, $lightness: -10%) !default;
+$secondaryButtonActiveBg:scale-color($secondaryButtonBg, $lightness: -20%) !default;
+$secondaryButtonTextActiveColor:$secondaryButtonTextColor !default;
+$secondaryButtonActiveBorderColor:scale-color($secondaryButtonBg, $lightness: -20%) !default;
+$secondaryButtonFocusShadow:0 0 0 0.2rem scale-color($secondaryButtonBg, $lightness: 60%) !default;
+
+$infoButtonBg:#0288D1 !default;
+$infoButtonTextColor:#ffffff !default;
+$infoButtonBorder:1px solid $infoButtonBg !default;
+$infoButtonHoverBg:scale-color($infoButtonBg, $lightness: -10%) !default;
+$infoButtonTextHoverColor:$infoButtonTextColor !default;
+$infoButtonHoverBorderColor:scale-color($infoButtonBg, $lightness: -10%) !default;
+$infoButtonActiveBg:scale-color($infoButtonBg, $lightness: -20%) !default;
+$infoButtonTextActiveColor:$infoButtonTextColor !default;
+$infoButtonActiveBorderColor:scale-color($infoButtonBg, $lightness: -20%) !default;
+$infoButtonFocusShadow:0 0 0 0.2rem scale-color($infoButtonBg, $lightness: 60%) !default;
+
+$successButtonBg:#689F38 !default;
+$successButtonTextColor:#ffffff !default;
+$successButtonBorder:1px solid $successButtonBg !default;
+$successButtonHoverBg:scale-color($successButtonBg, $lightness: -10%) !default;
+$successButtonTextHoverColor:$successButtonTextColor !default;
+$successButtonHoverBorderColor:scale-color($successButtonBg, $lightness: -10%) !default;
+$successButtonActiveBg:scale-color($successButtonBg, $lightness: -20%) !default;
+$successButtonTextActiveColor:$successButtonTextColor !default;
+$successButtonActiveBorderColor:scale-color($successButtonBg, $lightness: -20%) !default;
+$successButtonFocusShadow:0 0 0 0.2rem scale-color($successButtonBg, $lightness: 60%) !default;
+
+$warningButtonBg:#FBC02D !default;
+$warningButtonTextColor:#212529 !default;
+$warningButtonBorder:1px solid $warningButtonBg !default;
+$warningButtonHoverBg:scale-color($warningButtonBg, $lightness: -10%) !default;
+$warningButtonTextHoverColor:$warningButtonTextColor !default;
+$warningButtonHoverBorderColor:scale-color($warningButtonBg, $lightness: -10%) !default;
+$warningButtonActiveBg:scale-color($warningButtonBg, $lightness: -20%) !default;
+$warningButtonTextActiveColor:$warningButtonTextColor !default;
+$warningButtonActiveBorderColor:scale-color($warningButtonBg, $lightness: -20%) !default;
+$warningButtonFocusShadow:0 0 0 0.2rem scale-color($warningButtonBg, $lightness: 60%) !default;
+
+$helpButtonBg:#9C27B0 !default;
+$helpButtonTextColor:#ffffff !default;
+$helpButtonBorder:1px solid $helpButtonBg !default;
+$helpButtonHoverBg:scale-color($helpButtonBg, $lightness: -10%) !default;
+$helpButtonTextHoverColor:$helpButtonTextColor !default;
+$helpButtonHoverBorderColor:scale-color($helpButtonBg, $lightness: -10%) !default;
+$helpButtonActiveBg:scale-color($helpButtonBg, $lightness: -20%) !default;
+$helpButtonTextActiveColor:$helpButtonTextColor !default;
+$helpButtonActiveBorderColor:scale-color($helpButtonBg, $lightness: -20%) !default;
+$helpButtonFocusShadow:0 0 0 0.2rem scale-color($helpButtonBg, $lightness: 60%) !default;
+
+$dangerButtonBg:#D32F2F !default;
+$dangerButtonTextColor:#ffffff !default;
+$dangerButtonBorder:1px solid $dangerButtonBg !default;
+$dangerButtonHoverBg:scale-color($dangerButtonBg, $lightness: -10%) !default;
+$dangerButtonTextHoverColor:$dangerButtonTextColor !default;
+$dangerButtonHoverBorderColor:scale-color($dangerButtonBg, $lightness: -10%) !default;
+$dangerButtonActiveBg:scale-color($dangerButtonBg, $lightness: -20%) !default;
+$dangerButtonTextActiveColor:$dangerButtonTextColor !default;
+$dangerButtonActiveBorderColor:scale-color($dangerButtonBg, $lightness: -20%) !default;
+$dangerButtonFocusShadow:0 0 0 0.2rem scale-color($dangerButtonBg, $lightness: 60%) !default;
+
+$linkButtonColor:$primaryDarkerColor !default;
+$linkButtonHoverColor:$primaryDarkerColor !default;
+$linkButtonTextHoverDecoration:underline !default;
+$linkButtonFocusShadow:0 0 0 0.2rem $focusOutlineColor !default;
+
+//checkbox
+$checkboxWidth:20px !default;
+$checkboxHeight:20px !default;
+$checkboxBorder:2px solid $shade400 !default;
+$checkboxIconFontSize:14px !default;
+$checkboxActiveBorderColor:$primaryColor !default;
+$checkboxActiveBg:$primaryColor !default;
+$checkboxIconActiveColor:$primaryTextColor !default;
+$checkboxActiveHoverBg:$primaryDarkerColor !default;
+$checkboxIconActiveHoverColor:$primaryTextColor !default;
+$checkboxActiveHoverBorderColor:$primaryDarkerColor !default;
+
+//radiobutton
+$radiobuttonWidth:20px !default;
+$radiobuttonHeight:20px !default;
+$radiobuttonBorder:2px solid $shade400 !default;
+$radiobuttonIconSize:12px !default;
+$radiobuttonActiveBorderColor:$primaryColor !default;
+$radiobuttonActiveBg:$primaryColor !default;
+$radiobuttonIconActiveColor:$primaryTextColor !default;
+$radiobuttonActiveHoverBg:$primaryDarkerColor !default;
+$radiobuttonIconActiveHoverColor:$primaryTextColor !default;
+$radiobuttonActiveHoverBorderColor:$primaryDarkerColor !default;
+
+//colorpicker
+$colorPickerPreviewWidth:2rem !default;
+$colorPickerPreviewHeight:2rem !default;
+$colorPickerBg:#323232 !default;
+$colorPickerBorderColor:#191919 !default;
+$colorPickerHandleColor:$shade000 !default;
+
+//togglebutton
+$toggleButtonBg:$inputBg !default;
+$toggleButtonBorder:1px solid $shade400 !default;
+$toggleButtonTextColor:$shade700 !default;
+$toggleButtonIconColor:$shade600 !default;
+$toggleButtonHoverBg:$shade200 !default;
+$toggleButtonHoverBorderColor:$shade400 !default;
+$toggleButtonTextHoverColor:$shade700 !default;
+$toggleButtonIconHoverColor:$shade600 !default;
+$toggleButtonActiveBg:$primaryColor !default;
+$toggleButtonActiveBorderColor:$primaryColor !default;
+$toggleButtonTextActiveColor:$primaryTextColor !default;
+$toggleButtonIconActiveColor:$primaryTextColor !default;
+$toggleButtonActiveHoverBg:$primaryDarkColor !default;
+$toggleButtonActiveHoverBorderColor:$primaryDarkColor !default;
+$toggleButtonTextActiveHoverColor:$primaryTextColor !default;
+$toggleButtonIconActiveHoverColor:$primaryTextColor !default;
+
+//inplace
+$inplacePadding:$inputPadding !default;
+$inplaceHoverBg:$shade200 !default;
+$inplaceTextHoverColor:$shade700 !default;
+
+//rating
+$ratingIconFontSize:1.143rem !default;
+$ratingCancelIconColor:#e74c3c !default;
+$ratingCancelIconHoverColor:#c0392b !default;
+$ratingStarIconOffColor:$shade700 !default;
+$ratingStarIconOnColor:$primaryColor !default;
+$ratingStarIconHoverColor:$primaryColor !default;
+
+//slider
+$sliderBg:$shade300 !default;
+$sliderBorder:0 none !default;
+$sliderHorizontalHeight:.286rem !default;
+$sliderVerticalWidth:0.286rem !default;
+$sliderHandleWidth:1.143rem !default;
+$sliderHandleHeight:1.143rem !default;
+$sliderHandleBg:$shade000 !default;
+$sliderHandleBorder:2px solid $primaryColor !default;
+$sliderHandleBorderRadius:50% !default;
+$sliderHandleHoverBorderColor:$primaryColor !default;
+$sliderHandleHoverBg:$primaryColor !default;
+$sliderRangeBg:$primaryColor !default;
+
+//calendar
+$calendarTableMargin:.5rem 0 !default;
+$calendarPadding:.5rem !default;
+$calendarBg:$shade000 !default;
+$calendarInlineBg:$calendarBg !default;
+$calendarTextColor:$shade700 !default;
+$calendarBorder:$inputListBorder !default;
+$calendarOverlayBorder:$inputOverlayBorder !default;
+
+$calendarHeaderPadding:.5rem !default;
+$calendarHeaderBg:$shade000 !default;
+$calendarInlineHeaderBg:$calendarBg !default;
+$calendarHeaderBorder:1px solid $shade300 !default;
+$calendarHeaderTextColor:$shade700 !default;
+$calendarHeaderFontWeight:600 !default;
+$calendarHeaderCellPadding:.5rem !default;
+
+$calendarCellDatePadding:.5rem !default;
+$calendarCellDateWidth:2.5rem !default;
+$calendarCellDateHeight:2.5rem !default;
+$calendarCellDateBorderRadius:50% !default;
+$calendarCellDateBorder:1px solid transparent !default;
+$calendarCellDateHoverBg:$shade200 !default;
+$calendarCellDateTodayBg:$shade400 !default;
+$calendarCellDateTodayBorderColor:transparent !default;
+$calendarCellDateTodayTextColor:$shade700 !default;
+
+$calendarButtonBarPadding:1rem 0 !default;
+$calendarTimePickerPadding:.5rem !default;
+$calendarTimePickerElementPadding:0 .5rem !default;
+$calendarTimePickerTimeFontSize:1.25rem !default;
+
+$calendarBreakpoint:769px !default;
+$calendarCellDatePaddingSM:0 !default;
+
+//input switch
+$inputSwitchWidth:3rem !default;
+$inputSwitchHeight:1.75rem !default;
+$inputSwitchBorderRadius:30px !default;
+$inputSwitchHandleWidth:1.250rem !default;
+$inputSwitchHandleHeight:1.250rem !default;
+$inputSwitchHandleBorderRadius:50% !default;
+$inputSwitchSliderPadding:.25rem !default;
+$inputSwitchSliderOffBg:$shade400 !default;
+$inputSwitchHandleOffBg:$shade000 !default;
+$inputSwitchSliderOffHoverBg:scale-color($shade400, $lightness: -10%) !default;
+$inputSwitchSliderOnBg:$primaryColor !default;
+$inputSwitchSliderOnHoverBg:$primaryDarkColor !default;
+$inputSwitchHandleOnBg:$shade000 !default;
+
+//panel
+$panelHeaderBorder:1px solid $shade300 !default;
+$panelHeaderBg:$shade100 !default;
+$panelHeaderTextColor:$shade700 !default;
+$panelHeaderFontWeight:600 !default;
+$panelHeaderPadding:1rem !default;
+$panelToggleableHeaderPadding:.5rem 1rem !default;
+
+$panelHeaderHoverBg:$shade200 !default;
+$panelHeaderHoverBorderColor:$shade300 !default;
+$panelHeaderTextHoverColor:$shade700 !default;
+
+$panelContentBorder:1px solid $shade300 !default;
+$panelContentBg:$shade000 !default;
+$panelContentTextColor:$shade700 !default;
+$panelContentPadding:1rem !default;
+
+$panelFooterBorder:1px solid $shade300 !default;
+$panelFooterBg:$shade000 !default;
+$panelFooterTextColor:$shade700 !default;
+$panelFooterPadding:0.5rem 1rem !default;
+
+//accordion
+$accordionSpacing:0 !default;
+$accordionHeaderBorder:$panelHeaderBorder !default;
+$accordionHeaderBg:$panelHeaderBg !default;
+$accordionHeaderTextColor:$panelHeaderTextColor !default;
+$accordionHeaderFontWeight:$panelHeaderFontWeight !default;
+$accordionHeaderPadding:$panelHeaderPadding !default;
+
+$accordionHeaderHoverBg:$shade200 !default;
+$accordionHeaderHoverBorderColor:$shade300 !default;
+$accordionHeaderTextHoverColor:$shade700 !default;
+
+$accordionHeaderActiveBg:$panelHeaderBg !default;
+$accordionHeaderActiveBorderColor:$shade300 !default;
+$accordionHeaderTextActiveColor:$shade700 !default;
+
+$accordionHeaderActiveHoverBg:$shade200 !default;
+$accordionHeaderActiveHoverBorderColor:$shade300 !default;
+$accordionHeaderTextActiveHoverColor:$shade700 !default;
+
+$accordionContentBorder:$panelContentBorder !default;
+$accordionContentBg:$panelContentBg !default;
+$accordionContentTextColor:$panelContentTextColor !default;
+$accordionContentPadding:$panelContentPadding !default;
+
+//tabview
+$tabviewNavBorder:1px solid $shade300 !default;
+$tabviewNavBorderWidth:0 0 2px 0 !default;
+$tabviewNavBg:$shade000 !default;
+
+$tabviewHeaderSpacing:0 !default;
+$tabviewHeaderBorder:solid $shade300 !default;
+$tabviewHeaderBorderWidth:0 0 2px 0 !default;
+$tabviewHeaderBorderColor:transparent transparent $shade300 transparent !default;
+$tabviewHeaderBg:$shade000 !default;
+$tabviewHeaderTextColor:$shade600 !default;
+$tabviewHeaderFontWeight:$panelHeaderFontWeight !default;
+$tabviewHeaderPadding:$panelHeaderPadding !default;
+$tabviewHeaderMargin:0 0 -2px 0 !default;
+
+$tabviewHeaderHoverBg:$shade000 !default;
+$tabviewHeaderHoverBorderColor:$shade600 !default;
+$tabviewHeaderTextHoverColor:$shade600 !default;
+
+$tabviewHeaderActiveBg:$shade000 !default;
+$tabviewHeaderActiveBorderColor:$primaryColor !default;
+$tabviewHeaderTextActiveColor:$primaryColor !default;
+
+$tabviewContentBorder:0 none !default;
+$tabviewContentBg:$panelContentBg !default;
+$tabviewContentTextColor:$panelContentTextColor !default;
+$tabviewContentPadding:$panelContentPadding !default;
+
+//upload
+$fileUploadProgressBarHeight:.25rem !default;
+$fileUploadContentPadding:2rem 1rem !default;
+
+//scrollpanel
+$scrollPanelTrackBorder:0 none !default;
+$scrollPanelTrackBg:$shade100 !default;
+
+//card
+$cardBodyPadding:1rem !default;
+$cardTitleFontSize:1.5rem !default;
+$cardTitleFontWeight:700 !default;
+$cardSubTitleFontWeight:400 !default;
+$cardSubTitleColor:$shade600 !default;
+$cardContentPadding:1rem 0 !default;
+$cardFooterPadding:1rem 0 0 0 !default;
+$cardShadow:0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12) !default;
+
+//editor
+$editorToolbarBg:$panelHeaderBg !default;
+$editorToolbarBorder:$panelHeaderBorder !default;
+$editorToolbarPadding:$panelHeaderPadding !default;
+$editorToolbarIconColor:$textSecondaryColor !default;
+$editorToolbarIconHoverColor:$textColor !default;
+$editorIconActiveColor:$primaryColor !default;
+$editorContentBorder:$panelContentBorder !default;
+$editorContentBg:$panelContentBg !default;
+
+//paginator
+$paginatorBg:$shade000 !default;
+$paginatorTextColor:$shade600 !default;
+$paginatorBorder:solid $shade200 !default;
+$paginatorBorderWidth:0 !default;
+$paginatorPadding:.5rem 1rem !default;
+$paginatorElementWidth:$buttonIconOnlyWidth !default;
+$paginatorElementHeight:$buttonIconOnlyWidth !default;
+$paginatorElementBg:transparent !default;
+$paginatorElementBorder:0 none !default;
+$paginatorElementIconColor:$shade600 !default;
+$paginatorElementHoverBg:$shade200 !default;
+$paginatorElementHoverBorderColor:transparent !default;
+$paginatorElementIconHoverColor:$shade700 !default;
+$paginatorElementBorderRadius:$borderRadius !default;
+$paginatorElementMargin:.143rem !default;
+$paginatorElementPadding:0 !default;
+
+//table
+$tableHeaderBorder:1px solid $shade200 !default;
+$tableHeaderBorderWidth:1px 0 1px 0 !default;
+$tableHeaderBg:$shade100 !default;
+$tableHeaderTextColor:$shade700 !default;
+$tableHeaderFontWeight:600 !default;
+$tableHeaderPadding:1rem 1rem !default;
+
+$tableHeaderCellPadding:1rem 1rem !default;
+$tableHeaderCellBg:$shade100 !default;
+$tableHeaderCellTextColor:$shade700 !default;
+$tableHeaderCellFontWeight:600 !default;
+$tableHeaderCellBorder:1px solid $shade200 !default;
+$tableHeaderCellBorderWidth:0 0 1px 0 !default;
+$tableHeaderCellHoverBg:$shade200 !default;
+$tableHeaderCellTextHoverColor:$shade700 !default;
+$tableHeaderCellIconColor:$shade600 !default;
+$tableHeaderCellIconHoverColor:$shade600 !default;
+$tableHeaderCellHighlightBg:$shade100 !default;
+$tableHeaderCellHighlightTextColor:$primaryColor !default;
+$tableHeaderCellHighlightHoverBg:$shade200 !default;
+$tableHeaderCellHighlightTextHoverColor:$primaryColor !default;
+$tableSortableColumnBadgeSize:1.143rem !default;
+
+$tableBodyRowBg:$shade000 !default;
+$tableBodyRowTextColor:$shade700 !default;
+$tableBodyRowEvenBg:scale-color($tableBodyRowBg, $lightness: -1%) !default;
+$tableBodyRowHoverBg:$shade200 !default;
+$tableBodyRowTextHoverColor:$shade700 !default;
+$tableBodyCellBorder:1px solid $shade200 !default;
+$tableBodyCellBorderWidth:0 0 1px 0 !default;
+$tableBodyCellPadding:1rem 1rem !default;
+
+$tableFooterCellPadding:1rem 1rem !default;
+$tableFooterCellBg:$shade100 !default;
+$tableFooterCellTextColor:$shade700 !default;
+$tableFooterCellFontWeight:600 !default;
+$tableFooterCellBorder:1px solid $shade200 !default;
+$tableFooterCellBorderWidth:0 0 1px 0 !default;
+$tableResizerHelperBg:$primaryColor !default;
+
+$tableFooterBorder:1px solid $shade200 !default;
+$tableFooterBorderWidth:0 0 1px 0 !default;
+$tableFooterBg:$shade100 !default;
+$tableFooterTextColor:$shade700 !default;
+$tableFooterFontWeight:600 !default;
+$tableFooterPadding:1rem 1rem !default;
+
+$tableCellContentAlignment:left !default;
+$tableTopPaginatorBorderWidth:0 0 1px 0 !default;
+$tableBottomPaginatorBorderWidth:0 0 1px 0 !default;
+
+$tableScaleSM:0.5 !default;
+$tableScaleLG:1.25 !default;
+
+//dataview
+$dataViewContentPadding:0 !default;
+$dataViewContentBorder:0 none !default;
+$dataViewListItemBorder:solid $shade200 !default;
+$dataViewListItemBorderWidth:0 0 1px 0 !default;
+
+//orderlist, picklist
+$orderListBreakpoint:769px !default;
+$pickListBreakpoint:769px !default;
+
+//schedule
+$fullCalendarEventBg:$primaryDarkColor !default;
+$fullCalendarEventBorder:1px solid $primaryDarkColor !default;
+$fullCalendarEventTextColor:$primaryTextColor !default;
+
+//tree
+$treeContainerPadding:0.286rem !default;
+$treeNodePadding:0.143rem !default;
+$treeNodeContentPadding:.5rem !default;
+$treeNodeChildrenPadding:0 0 0 1rem !default;
+$treeNodeIconColor:$shade600 !default;
+
+//org chart
+$organizationChartConnectorColor:$shade300 !default;
+
+//message
+$messageMargin:1rem 0 !default;
+$messagePadding:1rem 1.5rem !default;
+$messageBorderWidth:0 0 0 6px !default;
+$messageIconFontSize:1.5rem !default;
+$messageTextFontSize:1rem !default;
+$messageTextFontWeight:500 !default;
+
+//inline message
+$inlineMessagePadding:$inputPadding !default;
+$inlineMessageMargin:0 !default;
+$inlineMessageIconFontSize:1rem !default;
+$inlineMessageTextFontSize:1rem !default;
+$inlineMessageBorderWidth:0px !default;
+
+//toast
+$toastIconFontSize:2rem !default;
+$toastMessageTextMargin:0 0 0 1rem !default;
+$toastMargin:0 0 1rem 0 !default;
+$toastPadding:1rem !default;
+$toastBorderWidth:0 0 0 6px !default;
+$toastShadow:0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12) !default;
+$toastOpacity:.9 !default;
+$toastTitleFontWeight:700 !default;
+$toastDetailMargin:$inlineSpacing 0 0 0 !default;
+
+//severities
+$infoMessageBg:#B3E5FC !default;
+$infoMessageBorder:solid scale-color($infoMessageBg, $lightness: -50%) !default;
+$infoMessageTextColor:scale-color($infoMessageBg, $lightness: -75%) !default;
+$infoMessageIconColor:scale-color($infoMessageBg, $lightness: -75%) !default;
+$successMessageBg:#C8E6C9 !default;
+$successMessageBorder:solid scale-color($successMessageBg, $lightness: -50%) !default;
+$successMessageTextColor:scale-color($successMessageBg, $lightness: -75%) !default;
+$successMessageIconColor:scale-color($successMessageBg, $lightness: -75%) !default;
+$warningMessageBg:#FFECB3 !default;
+$warningMessageBorder:solid scale-color($warningMessageBg, $lightness: -50%) !default;
+$warningMessageTextColor:scale-color($warningMessageBg, $lightness: -75%) !default;
+$warningMessageIconColor:scale-color($warningMessageBg, $lightness: -75%) !default;
+$errorMessageBg:#FFCDD2 !default;
+$errorMessageBorder:solid scale-color($errorMessageBg, $lightness: -50%) !default;
+$errorMessageTextColor:scale-color($errorMessageBg, $lightness: -75%) !default;
+$errorMessageIconColor:scale-color($errorMessageBg, $lightness: -75%) !default;
+
+//overlays
+$overlayContentBorder:0 none !default;
+$overlayContentBg:$panelContentBg !default;
+$overlayContainerShadow:0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0,0,0,.12) !default;
+
+//dialog
+$dialogHeaderBg:$shade000 !default;
+$dialogHeaderBorder:0 none !default;
+$dialogHeaderTextColor:$shade700 !default;
+$dialogHeaderFontWeight:600 !default;
+$dialogHeaderFontSize:1.25rem !default;
+$dialogHeaderPadding:1.5rem !default;
+$dialogContentPadding:0 1.5rem 2rem 1.5rem !default;
+$dialogFooterBorder:0 none !default;
+$dialogFooterPadding:0 1.5rem 1.5rem 1.5rem !default;
+
+//tooltip
+$tooltipBg:$shade700 !default;
+$tooltipTextColor:$shade000 !default;
+$tooltipPadding:$inputPadding !default;
+
+//steps
+$stepsItemBg:$shade000 !default;
+$stepsItemBorder:1px solid $shade200 !default;
+$stepsItemTextColor:$shade600 !default;
+$stepsItemNumberWidth:2rem !default;
+$stepsItemNumberHeight:2rem !default;
+$stepsItemNumberFontSize:1.143rem !default;
+$stepsItemNumberColor:$shade700 !default;
+$stepsItemNumberBorderRadius:50% !default;
+$stepsItemActiveFontWeight:600 !default;
+
+//progressbar
+$progressBarHeight:1.5rem !default;
+$progressBarBorder:0 none !default;
+$progressBarBg:$shade300 !default;
+$progressBarValueBg:$primaryColor !default;
+
+//menu (e.g. menu, menubar, tieredmenu)
+$menuWidth:12.5rem !default;
+$menuBg:$shade000 !default;
+$menuBorder:1px solid $shade300 !default;
+$menuTextColor:$shade700 !default;
+$menuitemPadding:.75rem 1rem !default;
+$menuitemBorderRadius:0 !default;
+$menuitemTextColor:$shade700 !default;
+$menuitemIconColor:$shade600 !default;
+$menuitemTextHoverColor:$shade700 !default;
+$menuitemIconHoverColor:$shade600 !default;
+$menuitemHoverBg:$shade200 !default;
+$menuitemTextActiveColor:$shade700 !default;
+$menuitemIconActiveColor:$shade600 !default;
+$menuitemActiveBg:$shade200 !default;
+$menuitemSubmenuIconFontSize:.875rem !default;
+$submenuHeaderMargin:0 !default;
+$submenuHeaderPadding:.75rem 1rem !default;
+$submenuHeaderBg:$shade000 !default;
+$submenuHeaderTextColor:$shade700 !default;
+$submenuHeaderBorderRadius:0 !default;
+$submenuHeaderFontWeight:600 !default;
+$overlayMenuBg:$menuBg !default;
+$overlayMenuBorder:0 none !default;
+$overlayMenuShadow:0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12) !default;
+$verticalMenuPadding:.25rem 0 !default;
+$menuSeparatorMargin:.25rem 0 !default;
+
+$breadcrumbPadding:1rem !default;
+$breadcrumbBg:$menuBg !default;
+$breadcrumbBorder:$menuBorder !default;
+$breadcrumbItemTextColor:$menuitemTextColor !default;
+$breadcrumbItemIconColor:$menuitemIconColor !default;
+$breadcrumbLastItemTextColor:$menuitemTextColor !default;
+$breadcrumbLastItemIconColor:$menuitemIconColor !default;
+$breadcrumbSeparatorColor:$menuitemTextColor !default;
+
+$horizontalMenuPadding:.5rem !default;
+$horizontalMenuBg:$shade100 !default;
+$horizontalMenuBorder:$menuBorder !default;
+$horizontalMenuTextColor:$menuTextColor !default;
+$horizontalMenuRootMenuitemPadding:$menuitemPadding !default;
+$horizontalMenuRootMenuitemBorderRadius:$borderRadius !default;
+$horizontalMenuRootMenuitemTextColor:$menuitemTextColor !default;
+$horizontalMenuRootMenuitemIconColor:$menuitemIconColor !default;
+$horizontalMenuRootMenuitemTextHoverColor:$menuitemTextHoverColor !default;
+$horizontalMenuRootMenuitemIconHoverColor:$menuitemIconHoverColor !default;
+$horizontalMenuRootMenuitemHoverBg:$menuitemHoverBg !default;
+$horizontalMenuRootMenuitemTextActiveColor:$menuitemTextActiveColor !default;
+$horizontalMenuRootMenuitemIconActiveColor:$menuitemIconActiveColor !default;
+$horizontalMenuRootMenuitemActiveBg:$menuitemActiveBg !default;
+
+//badge and tag
+$badgeBg:$primaryColor !default;
+$badgeTextColor:$primaryTextColor !default;
+$badgeMinWidth:1.5rem !default;
+$badgeHeight:1.5rem !default;
+$badgeFontWeight:700 !default;
+$badgeFontSize:.75rem !default;
+
+$tagPadding:.25rem .4rem !default;
 
 //carousel
-$carouselNavButtonsBgColor: $primaryColor;
-$carouselNavButtonsBorder: solid 1px transparent;
-$carouselNavButtonsBorderRadius: 2px;
-$carouselNavButtonsMargin: .2em;
-$carouselNavButtonsColor: $primaryTextColor;
-$carouselNavButtonsHoverBgColor: darken($primaryColor,5%);
-$carouselNavButtonsHoverColor: $primaryTextColor;
-$carouselNavButtonsHoverBorderColor: solid 1px transparent;
-$carouselNavButtonsTransition: color $transitionDuration;
-$carouselDotIconWidth: 20px;
-$carouselDotIconHeight: 6px;
-$carouselDotIconBgColor: #b2c1cd;
-$carouselDotIconMargin: 0 .2em;
-$carouselActiveDotIconBgColor: $primaryColor;
-</code>
-</pre>
+$carouselIndicatorsPadding:1rem !default;
+$carouselIndicatorBg:$shade200 !default;
+$carouselIndicatorHoverBg:$shade300 !default;
+$carouselIndicatorBorderRadius:0 !default;
+$carouselIndicatorWidth:2rem !default;
+$carouselIndicatorHeight:.5rem !default;
+
+//galleria
+$galleriaMaskBg:rgba(0,0,0,0.9) !default;
+$galleriaCloseIconMargin:.5rem !default;
+$galleriaCloseIconFontSize:2rem !default;
+$galleriaCloseIconBg:transparent !default;
+$galleriaCloseIconColor:$shade100 !default;
+$galleriaCloseIconHoverBg:rgba(255,255,255,0.1) !default;
+$galleriaCloseIconHoverColor:$shade100 !default;
+$galleriaCloseIconWidth:4rem !default;
+$galleriaCloseIconHeight:4rem !default;
+$galleriaCloseIconBorderRadius:50% !default;
+
+$galleriaItemNavigatorBg:transparent !default;
+$galleriaItemNavigatorColor:$shade100 !default;
+$galleriaItemNavigatorMargin:0 .5rem !default;
+$galleriaItemNavigatorFontSize:2rem !default;
+$galleriaItemNavigatorHoverBg:rgba(255,255,255,0.1) !default;
+$galleriaItemNavigatorHoverColor:$shade100 !default;
+$galleriaItemNavigatorWidth:4rem !default;
+$galleriaItemNavigatorHeight:4rem !default;
+$galleriaItemNavigatorBorderRadius:$borderRadius !default;
+
+$galleriaCaptionBg:rgba(0,0,0,.5) !default;
+$galleriaCaptionTextColor:$shade100 !default;
+$galleriaCaptionPadding:1rem !default;
+
+$galleriaIndicatorsPadding:1rem !default;
+$galleriaIndicatorBg:$shade200 !default;
+$galleriaIndicatorHoverBg:$shade300 !default;
+$galleriaIndicatorBorderRadius:50% !default;
+$galleriaIndicatorWidth:1rem !default;
+$galleriaIndicatorHeight:1rem !default;
+$galleriaIndicatorsBgOnItem:rgba(0,0,0,.5) !default;
+$galleriaIndicatorBgOnItem:rgba(255,255,255,.4) !default;
+$galleriaIndicatorHoverBgOnItem:rgba(255,255,255,.6) !default;
+
+$galleriaThumbnailContainerBg:rgba(0,0,0,.9) !default;
+$galleriaThumbnailContainerPadding:1rem .25rem !default;
+$galleriaThumbnailNavigatorBg:transparent !default;
+$galleriaThumbnailNavigatorColor:$shade100 !default;
+$galleriaThumbnailNavigatorHoverBg:rgba(255,255,255,0.1) !default;
+$galleriaThumbnailNavigatorHoverColor:$shade100 !default;
+$galleriaThumbnailNavigatorBorderRadius:50% !default;
+$galleriaThumbnailNavigatorWidth:2rem !default;
+$galleriaThumbnailNavigatorHeight:2rem !default;
+
+:root &#123;
+--surface-a:#&#123;$shade000&#125;;
+--surface-b:#&#123;$shade100&#125;;
+--surface-c:#&#123;$shade200&#125;;
+--surface-d:#&#123;$shade300&#125;;
+--surface-e:#&#123;$shade000&#125;;
+--surface-f:#&#123;$shade000&#125;;
+--text-color:#&#123;$shade700&#125;;
+--text-color-secondary:#&#123;$shade600&#125;;
+--primary-color:#&#123;$primaryColor&#125;;
+--primary-color-text:#&#123;$primaryTextColor&#125;;
+--font-family:#&#123;$fontFamily&#125;;
+&#125;
+</app-code>
 </div>
 
-            <h1>Menu Item Badges</h1>
+            <h4>Menu Item Badges</h4>
             <p>Badges are numerical indicators of how many items are associated with a link.
                The badge property is value of the badge and badgeStyleClass is style class of the badge.</p>
-<pre>
-<code class="language-json" pCode>
+<app-code ngPreserveWhitespaces ngNonBindable lang="json">
 label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge'
-</code>
-</pre>
+</app-code>
             <p>Paradise layout has 4 different badge style.There is a default badge which uses the accent color of paradise layout. And there is 3 other badge class for menu items.</p>
             <ul>
                 <li>orange-badge</li>
@@ -475,7 +1085,7 @@ label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge'
                 <li>blue-badge</li>
             </ul>
 
-            <h1>Menu Modes</h1>
+            <h4>Menu Modes</h4>
             <p>Menu has 3 modes; static, overlay and slim. Layout container element in application.html is used to define which mode to use by adding specific classes. List
             below indicates the style classes for each mode.</p>
             <ul>
@@ -487,11 +1097,10 @@ label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge'
             <p>It is also possible to leave the choice to the user by keeping the preference at a component and using an expression to bind it so that user can switch between modes. Sample
             application has an example implementation of such use case. Refer to app.component.ts for an example.</p>
 
-            <h1>Grid CSS</h1>
-            <p>Paradise uses PrimeNG Grid CSS (ui-g-*) throughout the samples, we strongly suggest using Grid CSS as your layout framework as it is well tested and supported by PrimeNG. Grid CSS is
-            available inside primeng.css.</p>
+            <h4>Grid CSS</h4>
+            <p>Paradise uses PrimeNG Flex Grid CSS throughout the demos such as Dashboard, however any Grid library can be used with it since Paradise Layout itself does not depend on PrimeFlex CSS.</p>
 
-            <h1>Customizing Styles</h1>
+            <h4>Customizing Styles</h4>
             <p>It is suggested to add your customizations in the following sass files under the override folder instead of adding them to the
                 scss files under sass folder to avoid maintenance issues after an update.</p>
 
@@ -502,93 +1111,8 @@ label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge'
                 <li><b>_theme_styles</b>: Styles for the theme.</li>
             </ul>
 
-            <h1>Migration Guide</h1>
-            <h4>8.0.0 to 9.0.0</h4>
-            <p>Angular 9 and PrimeNG 9</p>
-            <ul>
-                <li>Update dependencies with <a href="https://angular.io/cli/update">ng update</a>.</li>
-                <li>Update theme.css and layout.css files.</li>
-                <li>Update app.menu.component.ts and app.menu.component.html while retaining your MenuModel.</li>
-                <li>Include app.menuitem.component.ts under app folder and define it app.module.ts with declarations property.</li>
-                <li>Include app.menu.service.ts under app folder and define it app.module.ts with providers property.</li>
-            </ul>
-
-            <h4>7.0.0 to 8.0.0</h4>
-            <ul>
-                <li>Update your project to Angular 8 with ng update. View the official update guide -<a href="https://update.angular.io/">https://update.angular.io/</a>- for more information.</li>
-                <li>Update app.component.ts.</li>
-                <li>Update app.menu.component.ts.</li>
-                <li>Update layout css files.</li>
-                <li>Update theme css files.</li>
-            </ul>
-
-            <h4>6.1.0 to 7.0.0</h4>
-            <ul>
-                <li>Update layout css files.</li>
-                <li>Update theme css files.</li>
-            </ul>
-
-            <h4>6.0.0 to 6.1.0</h4>
-            <p>Adds support for new features in PrimeNG 6.1.x</p>
-            <ul>
-                <li>Update theme css files.</li>
-                <li>Update layout css files.</li>
-            </ul>
-
-            <h4>5.2.1 to 6.0.0</h4>
-            <p>Brings support for Angular 6 and RxJS 6, adds theming for new components in PrimeNG such as the new TreeTable
-                and improves behaviors of the layout menus.</p>
-            <ul>
-                <li>Add PrimeIcons package.</li>
-                <li>Update app.module.ts.</li>
-                <li>Update app.component.ts.</li>
-                <li>Update layout css files.</li>
-                <li>Update theme css files.</li>
-            </ul>
-
-            <h4>5.2.0 to 5.2.1</h4>
-            <ul>
-                <li>Update app.component.ts.</li>
-                <li>Update app.topbar.component.html.</li>
-                <li>Update app.menu.component.ts and app.menu.component.html.</li>
-                <li>Update layout css files.</li>
-                <li>Update theme css files.</li>
-            </ul>
-
-            <h4>5.0.0 to 5.2.0</h4>
-            <p>Adds support for PrimeNG 5.2.0 (e.g. TurboTable), replaces nanoscroller with PrimeNG ScrollPanel.</p>
-            <ul>
-                <li>Remove nanoscroller as it is replaced by ScrollPanel component of PrimeNG.</li>
-                <li>Update app.component.ts.</li>
-                <li>Update app.menu.component.ts and app.menu.component.html.</li>
-                <li>Update layout css files.</li>
-                <li>Update theme css files.</li>
-            </ul>
-
-            <h4>1.2.0 to 5.0.0</h4>
-            <ul>
-                <li>Update theme css files.</li>
-                <li>Update layout css files.</li>
-                <li>Update app.menu.component.ts, app.menu.component.html and app.component.ts.</li>
-            </ul>
-
-            <h4>1.1.0 to 1.2.0</h4>
-            <ul>
-                <li>Update theme css files.</li>
-                <li>Update app.menu.component.ts and app.component.ts.</li>
-            </ul>
-
-            <h4>1.0.1 to 1.1.0</h4>
-            <ul>
-                <li>Update layout css files.</li>
-                <li>Update theme css files.</li>
-                <li>Update AppSubmenu component in app.menu.component.ts.</li>
-            </ul>
-
-            <h4>1.0.0 to 1.0.1</h4>
-            <ul>
-                <li>Includes version updates to PrimeNG 4, no change required.</li>
-            </ul>
+            <h4>Migration Guide</h4>
+            <p>Every change is included in <b>CHANGELOG.md</b> file at the root folder of the distribution along with the instructions to update.</p>
         </div>
     </div>
 </div>

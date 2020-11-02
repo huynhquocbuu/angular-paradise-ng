@@ -1,6 +1,6 @@
 @import '_variables';
 @import '../overrides/_layout_variables';
-@import '../_mixins';
+@import './_mixins';
 @import '../_fonts';
 @import './_utils';
 @import './_dashboard';
@@ -9,4 +9,9 @@
 @import './_landing';
 @import './_splash';
 @import './_main';
+@import './_config';
+@import './_help';
+@import './_invoice';
+@import './_typography';
+@import './_widgets';
 @import '../overrides/_layout_styles';

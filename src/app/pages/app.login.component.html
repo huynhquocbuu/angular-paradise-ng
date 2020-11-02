@@ -1,0 +1,32 @@
+<div class="login-body">
+
+    <div class="login-panel p-fluid">
+        <div class="p-grid p-nogutter">
+            <div class="p-col-12 logo-container">
+                <img src="assets/layout/images/logo-gray.png" class="logo">
+                <img src="assets/layout/images/login/icon-login.png" class="login-icon" >
+                <h2>Welcome to Paradise</h2>
+            </div>
+            <div class="p-col-12">
+                <label for="username">Username</label>
+                <div class="input-wrapper">
+                    <input type="text" autocomplete="off" pInputText>
+                    <img src="assets/layout/images/login/user.png" class="user-icon">
+                </div>
+            </div>
+            <div class="p-col-12">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" autocomplete="off" pInputText>
+                    <img src="assets/layout/images/login/lock.png" class="lock-icon">
+                </div>
+            </div>
+            <div class="p-col-12 chkbox-container">
+                <a href="">Forgot password?</a>
+            </div>
+            <div class="p-col-12 button-container">
+                <button type="button" pButton label="Sign In" class="p-button-info p-button-raised" [routerLink]="['/']"></button>
+            </div>
+        </div>
+    </div>
+</div>

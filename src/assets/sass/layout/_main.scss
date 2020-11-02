@@ -1,6 +1,7 @@
 @charset "UTF-8";
 html {
     height: 100%;
+    font-size: $fontSize;
 }
 
 body {
@@ -13,6 +14,11 @@ body {
     margin:0;
     min-height: 100%;
     background-color: $bodyBgColor;
+
+    a {
+        text-decoration: none;
+        color: $primaryColor;
+    }
 }
 
 .layout-wrapper {
@@ -56,7 +62,7 @@ body {
                 color:$topbarRightTextColor;
             }
 
-            .fa {
+            .pi {
                 @include transition(color .3s);
                 font-size: 16px;
                 vertical-align: middle;
@@ -64,7 +70,7 @@ body {
             }
 
             &:hover {
-                .username, .fa {
+                .username, .pi {
                     color: darken($topbarRightTextColor, 15%);
                 }
             }
@@ -76,12 +82,16 @@ body {
             margin-left: 48px;
             @include transition(color .3s);
 
+            i {
+                font-size: 20px;
+            }
+
             &:hover {
                 color: darken($topbarLeftTextColor, 15%);
             }
         }
 
-        .fa-search {
+        .pi-search {
             font-size: 16px;
             vertical-align: middle;
             margin-left: 36px;
@@ -136,6 +146,7 @@ body {
                     i {
                         display: inline-block;
                         vertical-align: middle;
+                        font-size: 16px;
                     }
 
                     span {
@@ -228,6 +239,8 @@ body {
                     display: block;
                     box-sizing: border-box;
                     font-size: 13px;
+                    cursor: pointer;
+                    user-select: none;
 
                     .menu-badge {
                         position: absolute;
@@ -239,14 +252,22 @@ body {
                         @include border-radius(50%);
                     }
 
-                    .fa {
+                    .layout-menuitem-icon {
                         vertical-align: middle;
                         font-size: 16px;
                     }
 
-                    .fa:last-child {
+                    .layout-menuitem-toggler {
+                        vertical-align: middle;
+                        font-size: 16px;
                         @include transition(all .3s);
                         float: right;
+                    }
+
+                    &.rotated-icon {
+                        .layout-menuitem-icon {
+                            transform: rotate(90deg);
+                        }
                     }
 
                     span {
@@ -273,7 +294,7 @@ body {
                         background-color: #F6F9FB;
                         color: $primaryColor;
 
-                        .fa:last-child {
+                        .layout-menuitem-toggler {
                             @include rotate(-180deg);
                         }
                     }
@@ -456,8 +477,16 @@ body {
         }
     }
 
+    .layout-main {
+        @include flex();
+        @include flex-direction-column();
+        @include flex-justify-between();
+        min-height: 100vh;
+    }
+
     .layout-content {
-        padding: 78px 8px 8px 8px;
+        flex: 1 1 auto;
+        padding: 85px 15px 15px 15px;
         @include transition(margin-left .3s);
     }
 
@@ -479,6 +508,11 @@ body {
             color: #7d8286;
             font-size: 24px;
             margin-left: 12px;
+
+            i {
+                font-size: 1em;
+                vertical-align: bottom;
+            }
         }
     }
 }
@@ -573,7 +607,7 @@ body {
                                 font-size: 19px;
                             }
 
-                            span, i:last-child {
+                            span, i:last-child, .layout-menuitem-toggler {
                                 display: none;
                             }
 
@@ -680,7 +714,7 @@ body {
                 display: block;
                 padding: 10px 16px;
 
-                .fa {
+                i {
                     font-size: 16px;
                 }
 

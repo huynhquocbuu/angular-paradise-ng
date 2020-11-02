@@ -2,30 +2,31 @@
     background: url("../images/login/bg-login.png");
     background-size: cover;
     height: auto;
-    
+    min-height: 100vh;
+    padding-top: 125px;
+
     .login-panel {
         width: 600px;
         margin: 0 auto;
         background-color: #ffffff;
-        margin-top: 125px;
-        
-        .ui-g-12 {
+
+        .p-col-12 {
             padding: 15px 100px;
-            
+
             &.logo-container {
                 padding: 50px 50px 25px 50px;
                 border-bottom: 8px solid #dee4e9;
                 margin-bottom: 20px;
-                
+
                 .logo {
                     height: 50px;
                 }
-                
+
                 .login-icon {
                     float: right;
                     height: 50px;
                 }
-                
+
                 h2 {
                     color: #7d8286;
                     font-size: 16px;
@@ -34,18 +35,18 @@
                     margin-bottom: 0;
                 }
             }
-            
+
             &.chkbox-container {
-                .ui-g-12 {
+                .p-col-12 {
                     text-align: center;
                     padding: 0;
                 }
             }
         }
-            
+
         .input-wrapper {
             position: relative;
-            
+
             img {
                 position: absolute;
                 width: 14px;
@@ -53,37 +54,36 @@
 
                 &.user-icon {
                     top: 6px;
-                    
+
                 }
-                
+
                 &.lock-icon {
                     top: 5px;
                 }
             }
-            
+
             input {
                 width: 100%;
                 padding: .385em;
                 padding-right: 22px;
             }
         }
-        
+
         a {
             color: $textColor;
             @include transition(color .3s);
-            
+
             &:hover {
                 color: $blue;
             }
         }
-                
+
         label {
             display: block;
             margin-bottom: 8px;
         }
-        
+
         button {
-            padding: 0;
             width: 100%;
             display: block;
             margin-bottom: 20px;
@@ -96,8 +96,8 @@
         .login-panel {
             margin-top: 100px;
             width: 100%;;
-            
-            .ui-g-12 {
+
+            .p-col-12 {
                 padding: 15px 50px;
             }
         }

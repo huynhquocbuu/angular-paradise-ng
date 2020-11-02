@@ -1,53 +1,53 @@
-<div class="ui-g dashboard">
-    <div class="ui-g-12 ui-md-6 ui-lg-3">
-        <div class="ui-g card overview-box overview-box-1 no-gutter">
+<div class="p-grid dashboard">
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="p-grid card overview-box overview-box-1 p-nogutter">
             <div class="overview-box-title">Unread Messages</div>
             <div class="overview-box-details">
-                <i class="fa fa-inbox overview-box-details-icon"></i>
+                <i class="pi pi-inbox overview-box-details-icon"></i>
                 <span class="overview-box-details-count">150</span>
             </div>
             <div class="overview-box-stats" style="color:#3fb839">+%50</div>
         </div>
     </div>
-    <div class="ui-g-12 ui-md-6 ui-lg-3">
-        <div class="ui-g card overview-box overview-box-2 no-gutter">
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="p-grid card overview-box overview-box-2 p-nogutter">
             <div class="overview-box-title">Check-Ins</div>
             <div class="overview-box-details">
-                <i class="fa fa-map-pin overview-box-details-icon"></i>
+                <i class="pi pi-map-marker overview-box-details-icon"></i>
                 <span class="overview-box-details-count">532</span>
             </div>
             <div class="overview-box-stats" style="color:#3fb839">+%75</div>
         </div>
     </div>
-    <div class="ui-g-12 ui-md-6 ui-lg-3">
-        <div class="ui-g card overview-box overview-box-3 no-gutter">
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="p-grid card overview-box overview-box-3 p-nogutter">
             <div class="overview-box-title">Files Synced</div>
             <div class="overview-box-details">
-                <i class="fa fa-folder overview-box-details-icon"></i>
+                <i class="pi pi-folder overview-box-details-icon"></i>
                 <span class="overview-box-details-count">25</span>
             </div>
             <div class="overview-box-stats" style="color:#3fb839">+%50</div>
         </div>
     </div>
-    <div class="ui-g-12 ui-md-6 ui-lg-3">
-        <div class="ui-g card overview-box overview-box-4 no-gutter">
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="p-grid card overview-box overview-box-4 p-nogutter">
             <div class="overview-box-title">User Online</div>
             <div class="overview-box-details">
-                <i class="fa fa-user overview-box-details-icon"></i>
+                <i class="pi pi-user overview-box-details-icon"></i>
                 <span class="overview-box-details-count">156</span>
             </div>
             <div class="overview-box-stats" style="color:#e17576">-%15</div>
         </div>
     </div>
 
-    <div class="ui-g-12 ui-lg-6 global-sales">
+    <div class="p-col-12 p-lg-6 global-sales">
         <p-panel header="GLOBAL SALES">
             <div class="globe">
                 <img src="assets/layout/images/dashboard/globe.png" width="45">
             </div>
 
             <span class="sale-interval">20 March - 27 March</span>
-            <button pButton type="button" label="Refresh" icon="fa fa-refresh" class="raised-btn"></button>
+            <button pButton type="button" label="Refresh" icon="pi pi-refresh" class="raised-btn"></button>
 
             <table>
                 <tbody>
@@ -56,41 +56,41 @@
                         <td>BRAZIL</td>
                         <td>4234</td>
                         <td>35%</td>
-                        <td><i class="fa fa-arrow-up"></i></td>
+                        <td><i class="pi pi-arrow-up"></i></td>
                     </tr>
                     <tr>
                         <td><img src="assets/layout/images/dashboard/flag-china.png" width="45"></td>
                         <td>CHINA</td>
                         <td>3214</td>
                         <td>25%</td>
-                        <td><i class="fa fa-arrow-up"></i></td>
+                        <td><i class="pi pi-arrow-up"></i></td>
                     </tr>
                     <tr>
                         <td><img src="assets/layout/images/dashboard/flag-belgium.png" width="45"></td>
                         <td>BELGIUM</td>
                         <td>2842</td>
                         <td>28%</td>
-                        <td><i class="fa fa-arrow-down"></i></td>
+                        <td><i class="pi pi-arrow-down"></i></td>
                     </tr>
                     <tr>
                         <td><img src="assets/layout/images/dashboard/flag-france.png" width="45"></td>
                         <td>FRANCE</td>
                         <td>1942</td>
                         <td>15%</td>
-                        <td><i class="fa fa-arrow-up"></i></td>
+                        <td><i class="pi pi-arrow-up"></i></td>
                     </tr>
                 </tbody>
             </table>
         </p-panel>
     </div>
 
-    <div class="ui-g-12 ui-lg-6 stats">
+    <div class="p-col-12 p-lg-6 stats">
         <p-panel header="STATISTICS">
-            <div class="ui-g">
-                <div class="ui-g-12 ui-lg-6 knob-container">
+            <div class="p-grid">
+                <div class="p-col-12 p-lg-6 knob-container">
                     <div class="knob">75</div>
                 </div>
-                <div class="ui-g-12 ui-lg-6">
+                <div class="p-col-12 p-lg-6">
                     <ul>
                         <li>
                             <span class="statsbar-text">IDLE</span>
@@ -128,90 +128,90 @@
         </p-panel>
     </div>
 
-    <div class="ui-g-12 ui-md-6 ui-lg-4 task-list">
+    <div class="p-col-12 p-md-6 p-lg-4 task-list">
         <p-panel header="TASKS" [style]="{'min-height':'360px'}">
             <ul>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">Sales Reports</span>
-                    <i class="fa fa-briefcase"></i>
+                    <i class="pi pi-briefcase"></i>
                 </li>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">Pay Invoices</span>
-                    <i class="fa fa-credit-card"></i>
+                    <i class="pi pi-money-bill"></i>
                 </li>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">Dinner with Tony</span>
-                    <i class="fa fa-cutlery"></i>
+                    <i class="pi pi-calendar"></i>
                 </li>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">Client Meeting</span>
-                    <i class="fa fa-user"></i>
+                    <i class="pi pi-user"></i>
                 </li>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">New Theme</span>
-                    <i class="fa fa-paint-brush"></i>
+                    <i class="pi pi-palette"></i>
                 </li>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">Flight Ticket</span>
-                    <i class="fa fa-fighter-jet"></i>
+                    <i class="pi pi-ticket"></i>
                 </li>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">Generate Charts</span>
-                    <i class="fa fa-area-chart"></i>
+                    <i class="pi pi-chart-bar"></i>
                 </li>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">Call Client</span>
-                    <i class="fa fa-phone"></i>
+                    <i class="pi pi-mobile"></i>
                 </li>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">Share location</span>
-                    <i class="fa fa-map-marker"></i>
+                    <i class="pi pi-map-marker"></i>
                 </li>
                 <li>
                     <p-checkbox binary="true"></p-checkbox>
                     <span class="task-name">Create Feed</span>
-                    <i class="fa fa-rss"></i>
+                    <i class="pi pi-wifi"></i>
                 </li>
             </ul>
         </p-panel>
     </div>
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid contact-form">
+    <div class="p-col-12 p-md-6 p-lg-4 p-fluid contact-form">
         <p-panel header="CONTACT US" [style]="{'min-height':'360px'}">
-            <div class="ui-g">
-                <div class="ui-g-12">
+            <div class="p-grid">
+                <div class="p-col-12">
                     <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
                 </div>
-                <div class="ui-g-12">
+                <div class="p-col-12">
                     <input type="text" pInputText placeholder="Name" >
                 </div>
-                <div class="ui-g-12">
+                <div class="p-col-12">
                     <input type="text" pInputText placeholder="Age" >
                 </div>
-                <div class="ui-g-12">
+                <div class="p-col-12">
                     <input type="text" pInputText placeholder="Email">
                 </div>
-                <div class="ui-g-12">
+                <div class="p-col-12">
                     <input type="text" pInputText placeholder="Location">
                 </div>
-                <div class="ui-g-12">
+                <div class="p-col-12">
                     <textarea type="text" pInputTextarea placeholder="Message"></textarea>
                 </div>
-                <div class="ui-g-12">
-                    <button type="button" label="Send" icon="fa fa-send" pButton></button>
+                <div class="p-col-12">
+                    <button type="button" label="Send" icon="pi pi-plus" pButton></button>
                 </div>
             </div>
         </p-panel>
     </div>
-    <div class="ui-g-12 ui-lg-4 contacts">
+    <div class="p-col-12 p-lg-4 contacts">
         <p-panel header="CONTACTS" [style]="{'min-height':'360px'}">
             <ul>
                 <li class="clearfix">
@@ -222,8 +222,8 @@
                     </div>
                     <div class="contact-actions">
                         <span class="connection-status online">online</span>
-                        <i class="fa fa-paper-plane-o"></i>
-                        <i class="fa fa-phone"></i>
+                        <i class="pi pi-share-alt"></i>
+                        <i class="pi pi-comments"></i>
                     </div>
                 </li>
                 <li class="clearfix">
@@ -234,8 +234,8 @@
                     </div>
                     <div class="contact-actions">
                         <span class="connection-status online">online</span>
-                        <i class="fa fa-paper-plane-o"></i>
-                        <i class="fa fa-phone"></i>
+                        <i class="pi pi-share-alt"></i>
+                        <i class="pi pi-comments"></i>
                     </div>
                 </li>
                 <li class="clearfix">
@@ -246,8 +246,8 @@
                     </div>
                     <div class="contact-actions">
                         <span class="connection-status offline">offline</span>
-                        <i class="fa fa-paper-plane-o"></i>
-                        <i class="fa fa-phone"></i>
+                        <i class="pi pi-share-alt"></i>
+                        <i class="pi pi-comments"></i>
                     </div>
                 </li>
                 <li class="clearfix">
@@ -258,8 +258,8 @@
                     </div>
                     <div class="contact-actions">
                         <span class="connection-status online">online</span>
-                        <i class="fa fa-paper-plane-o"></i>
-                        <i class="fa fa-phone"></i>
+                        <i class="pi pi-share-alt"></i>
+                        <i class="pi pi-comments"></i>
                     </div>
                 </li>
                 <li class="clearfix">
@@ -270,15 +270,15 @@
                     </div>
                     <div class="contact-actions">
                         <span class="connection-status offline">offline</span>
-                        <i class="fa fa-paper-plane-o"></i>
-                        <i class="fa fa-phone"></i>
+                        <i class="pi pi-share-alt"></i>
+                        <i class="pi pi-comments"></i>
                     </div>
                 </li>
             </ul>
         </p-panel>
     </div>
 
-    <div class="ui-g-12 ui-lg-8 chat">
+    <div class="p-col-12 p-lg-8 chat">
         <p-panel header="CHAT">
             <ul>
                 <li class="clearfix message-from">
@@ -311,22 +311,22 @@
             </ul>
             <div class="new-message">
                 <div class="message-attachment">
-                    <i class="fa fa-paperclip"></i>
+                    <i class="pi pi-paperclip"></i>
                 </div>
                 <div class="message-input">
-                    <input type="text" placeholder="Write a message" class="ui-inputtext" />
+                    <input type="text" placeholder="Write a message" class="p-inputtext" />
                 </div>
             </div>
         </p-panel>
     </div>
-    <div class="ui-g-12 ui-lg-4">
+    <div class="p-col-12 p-lg-4">
         <div class="user-card">
             <div class="user-card-header">
                 <img src="assets/layout/images/dashboard/user-card-header.png">
             </div>
             <div class="user-card-content">
                 <img src="assets/layout/images/avatar.png">
-                <button pButton type="button" icon="fa fa-refresh" class="secondary" (click)="menu.toggle($event)"></button>
+                <button pButton type="button" icon="pi pi-refresh" class="secondary" (click)="menu.toggle($event)"></button>
                 <p-menu #menu popup="popup" [model]="items"></p-menu>
 
                 <div class="user-card-name">
@@ -336,7 +336,7 @@
                 <div class="user-detail">
                    <ul>
                      <li class="clearfix">
-                         <i class="fa fa-tasks fa-fw"></i>
+                         <i class="pi pi-sliders-h pi-fw"></i>
                          <span class="project-title">Tasks</span>
                          <span class="project-detail">3 open</span>
                          <div class="project-progressbar">
@@ -344,7 +344,7 @@
                          </div>
                      </li>
                      <li class="clearfix">
-                         <i class="fa fa-usd fa-fw"></i>
+                         <i class="pi pi-dollar pi-fw"></i>
                          <span class="project-title">Revenue</span>
                          <span class="project-detail">+20%</span>
                          <div class="project-progressbar">
@@ -352,7 +352,7 @@
                          </div>
                      </li>
                      <li class="clearfix">
-                         <i class="fa fa-credit-card fa-fw"></i>
+                         <i class="pi pi-money-bill pi-fw"></i>
                          <span class="project-title">Payments</span>
                          <span class="project-detail">24 new</span>
                          <div class="project-progressbar">
@@ -360,7 +360,7 @@
                          </div>
                      </li>
                      <li class="clearfix">
-                         <i class="fa fa-users fa-fw"></i>
+                         <i class="pi pi-users pi-fw"></i>
                          <span class="project-title">Clients</span>
                          <span class="project-detail">+80%</span>
                          <div class="project-progressbar">
@@ -373,25 +373,37 @@
         </div>
     </div>
 
-    <div class="ui-g-12 ui-lg-8">
+    <div class="p-col-12 p-lg-8">
         <div class="card">
-            <p-table [columns]="cols" [value]="cars" selectionMode="single" dataKey="vin" [(selection)]="selectedCar" [style]="{'margin-bottom': '20px'}">
-                <ng-template pTemplate="caption">
-                    Recent Sales
-                </ng-template>
-                <ng-template pTemplate="header" let-columns>
+            <p-table [value]="products" [paginator]="true" [rows]="5">
+                <ng-template pTemplate="header">
                     <tr>
-                      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                        {{col.header}}
-                        <p-sortIcon [field]="col.field"></p-sortIcon>
-                      </th>
+                        <th pSortableColumn="id">ID
+                            <p-sortIcon field="id"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="category">Category
+                            <p-sortIcon field="category"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="price">Price
+                            <p-sortIcon field="price"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="inventoryStatus">Status
+                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                        </th>
+                        <th></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr [pSelectableRow]="rowData">
-                      <td *ngFor="let col of columns">
-                        {{rowData[col.field]}}
-                      </td>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>{{product.id}}</td>
+                        <td>{{product.category}}</td>
+                        <td>{{product.price | currency:'USD'}}</td>
+                        <td><span
+                            [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+                        </td>
+                        <td style="text-align: center">
+                            <button pButton type="button" icon="pi pi-search"></button>
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>
@@ -404,14 +416,14 @@
         </div>
     </div>
 
-    <div class="ui-g-12 ui-lg-4">
-        <div class="card timeline ui-fluid">
-            <div class="ui-g">
-                <div class="ui-g-3">
+    <div class="p-col-12 p-lg-4">
+        <div class="card timeline p-fluid">
+            <div class="p-grid">
+                <div class="p-col-3">
                     <span class="event-time">just now</span>
-                    <i class="fa fa-map-signs" style="color:#3984b8"></i>
+                    <i class="pi pi-map-marker" style="color:#3984b8"></i>
                 </div>
-                <div class="ui-g-9">
+                <div class="p-col-9">
                     <span class="event-owner" style="color:#3984b8">Katherine May</span>
                     <span class="event-text">Lorem ipsun dolor amet</span>
                     <div class="event-content">
@@ -419,29 +431,29 @@
                     </div>
                 </div>
 
-                <div class="ui-g-3">
+                <div class="p-col-3">
                     <span class="event-time">12h ago</span>
-                    <i class="fa fa-star" style="color:#f6ac2b"></i>
+                    <i class="pi pi-star" style="color:#f6ac2b"></i>
                 </div>
-                <div class="ui-g-9">
+                <div class="p-col-9">
                     <span class="event-owner" style="color:#f6ac2b">Brandon Santos</span>
                     <span class="event-text">Ab nobis, magnam sunt eum. Laudantium, repudiandae, similique!.</span>
                 </div>
 
-                <div class="ui-g-3">
+                <div class="p-col-3">
                     <span class="event-time">15h ago</span>
-                    <i class="fa fa-comment" style="color:#7e8dcd"></i>
+                    <i class="pi pi-comment" style="color:#7e8dcd"></i>
                 </div>
-                <div class="ui-g-9">
+                <div class="p-col-9">
                     <span class="event-owner" style="color:#7e8dcd">Stephan Ward</span>
                     <span class="event-text">Omnis veniam quibusdam ratione est repellat qui nam quisquam ab mollitia dolores ullam voluptates, similique, dignissimos.</span>
                 </div>
 
-                <div class="ui-g-3">
+                <div class="p-col-3">
                     <span class="event-time">2d ago</span>
-                    <i class="fa fa-map" style="color:#e175a0"></i>
+                    <i class="pi pi-globe" style="color:#e175a0"></i>
                 </div>
-                <div class="ui-g-9">
+                <div class="p-col-9">
                     <span class="event-owner" style="color:#e175a0">Jason Smith</span>
                     <span class="event-text">Laudantium, repudiandae, similique!</span>
                     <div class="event-content">
@@ -449,32 +461,32 @@
                     </div>
                 </div>
 
-                <div class="ui-g-3">
+                <div class="p-col-3">
                     <span class="event-time">1w ago</span>
-                    <i class="fa fa-heart" style="color:#39b8b6"></i>
+                    <i class="pi pi-heart" style="color:#39b8b6"></i>
                 </div>
-                <div class="ui-g-9">
+                <div class="p-col-9">
                     <span class="event-owner">Kevin Cox</span>
                     <span class="event-text">Quibusdam ratione est repellat qui nam quisquam veniam quibusdam ratione.</span>
                 </div>
 
-                <div class="ui-g-3">
+                <div class="p-col-3">
                     <span class="event-time">2w ago</span>
-                    <i class="fa fa-history" style="color:#3eb839"></i>
+                    <i class="pi pi-compass" style="color:#3eb839"></i>
                 </div>
-                <div class="ui-g-9">
+                <div class="p-col-9">
                     <span class="event-owner" style="color:#3eb839">Walter White</span>
                     <span class="event-text">I am the one who knocks!</span>
                 </div>
 
-                <div class="ui-g-12">
-                    <button type="button" pButton label="Refresh" icon="fa fa-refresh" class="rounded-btn raised-btn"></button>
+                <div class="p-col-12">
+                    <button type="button" pButton label="Refresh" icon="pi pi-refresh" class="rounded-btn raised-btn"></button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="ui-g-12">
+    <div class="p-col-12">
         <p-panel header="CALENDAR"  [style]="{'height':'100%'}">
             <p-fullCalendar [events]="events" [options]="fullcalendarOptions" ></p-fullCalendar>
         </p-panel>
