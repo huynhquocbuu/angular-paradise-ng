@@ -1,63 +1,9 @@
 .dashboard {
-    .p-panel {
-        border-color: $dividerColor;
-
-        .p-panel-header {
-            border-color: $dividerColor;
-        }
-    }
-
-    .overview-box {
-        .overview-box-title {
-            font-size: 14px;
-            width: 100%;
-        }
-
-        .overview-box-details {
-            width: 100%;
-            padding: 8px 0;
-
-            .overview-box-details-icon {
-                font-size: 24px;
-                vertical-align: middle;
-                margin-right: 8px;
-            }
-
-            .overview-box-details-count {
-                font-size: 24px;
-                vertical-align: middle;
-            }
-        }
-
-        &.overview-box-1 {
-            .overview-box-details-icon {
-                color: $blue;
-            }
-        }
-
-        &.overview-box-2 {
-            .overview-box-details-icon {
-                color: $purple;
-            }
-        }
-
-        &.overview-box-3 {
-            .overview-box-details-icon {
-                color: $turquoise;
-            }
-        }
-
-        &.overview-box-4 {
-            .overview-box-details-icon {
-                color: $orange;
-            }
-        }
-    }
 
     .global-sales {
         padding-top: 1em;
 
-        .p-panel-header {
+        .p-panel-titlebar {
             padding-left: 110px;
         }
 
@@ -78,7 +24,7 @@
                 border: 1px solid $dividerColor;
                 position: absolute;
                 left: -1px;
-                top: -55px;
+                top: -45px;
                 width: 100px;
                 height: 75px;
                 text-align: center;
@@ -306,7 +252,7 @@
                         }
                     }
 
-                    .pi {
+                    i {
                         color: $textSecondaryColor;
                         margin-left: 5px;
                     }
@@ -343,8 +289,8 @@
 
             .p-button {
                 float: right;
-                width: 2em;
-                height: 2em;
+                width: 36px;
+                height: 36px;
                 margin: 16px 24px 0 0;
             }
 
@@ -362,9 +308,9 @@
                 text-align: left;
 
                 ul {
-                   padding: 0px 0 32px 0;
-                   margin: 0;
-                   list-style-type: none;
+                    padding: 0px 0 32px 0;
+                    margin: 0;
+                    list-style-type: none;
 
                     li {
                         padding: 16px 24px;
@@ -536,6 +482,30 @@
 
     .chart-panel .p-panel-content {
         overflow: auto;
+    }
+
+    .product-badge {
+        border-radius: 2px;
+        padding: .25em .5rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: .3px;
+
+        &.status-instock {
+            background: #C8E6C9;
+            color: #256029;
+        }
+
+        &.status-outofstock {
+            background: #FFCDD2;
+            color: #C63737;
+        }
+
+        &.status-lowstock {
+            background: #FEEDAF;
+            color: #8A5340;
+        }
     }
 }
 

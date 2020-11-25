@@ -7,7 +7,15 @@ import {Table} from 'primeng/table';
 
 @Component({
     templateUrl: './tabledemo.component.html',
-    styleUrls: ['./tabledemo.scss']
+    styleUrls: ['./tabledemo.scss'],
+    styles: [`
+        @media screen and (max-width: 960px) {
+            :host ::ng-deep .p-datatable.p-datatable-customers.rowexpand-table .p-datatable-tbody > tr > td:nth-child(6) {
+                display: flex;
+            }
+        }
+
+    `],
 })
 export class TableDemoComponent implements OnInit {
 

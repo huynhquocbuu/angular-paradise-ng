@@ -13,6 +13,17 @@ import { MessageService } from 'primeng/api';
             margin: 0 auto 2rem auto;
             display: block;
         }
+
+        @media screen and (max-width: 960px) {
+            :host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-tbody > tr > td:last-child {
+                text-align: center;
+            }
+
+            :host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-tbody > tr > td:nth-child(6) {
+                display: flex;
+            }
+        }
+
     `],
     providers: [MessageService, ConfirmationService]
 })

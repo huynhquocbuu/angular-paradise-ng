@@ -1,76 +1,131 @@
 import {Component, OnInit} from '@angular/core';
-import {EventService} from '../service/eventservice';
-import {SelectItem, MenuItem} from 'primeng/api';
 import {Product} from '../domain/product';
 import {ProductService} from '../service/productservice';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
 
 @Component({
-    templateUrl: './dashboard.component.html'
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./tabledemo.scss']
 })
 export class DashboardDemoComponent implements OnInit {
 
-    cities: SelectItem[];
+    ordersChart: any;
+
+    ordersOptions: any;
+
+    activeOrders = 0;
+
+    activeProduct = 0;
+
+    orderWeek: any;
+
+    selectedOrderWeek: any;
 
     products: Product[];
 
-    chartData: any;
+    productsThisWeek: Product[];
 
-    events: any[];
+    productsLastWeek: Product[];
 
-    selectedCity: any;
-
-    items: MenuItem[];
-
-    fullcalendarOptions: any;
-
-    constructor(private productService: ProductService, private eventService: EventService) { }
+    constructor(private productService: ProductService) {
+    }
 
     ngOnInit() {
         this.productService.getProducts().then(data => this.products = data);
-        this.eventService.getEvents().then(events => {this.events = events; });
+        this.productService.getProducts().then(data => this.productsThisWeek = data);
+        this.productService.getProductsMixed().then(data => this.productsLastWeek = data);
 
-        this.cities = [];
-        this.cities.push({label: 'Select City', value: null});
-        this.cities.push({label: 'New York', value: {id: 1, name: 'New York', code: 'NY'}});
-        this.cities.push({label: 'Rome', value: {id: 2, name: 'Rome', code: 'RM'}});
-        this.cities.push({label: 'London', value: {id: 3, name: 'London', code: 'LDN'}});
-        this.cities.push({label: 'Istanbul', value: {id: 4, name: 'Istanbul', code: 'IST'}});
-        this.cities.push({label: 'Paris', value: {id: 5, name: 'Paris', code: 'PRS'}});
-
-        this.chartData = {
+        this.ordersChart = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
                 {
-                    label: 'First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    label: 'Revenue',
+                    data: [20, 40, 20, 70, 20, 49, 30],
+                    backgroundColor: 'rgba(57, 132, 184, .7)',
+                    borderWidth: 0,
                     fill: false,
-                    borderColor: '#FFC107'
                 },
                 {
-                    label: 'Second Dataset',
-                    data: [28, 48, 40, 19, 86, 27, 90],
+                    label: 'Dislike',
+                    data: [5, 19, 10, 10, 22, 14, 10],
+                    backgroundColor: 'rgba(57, 184, 182, .7)',
+                    borderWidth: 0,
                     fill: false,
-                    borderColor: '#03A9F4'
+                },
+                {
+                    label: 'Revenue',
+                    data: [45, 80, 70, 90, 30, 90, 50],
+                    backgroundColor: 'rgba(186, 214, 56, .7)',
+                    borderWidth: 0,
+                    fill: false,
                 }
             ]
         };
 
-        this.items = [
-            {label: 'Save', icon: 'pi pi-check'},
-            {label: 'Update', icon: 'pi pi-refresh'},
-            {label: 'Delete', icon: 'pi pi-trash'}
-        ];
-
-        this.fullcalendarOptions = {
-            plugins: [ dayGridPlugin, timeGridPlugin, interactionPlugin ],
-            defaultDate: '2017-02-12',
-            header: {
-                right: 'prev,next,today',
-                left: 'title'
+        this.ordersOptions = {
+            legend: {
+                display: false,
+                labels: {
+                    fontColor: '#c3ccdd'
+                }
+            },
+            maintainAspectRatio: false,
+            hover: {
+                mode: 'index'
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    stacked: true,
+                    barPercentage: 0.5
+                }],
+                yAxes: [{
+                    display: true,
+                    stacked: true
+                }]
             }
         };
+
+        this.orderWeek = [
+            {name: 'This Week', code: '0'},
+            {name: 'Last Week', code: '1'}
+        ];
+    }
+
+    changeDataset(event) {
+        const dataSet = [
+            [20, 40, 20, 70, 20, 49, 30],
+            [2, 4, 9, 20, 16, 12, 20],
+        ];
+        const dataSet2 = [
+            [5, 19, 10, 10, 22, 14, 10],
+            [2, 2, 20, 4, 17, 16, 12],
+        ];
+
+        this.activeOrders = parseInt(event.currentTarget.getAttribute('data-index'));
+
+        this.ordersChart.datasets[0].data = dataSet[parseInt(event.currentTarget.getAttribute('data-index'))];
+        this.ordersChart.datasets[1].data = dataSet2[parseInt(event.currentTarget.getAttribute('data-index'))];
+        this.ordersChart.datasets[0].label = event.currentTarget.getAttribute('data-label');
+        this.ordersChart.datasets[0].borderColor = event.currentTarget.getAttribute('data-stroke');
+    }
+
+    prevProduct(event) {
+        if (this.activeProduct > 0){
+            this.activeProduct = this.activeProduct - 1;
+        }
+    }
+
+    nextProduct(event) {
+        if (this.activeProduct < 5){
+            this.activeProduct = this.activeProduct + 1;
+        }
+    }
+
+    recentSales(event) {
+        if (event.value.code === '0') {
+            this.products = this.productsThisWeek;
+        } else {
+            this.products = this.productsLastWeek;
+        }
     }
 }

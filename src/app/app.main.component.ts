@@ -8,13 +8,11 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppMainComponent implements OnInit {
 
-    menu = 'static';
+    menu = 'slim';
 
-    layout = 'deepsea';
+    layout = 'default';
 
     darkMenu = true;
-
-    documentClickListener: () => void;
 
     staticMenuInactive: boolean;
 
@@ -113,6 +111,10 @@ export class AppMainComponent implements OnInit {
         this.menuClick = true;
     }
 
+    onMenuColorChange(event) {
+        this.darkMenu = event.checked;
+    }
+
     onRippleChange(event) {
         this.ripple = event.checked;
     }
@@ -131,18 +133,6 @@ export class AppMainComponent implements OnInit {
 
     get staticMenu(): boolean {
         return this.menu === 'static';
-    }
-
-    changeToSlimMenu() {
-        this.menu = 'slim';
-    }
-
-    changeToOverlayMenu() {
-        this.menu = 'overlay';
-    }
-
-    changeToStaticMenu() {
-        this.menu = 'static';
     }
 
     isMobile() {

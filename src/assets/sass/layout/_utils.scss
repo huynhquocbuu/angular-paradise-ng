@@ -8,9 +8,10 @@
 .card {
     @include border-radius($borderRadius);
     background: #ffffff;
-    padding: 16px;
+    padding: 14px;
     box-sizing: border-box;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0px 6px 0px rgba(0, 0, 0, 0.06);
 
     &:last-child {
         margin-bottom: 0;
@@ -20,6 +21,10 @@
         @include flex();
         @include flex-align-center();
         @include flex-justify-between();
+
+        h5 {
+            margin-bottom: 0;
+        }
     }
 
     .card-subtitle {
@@ -35,64 +40,4 @@
     &.p-toast-top-center {
         top: 80px;
     }
-}
-
-@-webkit-keyframes fadeInDown {
-    from {
-        opacity: 0;
-        -webkit-transform: translate3d(0, -20px, 0);
-        transform: translate3d(0, -20px, 0);
-    }
-
-    to {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none;
-    }
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translate3d(0, -20px, 0);
-    }
-
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-@-webkit-keyframes fadeOutUp {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-        -webkit-transform: translate3d(0, -20px, 0);
-        transform: translate3d(0, -20px, 0);
-    }
-}
-
-@keyframes fadeOutUp {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-        -webkit-transform: translate3d(0, -20px, 0);
-        transform: translate3d(0, -20px, 0);
-    }
-}
-
-.fadeInDown {
-    -webkit-animation-name: fadeInDown;
-    animation-name: fadeInDown;
-}
-
-.fadeOutUp {
-    -webkit-animation-name: fadeOutUp;
-    animation-name: fadeOutUp;
 }

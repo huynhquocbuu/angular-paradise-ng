@@ -5,7 +5,15 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
 @Component({
-    templateUrl: './app.calendar.component.html'
+    templateUrl: './app.calendar.component.html',
+    styles: [`
+        @media screen and (max-width: 960px) {
+            :host ::ng-deep .fc-header-toolbar {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+    `]
 })
 export class AppCalendarComponent implements OnInit{
 
