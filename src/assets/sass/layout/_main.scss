@@ -238,8 +238,8 @@ body {
                         font-size: 1rem;
                         text-transform: uppercase;
                         font-weight: 700;
-                        padding: .5rem 0 1rem 1rem;
-                        color: #6C7276;
+                        padding: 1.5rem 0 0.5rem 2.5rem;
+                        color: #6c7276;
                     }
 
                     > a {
@@ -410,7 +410,7 @@ body {
                     padding: 0 5px;
                     position: absolute;
                     left: 76px;
-                    top: 8px;
+                    top: 13px;
                     z-index: 101;
                     line-height: 1;
 
@@ -484,7 +484,7 @@ body {
 
                     &.layout-root-menuitem {
                         > .layout-menuitem-root-text {
-                            color: $darkMenuTextColor;
+                            color: $darkMenuRootTextColor;
                         }
                     }
 
