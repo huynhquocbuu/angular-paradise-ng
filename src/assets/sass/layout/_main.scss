@@ -657,6 +657,7 @@ body {
                             top: 0;
                             left: 76px;
                             min-width: 200px;
+                            display: none;
 
                             li {
                                 a {
@@ -710,6 +711,10 @@ body {
                                 &:hover + .layout-menu-tooltip {
                                     display: none;
                                 }
+                            }
+
+                            > ul {
+                                display: block;
                             }
                         }
                     }
