@@ -21,6 +21,7 @@
         @include flex();
         @include flex-align-center();
         @include flex-justify-between();
+        padding-bottom: 6px;
 
         h5 {
             margin-bottom: 0;
@@ -30,7 +31,6 @@
     .card-subtitle {
         color: $textSecondaryColor;
         font-weight: 600;
-        margin: -1rem 0 1rem 0;
     }
 }
 
