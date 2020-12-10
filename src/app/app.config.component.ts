@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
+import {AppComponent} from './app.component';
 import {AppMainComponent} from './app.main.component';
 
 @Component({
     selector: 'app-config',
     template: `
-        <div class="layout-config" [ngClass]="{'layout-config-active': app.configActive}" (click)="app.onConfigClick($event)">
+        <div class="layout-config" [ngClass]="{'layout-config-active': appMain.configActive}" (click)="appMain.onConfigClick($event)">
             <a style="cursor: pointer" id="layout-config-button" class="layout-config-button" (click)="onConfigButtonClick($event)">
                 <i class="pi pi-cog"></i>
             </a>
@@ -79,12 +80,12 @@ import {AppMainComponent} from './app.main.component';
 
                     <div id="orientation-panel" class="layout-config-section dark">
                         <span class="section-name">Dark Menu</span>
-                        <p-inputSwitch [ngModel]="app.darkMenu" (onChange)="app.onMenuColorChange($event)"></p-inputSwitch>
+                        <p-inputSwitch [ngModel]="app.darkMenu" (onChange)="appMain.onMenuColorChange($event)"></p-inputSwitch>
                     </div>
 
                     <div id="ripple-panel" class="layout-config-section ripple">
                         <span class="section-name">Ripple Effect</span>
-                        <p-inputSwitch [ngModel]="app.ripple" (onChange)="app.onRippleChange($event)"></p-inputSwitch>
+                        <p-inputSwitch [ngModel]="app.ripple" (onChange)="appMain.onRippleChange($event)"></p-inputSwitch>
                     </div>
 
                     <div id="componentthemes-panel" class="layout-config-section colors">
@@ -116,7 +117,7 @@ export class AppConfigComponent implements OnInit {
 
     theme = 'blue';
 
-    constructor(public app: AppMainComponent) {
+    constructor(public app: AppComponent, public appMain: AppMainComponent) {
     }
 
     ngOnInit() {
@@ -196,8 +197,8 @@ export class AppConfigComponent implements OnInit {
     }
 
     onConfigButtonClick(event) {
-        this.app.configActive = !this.app.configActive;
-        this.app.configClick = true;
+        this.appMain.configActive = !this.appMain.configActive;
+        this.appMain.configClick = true;
         event.preventDefault();
     }
 }

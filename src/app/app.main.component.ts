@@ -1,18 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import { MenuService } from './app.menu.service';
-import { PrimeNGConfig } from 'primeng/api';
+import {Component} from '@angular/core';
+import {MenuService} from './app.menu.service';
+import {PrimeNGConfig} from 'primeng/api';
+import {AppComponent} from './app.component';
 
 @Component({
     selector: 'app-main',
     templateUrl: './app.main.component.html'
 })
-export class AppMainComponent implements OnInit {
-
-    menu = 'slim';
-
-    layout = 'default';
-
-    darkMenu = true;
+export class AppMainComponent {
 
     staticMenuInactive: boolean;
 
@@ -32,18 +27,11 @@ export class AppMainComponent implements OnInit {
 
     menuHoverActive: boolean;
 
-    inputStyle = 'outlined';
-
-    ripple: boolean;
-
     configActive: boolean;
 
     configClick: boolean;
 
-    constructor(private menuService: MenuService, private primengConfig: PrimeNGConfig) { }
-
-    ngOnInit() {
-        this.primengConfig.ripple = true;
+    constructor(private menuService: MenuService, private primengConfig: PrimeNGConfig, public app: AppComponent) {
     }
 
     onLayoutClick() {
@@ -80,8 +68,10 @@ export class AppMainComponent implements OnInit {
             this.mobileMenuActive = !this.mobileMenuActive;
         } else {
             if (this.staticMenu) {
-                this.staticMenuInactive = !this.staticMenuInactive; } else if (this.overlayMenu) {
-                this.overlayMenuActive = !this.overlayMenuActive; }
+                this.staticMenuInactive = !this.staticMenuInactive;
+            } else if (this.overlayMenu) {
+                this.overlayMenuActive = !this.overlayMenuActive;
+            }
         }
 
         event.preventDefault();
@@ -97,8 +87,10 @@ export class AppMainComponent implements OnInit {
         this.topbarMenuButtonClick = true;
 
         if (this.activeTopbarItem === item) {
-            this.activeTopbarItem = null; } else {
-            this.activeTopbarItem = item; }
+            this.activeTopbarItem = null;
+        } else {
+            this.activeTopbarItem = item;
+        }
 
         event.preventDefault();
     }
@@ -112,11 +104,12 @@ export class AppMainComponent implements OnInit {
     }
 
     onMenuColorChange(event) {
-        this.darkMenu = event.checked;
+        this.app.darkMenu = event.checked;
     }
 
     onRippleChange(event) {
-        this.ripple = event.checked;
+        this.app.ripple = event.checked;
+        this.primengConfig.ripple = event.checked;
     }
 
     onConfigClick(event) {
@@ -124,15 +117,15 @@ export class AppMainComponent implements OnInit {
     }
 
     get slimMenu(): boolean {
-        return this.menu === 'slim';
+        return this.app.menu === 'slim';
     }
 
     get overlayMenu(): boolean {
-        return this.menu === 'overlay';
+        return this.app.menu === 'overlay';
     }
 
     get staticMenu(): boolean {
-        return this.menu === 'static';
+        return this.app.menu === 'static';
     }
 
     isMobile() {
