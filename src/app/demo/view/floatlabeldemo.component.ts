@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import { CountryService } from '../service/countryservice';
+import {CountryService} from '../service/countryservice';
 
 @Component({
     templateUrl: './floatlabeldemo.component.html',
     styleUrls: ['./floatlabeldemo.scss']
 })
-export class FloatLabelDemoComponent implements OnInit{
+export class FloatLabelDemoComponent implements OnInit {
 
     countries: any[];
 
@@ -33,6 +33,10 @@ export class FloatLabelDemoComponent implements OnInit{
 
     value10: any;
 
+    value11: any;
+
+    value12: any;
+
     constructor(private countryService: CountryService) {
         this.cities = [
             {name: 'New York', code: 'NY'},
@@ -57,7 +61,7 @@ export class FloatLabelDemoComponent implements OnInit{
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.countries.length; i++) {
             const country = this.countries[i];
-            if (country.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+            if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
                 filtered.push(country);
             }
         }
