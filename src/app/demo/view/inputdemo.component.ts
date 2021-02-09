@@ -18,7 +18,6 @@ import {SelectItem} from 'primeng/api';
 
 	}
 
-
 	:host ::ng-deep .multiselect-custom .country-item.country-item-value {
 		padding: .25rem .5rem;
 		border-radius: 3px;
@@ -83,6 +82,8 @@ export class InputDemoComponent implements OnInit{
     valSelect1: string;
 
     valSelect2: string;
+
+    valueKnob = 20;
 
     constructor(private countryService: CountryService) {}
 
