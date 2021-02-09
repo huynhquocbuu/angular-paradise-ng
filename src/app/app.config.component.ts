@@ -16,6 +16,29 @@ import {AppMainComponent} from './app.main.component';
                         <span>Poseidon offers different themes for layout, topbar, menu etc.</span>
                     </div>
 
+                    <div id="menumodes-panel" class="layout-config-section options">
+                        <span class="section-name">Menu Mode</span>
+                        <div class="p-grid layout-config-options">
+                            <div class="p-col-12 p-md-6">
+                                <p-radioButton name="menu" value="static" [(ngModel)]="app.menu" inputId="menuMode1"></p-radioButton>
+                                <label for="menuMode1">Static</label>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                                <p-radioButton name="menu" value="overlay" [(ngModel)]="app.menu" inputId="menuMode2"></p-radioButton>
+                                <label for="menuMode2">Overlay</label>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                                <p-radioButton name="menu" value="slim" [(ngModel)]="app.menu" inputId="menuMode3"></p-radioButton>
+                                <label for="menuMode3">Slim</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="orientation-panel" class="layout-config-section dark">
+                        <span class="section-name">Dark Menu</span>
+                        <p-inputSwitch [ngModel]="app.darkMenu" (onChange)="appMain.onMenuColorChange($event)"></p-inputSwitch>
+                    </div>
+
                     <div id="outlined-panel" class="layout-config-section options">
                         <span class="section-name">Form Type</span>
                         <div class="p-grid layout-config-options">
@@ -28,6 +51,11 @@ import {AppMainComponent} from './app.main.component';
                                 <label for="inputStyle2">Filled</label>
                             </div>
                         </div>
+                    </div>
+
+                    <div id="ripple-panel" class="layout-config-section ripple">
+                        <span class="section-name">Ripple Effect</span>
+                        <p-inputSwitch [ngModel]="app.ripple" (onChange)="appMain.onRippleChange($event)"></p-inputSwitch>
                     </div>
 
                     <div id="componentthemes-panel" class="layout-config-section colors">
@@ -58,34 +86,6 @@ import {AppMainComponent} from './app.main.component';
                                 </a>
                             </div>
                         </div>
-                    </div>
-
-                    <div id="menumodes-panel" class="layout-config-section options">
-                        <span class="section-name">Menu Mode</span>
-                        <div class="p-grid layout-config-options">
-                            <div class="p-col-12 p-md-6">
-                                <p-radioButton name="menu" value="static" [(ngModel)]="app.menu" inputId="menuMode1"></p-radioButton>
-                                <label for="menuMode1">Static</label>
-                            </div>
-                            <div class="p-col-12 p-md-6">
-                                <p-radioButton name="menu" value="overlay" [(ngModel)]="app.menu" inputId="menuMode2"></p-radioButton>
-                                <label for="menuMode2">Overlay</label>
-                            </div>
-                            <div class="p-col-12 p-md-6">
-                                <p-radioButton name="menu" value="slim" [(ngModel)]="app.menu" inputId="menuMode3"></p-radioButton>
-                                <label for="menuMode3">Slim</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="orientation-panel" class="layout-config-section dark">
-                        <span class="section-name">Dark Menu</span>
-                        <p-inputSwitch [ngModel]="app.darkMenu" (onChange)="appMain.onMenuColorChange($event)"></p-inputSwitch>
-                    </div>
-
-                    <div id="ripple-panel" class="layout-config-section ripple">
-                        <span class="section-name">Ripple Effect</span>
-                        <p-inputSwitch [ngModel]="app.ripple" (onChange)="appMain.onRippleChange($event)"></p-inputSwitch>
                     </div>
 
                     <div id="componentthemes-panel" class="layout-config-section colors">
