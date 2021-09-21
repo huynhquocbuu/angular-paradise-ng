@@ -43,6 +43,7 @@ export class DashboardDemoComponent implements OnInit {
                     backgroundColor: 'rgba(57, 132, 184, .7)',
                     borderWidth: 0,
                     fill: false,
+                    barPercentage: 0.5
                 },
                 {
                     label: 'Dislike',
@@ -50,6 +51,7 @@ export class DashboardDemoComponent implements OnInit {
                     backgroundColor: 'rgba(57, 184, 182, .7)',
                     borderWidth: 0,
                     fill: false,
+                    barPercentage: 0.5
                 },
                 {
                     label: 'Revenue',
@@ -57,15 +59,18 @@ export class DashboardDemoComponent implements OnInit {
                     backgroundColor: 'rgba(186, 214, 56, .7)',
                     borderWidth: 0,
                     fill: false,
+                    barPercentage: 0.5
                 }
             ]
         };
 
         this.ordersOptions = {
-            legend: {
-                display: false,
-                labels: {
-                    fontColor: '#c3ccdd'
+            plugins: {
+                legend: {
+                    display: false,
+                    labels: {
+                        color: '#c3ccdd'
+                    }
                 }
             },
             maintainAspectRatio: false,
@@ -73,15 +78,14 @@ export class DashboardDemoComponent implements OnInit {
                 mode: 'index'
             },
             scales: {
-                xAxes: [{
-                    display: true,
-                    stacked: true,
-                    barPercentage: 0.5
-                }],
-                yAxes: [{
+                x: {
                     display: true,
                     stacked: true
-                }]
+                },
+                y: {
+                    display: true,
+                    stacked: true
+                }
             }
         };
 

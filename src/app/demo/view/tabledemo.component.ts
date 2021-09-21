@@ -9,6 +9,10 @@ import {Table} from 'primeng/table';
     templateUrl: './tabledemo.component.html',
     styleUrls: ['./tabledemo.scss'],
     styles: [`
+        :host ::ng-deep .p-datatable-gridlines p-progressBar {
+            width: 100%;
+        }
+
         @media screen and (max-width: 960px) {
             :host ::ng-deep .p-datatable.p-datatable-customers.rowexpand-table .p-datatable-tbody > tr > td:nth-child(6) {
                 display: flex;
