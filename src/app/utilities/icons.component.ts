@@ -16,24 +16,25 @@ export class IconsComponent implements OnInit {
     constructor(private iconService: IconService) {}
 
     ngOnInit() {
-        this.iconService.getIcons().subscribe(data => {
-            const icons = data;
+		this.iconService.getIcons().subscribe(data => {
+            data = data.filter(value => {
+                return value.icon.tags.indexOf('deprecate') === -1;
+            });
+
+            let icons = data;
             icons.sort((icon1, icon2) => {
-                if (icon1.properties.name < icon2.properties.name) {
+                if(icon1.properties.name < icon2.properties.name)
                     return -1;
-                }
-                else if (icon1.properties.name < icon2.properties.name) {
+                else if(icon1.properties.name < icon2.properties.name)
                     return 1;
- }
-                else {
+                else
                     return 0;
- }
             });
 
             this.icons = icons;
-            this.filteredIcons = data;
-        });
-    }
+			this.filteredIcons = data;
+		});
+	}
 
     onFilter(event: KeyboardEvent): void {
         const searchText = (event.target as HTMLInputElement).value;

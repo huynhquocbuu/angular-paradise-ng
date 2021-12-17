@@ -3,6 +3,7 @@ import {MegaMenuItem, MenuItem} from 'primeng/api';
 
 @Component({
     templateUrl: './menusdemo.component.html',
+    styles:['.p-slidemenu { overflow-x:hidden;}'],
     encapsulation: ViewEncapsulation.None
 })
 export class MenusDemoComponent implements OnInit {
@@ -341,7 +342,7 @@ export class MenusDemoComponent implements OnInit {
                 ]
             },
             {
-                label: 'Sports', icon: 'pi pi-fw pi-star-o',
+                label: 'Sports', icon: 'pi pi-fw pi-star',
                 items: [
                     [
                         {

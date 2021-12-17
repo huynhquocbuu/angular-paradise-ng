@@ -11,6 +11,10 @@ import {Message, MessageService} from 'primeng/api';
 		:host ::ng-deep .p-message {
 			margin-left: .25em;
 		}
+
+        :host ::ng-deep .p-toast {
+            z-index: 100000;
+        }
     `],
     providers: [MessageService]
 })

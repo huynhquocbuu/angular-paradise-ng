@@ -85,6 +85,8 @@ export class InputDemoComponent implements OnInit{
 
     valueKnob = 20;
 
+    valCheckbox: string;
+
     constructor(private countryService: CountryService) {}
 
     ngOnInit() {
