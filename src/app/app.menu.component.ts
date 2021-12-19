@@ -21,7 +21,7 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'UI Kit', icon: 'pi pi-fw pi-star', routerLink: ['/uikit'], badge: 8,
+                label: 'UI Kit', icon: 'pi pi-fw pi-star-fill', routerLink: ['/uikit'], badge: 8,
                 items: [
                     {label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout']},
                     {label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input']},
