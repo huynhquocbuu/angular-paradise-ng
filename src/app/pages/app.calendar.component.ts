@@ -8,6 +8,16 @@ import {EventService} from '../demo/service/eventservice';
             :host ::ng-deep .fc-header-toolbar {
                 display: flex;
                 flex-wrap: wrap;
+
+                .fc-dayGridMonth-button {
+                    margin-top: 1rem;
+                }
+                .fc-timeGridWeek-button{
+                    margin-top: 1rem;
+                }
+                .fc-timeGridDay-button{
+                    margin-top: 1rem;
+                }
             }
         }
     `]
@@ -26,8 +36,7 @@ export class AppCalendarComponent implements OnInit {
 
     clickedEvent = null;
 
-    constructor(private eventService: EventService) {
-    }
+    constructor(private eventService: EventService) {}
 
     ngOnInit() {
         this.eventService.getEvents().then(events => {

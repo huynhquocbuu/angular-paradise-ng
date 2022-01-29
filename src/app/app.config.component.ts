@@ -18,16 +18,16 @@ import {AppMainComponent} from './app.main.component';
 
                     <div id="menumodes-panel" class="layout-config-section options">
                         <span class="section-name">Menu Mode</span>
-                        <div class="p-grid layout-config-options">
-                            <div class="p-col-12 p-md-6">
+                        <div class="grid layout-config-options">
+                            <div class="col-12 md:col-6">
                                 <p-radioButton name="menu" value="static" [(ngModel)]="app.menu" inputId="menuMode1"></p-radioButton>
                                 <label for="menuMode1">Static</label>
                             </div>
-                            <div class="p-col-12 p-md-6">
+                            <div class="col-12 md:col-6">
                                 <p-radioButton name="menu" value="overlay" [(ngModel)]="app.menu" inputId="menuMode2"></p-radioButton>
                                 <label for="menuMode2">Overlay</label>
                             </div>
-                            <div class="p-col-12 p-md-6">
+                            <div class="col-12 md:col-6">
                                 <p-radioButton name="menu" value="slim" [(ngModel)]="app.menu" inputId="menuMode3"></p-radioButton>
                                 <label for="menuMode3">Slim</label>
                             </div>
@@ -41,12 +41,12 @@ import {AppMainComponent} from './app.main.component';
 
                     <div id="outlined-panel" class="layout-config-section options">
                         <span class="section-name">Form Type</span>
-                        <div class="p-grid layout-config-options">
-                            <div class="p-col-12 p-md-6">
+                        <div class="grid layout-config-options">
+                            <div class="col-12 md:col-6">
                                 <p-radioButton name="inputStyle" value="outlined" [(ngModel)]="app.inputStyle" inputId="inputStyle1"></p-radioButton>
                                 <label for="inputStyle1">Outlined</label>
                             </div>
-                            <div class="p-col-12 p-md-6">
+                            <div class="col-12 md:col-6">
                                 <p-radioButton name="inputStyle" value="filled" [(ngModel)]="app.inputStyle" inputId="inputStyle2"></p-radioButton>
                                 <label for="inputStyle2">Filled</label>
                             </div>
@@ -60,8 +60,8 @@ import {AppMainComponent} from './app.main.component';
 
                     <div id="componentthemes-panel" class="layout-config-section colors">
                         <span class="section-name">Special Layouts</span>
-                        <div class="p-grid layout-config-colors">
-                            <div *ngFor="let s of specialLayouts" class="p-col p-col-fixed">
+                        <div class="grid layout-config-colors">
+                            <div *ngFor="let s of specialLayouts" class="col col-fixed">
                                 <a style="cursor: pointer" (click)="changeLayout(s.name)" class="layout-config-option">
                                     <span class="layout-config-option-color"
                                           [ngStyle]="{'background-image': 'linear-gradient(to right, ' + s.color1 +','+ s.color2+')'} "></span>
@@ -75,8 +75,8 @@ import {AppMainComponent} from './app.main.component';
 
                     <div id="componentthemes-panel" class="layout-config-section colors">
                         <span class="section-name">Flat Layouts</span>
-                        <div class="p-grid layout-config-colors">
-                            <div *ngFor="let f of flatLayouts" class="p-col p-col-fixed">
+                        <div class="grid layout-config-colors">
+                            <div *ngFor="let f of flatLayouts" class="col col-fixed">
                                 <a style="cursor: pointer" (click)="changeLayout(f.name)" class="layout-config-option">
                                     <span class="layout-config-option-color"
                                           [ngStyle]="{'background-color': f.color, 'border': f.name === 'default'?'1px solid #757575':'none'}"></span>
@@ -90,8 +90,8 @@ import {AppMainComponent} from './app.main.component';
 
                     <div id="componentthemes-panel" class="layout-config-section colors">
                         <span class="section-name">Component Colors</span>
-                        <div class="p-grid layout-config-colors">
-                            <div *ngFor="let t of themes" class="p-col p-col-fixed">
+                        <div class="grid layout-config-colors">
+                            <div *ngFor="let t of themes" class="col col-fixed">
                                 <a style="cursor: pointer" (click)="changeTheme(t.name)" class="layout-config-option">
                                     <span class="layout-config-option-color" [ngStyle]="{'background-color': t.color}"></span>
                                     <span class="layout-config-option-check-mask" *ngIf="theme === t.name">

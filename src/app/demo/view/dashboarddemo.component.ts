@@ -4,7 +4,7 @@ import {ProductService} from '../service/productservice';
 
 @Component({
     templateUrl: './dashboard.component.html',
-    styleUrls: ['./tabledemo.scss']
+    styleUrls: ['../../../assets/demo/badges.scss']
 })
 export class DashboardDemoComponent implements OnInit {
 

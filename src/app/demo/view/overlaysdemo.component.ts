@@ -5,7 +5,6 @@ import {ProductService} from '../service/productservice';
 
 @Component({
     templateUrl: './overlaysdemo.component.html',
-    styleUrls: ['./overlaysdemo.scss'],
     providers: [ConfirmationService, MessageService]
 })
 export class OverlaysDemoComponent implements OnInit {
@@ -72,5 +71,9 @@ export class OverlaysDemoComponent implements OnInit {
                 this.messageService.add({severity: 'error', summary: 'Rejected', detail: 'You have rejected'});
             }
         });
+    }
+
+    formatCurrency(value) {
+        return value.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
     }
 }

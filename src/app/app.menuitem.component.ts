@@ -23,7 +23,7 @@ import { AppMainComponent } from './app.main.component';
               </a>
               <a (click)="itemClick($event)" (mouseenter)="onMouseEnter()" *ngIf="(item.routerLink && !item.items) && item.visible !== false"
                   [routerLink]="item.routerLink" routerLinkActive="active-menuitem-routerlink"
-                  [routerLinkActiveOptions]="{exact: true}" [attr.target]="item.target" [attr.tabindex]="0" [ngClass]="item.class" pRipple>
+                  [routerLinkActiveOptions]="{exact: !item.preventExact}" [attr.target]="item.target" [attr.tabindex]="0" [ngClass]="item.class" pRipple>
                   <i [ngClass]="item.icon" class="layout-menuitem-icon"></i>
 				  <span>{{item.label}}</span>
 				  <span class="menuitem-badge" *ngIf="item.badge">{{item.badge}}</span>
@@ -127,7 +127,7 @@ export class AppMenuitemComponent implements OnInit, OnDestroy {
     }
 
     updateActiveStateFromRoute() {
-        this.active = this.router.isActive(this.item.routerLink[0], this.item.items ? false : true);
+        this.active = this.router.isActive(this.item.routerLink[0], !this.item.items && !this.item.preventExact);
     }
 
     itemClick(event: Event) {

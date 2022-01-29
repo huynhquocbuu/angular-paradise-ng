@@ -4,16 +4,12 @@ import {Message, MessageService} from 'primeng/api';
 @Component({
     templateUrl: './messagesdemo.component.html',
     styles: [`
-        :host ::ng-deep .p-button {
-            min-width: 8em;
-        }
-
 		:host ::ng-deep .p-message {
 			margin-left: .25em;
 		}
 
-        :host ::ng-deep .p-toast {
-            z-index: 100000;
+        :host ::ng-deep .p-toast{
+            z-index:99999;
         }
     `],
     providers: [MessageService]

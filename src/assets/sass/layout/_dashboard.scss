@@ -176,7 +176,7 @@
             min-height: 340px;
         }
 
-        .p-col-12 {
+        .col-12 {
             padding: 6px 12px;
         }
 
@@ -443,8 +443,8 @@
         height: 100%;
         box-sizing: border-box;
 
-        > .p-grid {
-            .p-col-3 {
+        > .grid {
+            .col-3 {
                 font-size: 14px;
                 position: relative;
                 border-right: 1px solid #bdbdbd;
@@ -458,7 +458,7 @@
                 }
             }
 
-            .p-col-9 {
+            .col-9 {
                 padding-left: 1.5em;
                 .event-owner {
 

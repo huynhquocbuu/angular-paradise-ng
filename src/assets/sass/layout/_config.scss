@@ -22,11 +22,11 @@
     }
 
     .layout-config-options {
-        &.p-grid {
+        &.grid {
             margin: 0 -.5em;
         }
 
-        .p-md-6 {
+        .md\:col-6 {
             padding: .5em;
         }
     }
@@ -120,7 +120,7 @@
                     margin: -.25em;
                     margin-top: 3px;
 
-                    .p-col-fixed {
+                    .col-fixed {
                         padding: .5em;
                     }
                 }
