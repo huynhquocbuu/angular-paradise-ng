@@ -30,7 +30,10 @@
                             "src/favicon.ico"
                         ],
                         "styles": [
-                            "src/styles.scss"
+                            "src/styles.scss",
+                            "./node_modules/@fullcalendar/common/main.css",
+                            "./node_modules/@fullcalendar/daygrid/main.css",
+                            "./node_modules/@fullcalendar/timegrid/main.css"
                         ],
                         "scripts": [
                             "node_modules/prismjs/prism.js",
@@ -126,5 +129,8 @@
             }
         }
     },
-    "defaultProject": "paradise"
+    "defaultProject": "paradise",
+    "cli": {
+      "analytics": "8cdc3107-a892-4434-91d0-dda767ed628b"
+    }
 }
