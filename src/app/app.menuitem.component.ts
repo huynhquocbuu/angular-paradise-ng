@@ -82,7 +82,7 @@ export class AppMenuitemComponent implements OnInit, OnDestroy {
 
     @Input() parentKey: string;
 
-    animating: boolean;
+    animating: boolean = false;
 
     active = false;
 

@@ -142,16 +142,6 @@ import {ProductService} from './demo/service/productservice';
 // Application services
 import {MenuService} from './app.menu.service';
 
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
-
-FullCalendarModule.registerPlugins([
-    dayGridPlugin,
-    timeGridPlugin,
-    interactionPlugin
-]);
-
 @NgModule({
     imports: [
         BrowserModule,
