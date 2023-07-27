@@ -20,7 +20,9 @@
                         "outputPath": "dist/paradise-ng",
                         "index": "src/index.html",
                         "main": "src/main.ts",
-                        "polyfills": "src/polyfills.ts",
+                        "polyfills": [
+                            "zone.js"
+                        ],
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
                         "aot": true,
@@ -95,7 +97,10 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "src/test.ts",
-                        "polyfills": "src/polyfills.ts",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing"
+                        ],
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
                         "inlineStyleLanguage": "scss",
@@ -125,8 +130,7 @@
             }
         }
     },
-    "defaultProject": "paradise",
     "cli": {
-      "analytics": "8cdc3107-a892-4434-91d0-dda767ed628b"
+      "analytics": false
     }
 }
