@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "paradise": {
+        "paradise-ng": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -75,14 +75,14 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "paradise:build"
+                        "browserTarget": "paradise-ng:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "paradise:build:production"
+                            "browserTarget": "paradise-ng:build:production"
                         },
                         "development": {
-                            "browserTarget": "paradise:build:development"
+                            "browserTarget": "paradise-ng:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "paradise:build"
+                        "browserTarget": "paradise-ng:build"
                     }
                 },
                 "test": {
