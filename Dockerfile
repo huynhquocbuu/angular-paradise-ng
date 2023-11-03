@@ -2,7 +2,7 @@
 
 # Use official node image as the base image
 ## nodejs 18
-FROM node:lts-hydrogen as build
+FROM node:hydrogen-alpine as build
 
 # Set the working directory
 WORKDIR /usr/src/app
