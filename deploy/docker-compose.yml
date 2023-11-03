@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+ #---
+  angular-paradise-ng:
+    image: ${DOCKER_REGISTRY-}angular-paradise-ng:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    container_name: angular-paradise-ng
+    restart: always
+    ports:
+      - "6004:80"
+  #---
