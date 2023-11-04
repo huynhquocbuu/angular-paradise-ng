@@ -3,7 +3,7 @@
 # Use official node image as the base image
 ## nodejs 18
 FROM node:hydrogen-alpine as build
-
+#FROM node:gallium-alpine as build
 # Set the working directory
 WORKDIR /usr/src/app
 
@@ -11,6 +11,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Install all the dependencies
+RUN npm cache verify
 RUN npm install
 
 # Generate the build of the application
